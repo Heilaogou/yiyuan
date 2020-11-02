@@ -2,6 +2,24 @@ package com.itgaoshu.yiyuan.bean;
 
 import java.util.Date;
 
+/*
+住院登记
+registerid	int	Not null auto_increment	Primary key,	-- 序号
+userName	Varchar(200)	Not null		,	        -- 患者名字
+age	Int	Not null		,	                            -- 年龄
+sex	Varchar(20)	Not null		,	                    -- 性别
+department	int	Not null		,	                    -- 科室 FOREIGN
+doctor	int	Not null		,	                        -- 医生FOREIGN
+diagnose	Varchar(500)			,	                -- 入院诊断
+address	Varchar(500)			,	                    -- 地址
+Phone	Varchar(30)			,	                        -- 电话
+Idcard	Varchar(60)			,	                        -- 身份证号
+registerDate	Date			,	                    -- 入院日期
+bedNum	int ,	                                        -- 床号FOREIGN
+Operator	Varchar(200)			,	                -- 操作员
+money	double			,	                            -- 预交金
+state	Int				                                -- 状态
+ */
 public class Register {
     private Integer registerid;
 
