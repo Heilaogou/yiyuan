@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.ReportMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Report" >
+    <id column="reportId" property="reportid" jdbcType="INTEGER" />
+    <result column="reportName" property="reportname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="department" property="department" jdbcType="INTEGER" />
+    <result column="doctor" property="doctor" jdbcType="INTEGER" />
+    <result column="reportType" property="reporttype" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="users" property="users" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="carid" property="carid" jdbcType="VARCHAR" />
+    <result column="zhuan" property="zhuan" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    reportId, reportName, sex, age, department, doctor, reportType, price, time, users, 
+    state, phone, carid, zhuan
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.ReportExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from report
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from report
+    where reportId = #{reportid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from report
+    where reportId = #{reportid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.ReportExample" >
+    delete from report
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Report" >
+    insert into report (reportId, reportName, sex, 
+      age, department, doctor, 
+      reportType, price, time, 
+      users, state, phone, 
+      carid, zhuan)
+    values (#{reportid,jdbcType=INTEGER}, #{reportname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{department,jdbcType=INTEGER}, #{doctor,jdbcType=INTEGER}, 
+      #{reporttype,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, #{time,jdbcType=TIMESTAMP}, 
+      #{users,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{carid,jdbcType=VARCHAR}, #{zhuan,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Report" >
+    insert into report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reportid != null" >
+        reportId,
+      </if>
+      <if test="reportname != null" >
+        reportName,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="doctor != null" >
+        doctor,
+      </if>
+      <if test="reporttype != null" >
+        reportType,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="users != null" >
+        users,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="carid != null" >
+        carid,
+      </if>
+      <if test="zhuan != null" >
+        zhuan,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reportid != null" >
+        #{reportid,jdbcType=INTEGER},
+      </if>
+      <if test="reportname != null" >
+        #{reportname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=INTEGER},
+      </if>
+      <if test="doctor != null" >
+        #{doctor,jdbcType=INTEGER},
+      </if>
+      <if test="reporttype != null" >
+        #{reporttype,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="users != null" >
+        #{users,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="carid != null" >
+        #{carid,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuan != null" >
+        #{zhuan,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.ReportExample" resultType="java.lang.Integer" >
+    select count(*) from report
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update report
+    <set >
+      <if test="record.reportid != null" >
+        reportId = #{record.reportid,jdbcType=INTEGER},
+      </if>
+      <if test="record.reportname != null" >
+        reportName = #{record.reportname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.department != null" >
+        department = #{record.department,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctor != null" >
+        doctor = #{record.doctor,jdbcType=INTEGER},
+      </if>
+      <if test="record.reporttype != null" >
+        reportType = #{record.reporttype,jdbcType=INTEGER},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.users != null" >
+        users = #{record.users,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carid != null" >
+        carid = #{record.carid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhuan != null" >
+        zhuan = #{record.zhuan,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update report
+    set reportId = #{record.reportid,jdbcType=INTEGER},
+      reportName = #{record.reportname,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=INTEGER},
+      department = #{record.department,jdbcType=INTEGER},
+      doctor = #{record.doctor,jdbcType=INTEGER},
+      reportType = #{record.reporttype,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DOUBLE},
+      time = #{record.time,jdbcType=TIMESTAMP},
+      users = #{record.users,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      carid = #{record.carid,jdbcType=VARCHAR},
+      zhuan = #{record.zhuan,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Report" >
+    update report
+    <set >
+      <if test="reportname != null" >
+        reportName = #{reportname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=INTEGER},
+      </if>
+      <if test="doctor != null" >
+        doctor = #{doctor,jdbcType=INTEGER},
+      </if>
+      <if test="reporttype != null" >
+        reportType = #{reporttype,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="users != null" >
+        users = #{users,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="carid != null" >
+        carid = #{carid,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuan != null" >
+        zhuan = #{zhuan,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reportId = #{reportid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Report" >
+    update report
+    set reportName = #{reportname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      department = #{department,jdbcType=INTEGER},
+      doctor = #{doctor,jdbcType=INTEGER},
+      reportType = #{reporttype,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      time = #{time,jdbcType=TIMESTAMP},
+      users = #{users,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      carid = #{carid,jdbcType=VARCHAR},
+      zhuan = #{zhuan,jdbcType=VARCHAR}
+    where reportId = #{reportid,jdbcType=INTEGER}
+  </update>
+</mapper>

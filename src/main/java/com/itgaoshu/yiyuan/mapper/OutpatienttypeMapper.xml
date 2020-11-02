@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.OutpatienttypeMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Outpatienttype" >
+    <id column="outpatientId" property="outpatientid" jdbcType="INTEGER" />
+    <result column="projectName" property="projectname" jdbcType="VARCHAR" />
+    <result column="unit" property="unit" jdbcType="INTEGER" />
+    <result column="bigprojectId" property="bigprojectid" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="ostate" property="ostate" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    outpatientId, projectName, unit, bigprojectId, price, ostate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.OutpatienttypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from outpatienttype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from outpatienttype
+    where outpatientId = #{outpatientid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from outpatienttype
+    where outpatientId = #{outpatientid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.OutpatienttypeExample" >
+    delete from outpatienttype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Outpatienttype" >
+    insert into outpatienttype (outpatientId, projectName, unit, 
+      bigprojectId, price, ostate
+      )
+    values (#{outpatientid,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR}, #{unit,jdbcType=INTEGER}, 
+      #{bigprojectid,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, #{ostate,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Outpatienttype" >
+    insert into outpatienttype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="outpatientid != null" >
+        outpatientId,
+      </if>
+      <if test="projectname != null" >
+        projectName,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="bigprojectid != null" >
+        bigprojectId,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="ostate != null" >
+        ostate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="outpatientid != null" >
+        #{outpatientid,jdbcType=INTEGER},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=INTEGER},
+      </if>
+      <if test="bigprojectid != null" >
+        #{bigprojectid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="ostate != null" >
+        #{ostate,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.OutpatienttypeExample" resultType="java.lang.Integer" >
+    select count(*) from outpatienttype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update outpatienttype
+    <set >
+      <if test="record.outpatientid != null" >
+        outpatientId = #{record.outpatientid,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectname != null" >
+        projectName = #{record.projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unit != null" >
+        unit = #{record.unit,jdbcType=INTEGER},
+      </if>
+      <if test="record.bigprojectid != null" >
+        bigprojectId = #{record.bigprojectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.ostate != null" >
+        ostate = #{record.ostate,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update outpatienttype
+    set outpatientId = #{record.outpatientid,jdbcType=INTEGER},
+      projectName = #{record.projectname,jdbcType=VARCHAR},
+      unit = #{record.unit,jdbcType=INTEGER},
+      bigprojectId = #{record.bigprojectid,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DOUBLE},
+      ostate = #{record.ostate,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Outpatienttype" >
+    update outpatienttype
+    <set >
+      <if test="projectname != null" >
+        projectName = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=INTEGER},
+      </if>
+      <if test="bigprojectid != null" >
+        bigprojectId = #{bigprojectid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="ostate != null" >
+        ostate = #{ostate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where outpatientId = #{outpatientid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Outpatienttype" >
+    update outpatienttype
+    set projectName = #{projectname,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=INTEGER},
+      bigprojectId = #{bigprojectid,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      ostate = #{ostate,jdbcType=INTEGER}
+    where outpatientId = #{outpatientid,jdbcType=INTEGER}
+  </update>
+</mapper>
