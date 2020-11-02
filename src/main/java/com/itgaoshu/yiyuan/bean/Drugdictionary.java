@@ -1,5 +1,15 @@
 package com.itgaoshu.yiyuan.bean;
 
+/*
+药品清单
+drugId	int	Not null auto_increment	Primary key, -- 序号
+drugName	Varchar(50) Not null,		         -- 药品名称
+unitId	Int		Not null,                        -- 计量单位
+sellingPrice	Double	Not null,		         -- 售价
+areaId	int	Not null,	                         -- 产地
+typeId	int	Not null,	                         -- 类型
+exprationDate	int	Not null		             -- 保质期
+*/
 public class Drugdictionary {
     private Integer drugid;
 
