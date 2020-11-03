@@ -3,6 +3,7 @@ package com.itgaoshu.yiyuan.mapper;
 import com.itgaoshu.yiyuan.bean.SysMenu;
 import com.itgaoshu.yiyuan.bean.SysMenuExample;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -28,4 +29,7 @@ public interface SysMenuMapper {
     int updateByPrimaryKeySelective(SysMenu record);
 
     int updateByPrimaryKey(SysMenu record);
+    //查询所有菜单
+    @Select("select * from sys_menu")
+    List<SysMenu> selectByMenu();
 }
