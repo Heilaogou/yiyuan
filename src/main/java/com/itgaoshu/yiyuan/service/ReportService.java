@@ -3,6 +3,7 @@ package com.itgaoshu.yiyuan.service;
 import com.itgaoshu.yiyuan.bean.Departments;
 import com.itgaoshu.yiyuan.bean.Doctor;
 import com.itgaoshu.yiyuan.bean.Registeredtype;
+import com.itgaoshu.yiyuan.bean.Report;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,5 +17,17 @@ public interface ReportService {
     //查询所有挂号类型
     List<Registeredtype> selreg();
     //根据挂号类型、科室查询当前值班的所有医生
-    List<Doctor> seldoctor(int registerid,int departmentsid,int day);
+    List<Doctor> seldoctor(int registerid,int departmentsid);
+    //根据挂号类型查询挂号费用
+    double seltymo(int registerId);
+    //查重手机号
+    List<Report> selByPhone(String phone);
+    //查重身份证号
+    List<Report> selByCard(String carid);
+    //查询所有挂号
+    List<Report> selAll(String name,Integer cc);
+    //挂号
+    int addre(Report r);
+    //删除挂号
+    int delre(int id);
 }
