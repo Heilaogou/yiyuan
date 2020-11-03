@@ -220,7 +220,7 @@
     </div>
 </div>
 </body>
-<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:inline="none">
 
     var tableIns;
@@ -310,7 +310,7 @@
                 //渲染下拉框中的值
                 $.ajax({
                     //要跳转的地址
-                    url: '../cao/seldoctor',
+                    url: '../zmm/seldoctor',
                     data:{"registeredid":registeredId,"departmentId":departmentId},
                     //数据类型
                     dataType: 'json',
@@ -329,7 +329,7 @@
         //渲染科室下拉框中的值
         $.ajax({
             //要跳转的地址
-            url: '../cao/seldep',
+            url: '../zmm/seldep',
             //数据类型
             dataType: 'json',
             //提交类型
@@ -345,7 +345,7 @@
         //渲染挂号类型的下拉框
         $.ajax({
             //要跳转的地址
-            url: '../cao/selreg',
+            url: '../zmm/selreg',
             //数据类型
             dataType: 'json',
             //提交类型
