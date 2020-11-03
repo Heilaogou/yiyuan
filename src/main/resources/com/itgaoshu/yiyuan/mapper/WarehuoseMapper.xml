@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itgaoshu.yiyuan.mapper.WarehuoseMapper" >
+  <select id="findAllWarehuose" resultType="Warehuose">
+    select * from Warehuose where supplierName like '%#{supplierName}%'
+  </select>
   <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Warehuose" >
     <id column="warehouseId" property="warehouseid" jdbcType="INTEGER" />
     <result column="supplierName" property="suppliername" jdbcType="VARCHAR" />
