@@ -1,16 +1,18 @@
 package com.itgaoshu.yiyuan.service.impl;
 
-import com.itgaoshu.yiyuan.bean.Departments;
-import com.itgaoshu.yiyuan.bean.Doctor;
-import com.itgaoshu.yiyuan.bean.Registeredtype;
+import com.itgaoshu.yiyuan.bean.*;
 import com.itgaoshu.yiyuan.mapper.DepartmentsMapper;
 import com.itgaoshu.yiyuan.mapper.RegisteredtypeMapper;
 import com.itgaoshu.yiyuan.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//科室
+//挂号
+@Service
+@Transactional
 public class ReportServiceImpl implements ReportService {
     @Autowired
     private DepartmentsMapper departmentsMapper;
@@ -19,13 +21,15 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public List<Departments> selDep() {
         //查询所有科室
+        DepartmentsExample departmentsExample = new DepartmentsExample();
+        //return departmentsMapper.selectAll();
         return departmentsMapper.selectByExample(null);
     }
 
     @Override
     public List<Registeredtype> selreg() {
         //查询所有挂号类型
-        return registeredtypeMapper.selectByExample(null);
+        return registeredtypeMapper.selectByExample(new RegisteredtypeExample());
     }
 
     @Override

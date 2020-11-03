@@ -3,10 +3,13 @@ package com.itgaoshu.yiyuan.service;
 import com.itgaoshu.yiyuan.bean.Departments;
 import com.itgaoshu.yiyuan.bean.Doctor;
 import com.itgaoshu.yiyuan.bean.Registeredtype;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 //科室
+
 public interface ReportService {
     //查询所有科室
     List<Departments> selDep();
