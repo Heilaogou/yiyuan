@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.SysRoleMenuExample;
 import com.itgaoshu.yiyuan.bean.SysRoleMenuKey;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SysRoleMenuMapper {
     int countByExample(SysRoleMenuExample example);

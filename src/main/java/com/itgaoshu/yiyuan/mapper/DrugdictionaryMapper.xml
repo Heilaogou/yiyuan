@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.DrugdictionaryMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Drugdictionary" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.DrugdictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Drugdictionary" >
     <id column="drugId" property="drugid" jdbcType="INTEGER" />
     <result column="drugName" property="drugname" jdbcType="VARCHAR" />
     <result column="unitId" property="unitid" jdbcType="INTEGER" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     drugId, drugName, unitId, sellingPrice, areaId, typeId
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.DrugdictionaryExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.DrugdictionaryExample" >
     select
     <if test="distinct" >
       distinct
@@ -94,13 +94,13 @@
     delete from drugdictionary
     where drugId = #{drugid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.DrugdictionaryExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.DrugdictionaryExample" >
     delete from drugdictionary
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Drugdictionary" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >
     insert into drugdictionary (drugId, drugName, unitId, 
       sellingPrice, areaId, typeId
       )
@@ -108,7 +108,7 @@
       #{sellingprice,jdbcType=DOUBLE}, #{areaid,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Drugdictionary" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >
     insert into drugdictionary
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="drugid != null" >
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.DrugdictionaryExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.DrugdictionaryExample" resultType="java.lang.Integer" >
     select count(*) from drugdictionary
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Drugdictionary" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >
     update drugdictionary
     <set >
       <if test="drugname != null" >
@@ -216,7 +216,7 @@
     </set>
     where drugId = #{drugid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Drugdictionary" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >
     update drugdictionary
     set drugName = #{drugname,jdbcType=VARCHAR},
       unitId = #{unitid,jdbcType=INTEGER},

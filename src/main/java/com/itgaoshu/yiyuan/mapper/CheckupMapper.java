@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Checkup;
 import com.itgaoshu.yiyuan.bean.CheckupExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CheckupMapper {
     int countByExample(CheckupExample example);

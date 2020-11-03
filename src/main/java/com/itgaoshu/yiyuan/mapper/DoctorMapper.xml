@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.DoctorMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Doctor" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.DoctorMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Doctor" >
     <id column="doctorId" property="doctorid" jdbcType="INTEGER" />
     <result column="doctorName" property="doctorname" jdbcType="VARCHAR" />
     <result column="departmentId" property="departmentid" jdbcType="INTEGER" />
@@ -74,7 +74,7 @@
     doctorId, doctorName, departmentId, registeredId, dstate, amStartTime, amEndTime, 
     pmStartTime, pmEndTime
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.DoctorExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.DoctorExample" >
     select
     <if test="distinct" >
       distinct
@@ -98,13 +98,13 @@
     delete from doctor
     where doctorId = #{doctorid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.DoctorExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.DoctorExample" >
     delete from doctor
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Doctor" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Doctor" >
     insert into doctor (doctorId, doctorName, departmentId, 
       registeredId, dstate, amStartTime, 
       amEndTime, pmStartTime, pmEndTime
@@ -114,7 +114,7 @@
       #{amendtime,jdbcType=VARCHAR}, #{pmstarttime,jdbcType=VARCHAR}, #{pmendtime,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Doctor" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Doctor" >
     insert into doctor
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="doctorid != null" >
@@ -175,7 +175,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.DoctorExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.DoctorExample" resultType="java.lang.Integer" >
     select count(*) from doctor
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -231,7 +231,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Doctor" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Doctor" >
     update doctor
     <set >
       <if test="doctorname != null" >
@@ -261,7 +261,7 @@
     </set>
     where doctorId = #{doctorid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Doctor" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Doctor" >
     update doctor
     set doctorName = #{doctorname,jdbcType=VARCHAR},
       departmentId = #{departmentid,jdbcType=INTEGER},

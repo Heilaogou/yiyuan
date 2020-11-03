@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Caigou;
 import com.itgaoshu.yiyuan.bean.CaigouExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CaigouMapper {
     int countByExample(CaigouExample example);

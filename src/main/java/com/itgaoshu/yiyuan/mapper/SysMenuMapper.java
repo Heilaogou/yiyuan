@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.SysMenu;
 import com.itgaoshu.yiyuan.bean.SysMenuExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SysMenuMapper {
     int countByExample(SysMenuExample example);

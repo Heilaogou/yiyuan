@@ -2,12 +2,10 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Register;
 import com.itgaoshu.yiyuan.bean.RegisterExample;
-import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-@Mapper
+import java.util.List;
+
 public interface RegisterMapper {
     int countByExample(RegisterExample example);
 
@@ -18,9 +16,6 @@ public interface RegisterMapper {
     int insert(Register record);
 
     int insertSelective(Register record);
-
-    //查询患者信息
-    List<Register> selectAllRegister(Register register);
 
     List<Register> selectByExample(RegisterExample example);
 

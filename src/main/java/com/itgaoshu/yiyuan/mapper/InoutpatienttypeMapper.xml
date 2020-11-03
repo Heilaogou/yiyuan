@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.InoutpatienttypeMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Inoutpatienttype" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.InoutpatienttypeMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Inoutpatienttype" >
     <id column="inoutpatientId" property="inoutpatientid" jdbcType="INTEGER" />
     <result column="projectName" property="projectname" jdbcType="VARCHAR" />
     <result column="unit" property="unit" jdbcType="INTEGER" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List" >
     inoutpatientId, projectName, unit, bigproJectId, price
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.InoutpatienttypeExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.InoutpatienttypeExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,19 +93,19 @@
     delete from inoutpatienttype
     where inoutpatientId = #{inoutpatientid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.InoutpatienttypeExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.InoutpatienttypeExample" >
     delete from inoutpatienttype
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Inoutpatienttype" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Inoutpatienttype" >
     insert into inoutpatienttype (inoutpatientId, projectName, unit, 
       bigproJectId, price)
     values (#{inoutpatientid,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR}, #{unit,jdbcType=INTEGER}, 
       #{bigprojectid,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE})
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Inoutpatienttype" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Inoutpatienttype" >
     insert into inoutpatienttype
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="inoutpatientid != null" >
@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.InoutpatienttypeExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.InoutpatienttypeExample" resultType="java.lang.Integer" >
     select count(*) from inoutpatienttype
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -182,7 +182,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Inoutpatienttype" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Inoutpatienttype" >
     update inoutpatienttype
     <set >
       <if test="projectname != null" >
@@ -200,7 +200,7 @@
     </set>
     where inoutpatientId = #{inoutpatientid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Inoutpatienttype" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Inoutpatienttype" >
     update inoutpatienttype
     set projectName = #{projectname,jdbcType=VARCHAR},
       unit = #{unit,jdbcType=INTEGER},

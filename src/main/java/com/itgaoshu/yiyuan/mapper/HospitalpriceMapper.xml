@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.HospitalpriceMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Hospitalprice" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.HospitalpriceMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Hospitalprice" >
     <id column="hospitalpriceid" property="hospitalpriceid" jdbcType="INTEGER" />
     <result column="registerId" property="registerid" jdbcType="INTEGER" />
     <result column="durgname" property="durgname" jdbcType="VARCHAR" />
@@ -73,7 +73,7 @@
     hospitalpriceid, registerId, durgname, durgnum, repiceprice, repicetotal, htime, 
     state
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.HospitalpriceExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.HospitalpriceExample" >
     select
     <if test="distinct" >
       distinct
@@ -97,13 +97,13 @@
     delete from hospitalprice
     where hospitalpriceid = #{hospitalpriceid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.HospitalpriceExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.HospitalpriceExample" >
     delete from hospitalprice
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Hospitalprice" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Hospitalprice" >
     insert into hospitalprice (hospitalpriceid, registerId, durgname, 
       durgnum, repiceprice, repicetotal, 
       htime, state)
@@ -111,7 +111,7 @@
       #{durgnum,jdbcType=INTEGER}, #{repiceprice,jdbcType=DOUBLE}, #{repicetotal,jdbcType=DOUBLE}, 
       #{htime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Hospitalprice" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Hospitalprice" >
     insert into hospitalprice
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="hospitalpriceid != null" >
@@ -166,7 +166,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.HospitalpriceExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.HospitalpriceExample" resultType="java.lang.Integer" >
     select count(*) from hospitalprice
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -218,7 +218,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Hospitalprice" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Hospitalprice" >
     update hospitalprice
     <set >
       <if test="registerid != null" >
@@ -245,7 +245,7 @@
     </set>
     where hospitalpriceid = #{hospitalpriceid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Hospitalprice" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Hospitalprice" >
     update hospitalprice
     set registerId = #{registerid,jdbcType=INTEGER},
       durgname = #{durgname,jdbcType=VARCHAR},

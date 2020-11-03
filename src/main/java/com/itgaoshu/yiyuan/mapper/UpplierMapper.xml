@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.UpplierMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Upplier" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.UpplierMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Upplier" >
     <id column="supplierId" property="supplierid" jdbcType="INTEGER" />
     <result column="supplierName" property="suppliername" jdbcType="VARCHAR" />
     <result column="supplierPhone" property="supplierphone" jdbcType="VARCHAR" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List" >
     supplierId, supplierName, supplierPhone, supplierAddress, state
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.UpplierExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.UpplierExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,19 +93,19 @@
     delete from upplier
     where supplierId = #{supplierid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.UpplierExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.UpplierExample" >
     delete from upplier
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Upplier" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Upplier" >
     insert into upplier (supplierId, supplierName, supplierPhone, 
       supplierAddress, state)
     values (#{supplierid,jdbcType=INTEGER}, #{suppliername,jdbcType=VARCHAR}, #{supplierphone,jdbcType=VARCHAR}, 
       #{supplieraddress,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Upplier" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Upplier" >
     insert into upplier
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="supplierid != null" >
@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.UpplierExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.UpplierExample" resultType="java.lang.Integer" >
     select count(*) from upplier
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -182,7 +182,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Upplier" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Upplier" >
     update upplier
     <set >
       <if test="suppliername != null" >
@@ -200,7 +200,7 @@
     </set>
     where supplierId = #{supplierid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Upplier" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Upplier" >
     update upplier
     set supplierName = #{suppliername,jdbcType=VARCHAR},
       supplierPhone = #{supplierphone,jdbcType=VARCHAR},

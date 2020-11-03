@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.SysRoleUserMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleUserKey" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.SysRoleUserMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.SysRoleUserKey" >
     <id column="uid" property="uid" jdbcType="INTEGER" />
     <id column="rid" property="rid" jdbcType="INTEGER" />
   </resultMap>
@@ -66,7 +66,7 @@
   <sql id="Base_Column_List" >
     uid, rid
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleUserExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.SysRoleUserExample" >
     select
     <if test="distinct" >
       distinct
@@ -80,22 +80,22 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleUserKey" >
+  <delete id="deleteByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.SysRoleUserKey" >
     delete from sys_role_user
     where uid = #{uid,jdbcType=INTEGER}
       and rid = #{rid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleUserExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.SysRoleUserExample" >
     delete from sys_role_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleUserKey" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.SysRoleUserKey" >
     insert into sys_role_user (uid, rid)
     values (#{uid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleUserKey" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.SysRoleUserKey" >
     insert into sys_role_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="uid != null" >
@@ -114,7 +114,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleUserExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.SysRoleUserExample" resultType="java.lang.Integer" >
     select count(*) from sys_role_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />

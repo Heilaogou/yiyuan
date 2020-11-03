@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Ban;
 import com.itgaoshu.yiyuan.bean.BanExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface BanMapper {
     int countByExample(BanExample example);

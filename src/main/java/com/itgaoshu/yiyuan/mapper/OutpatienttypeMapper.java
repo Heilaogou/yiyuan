@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Outpatienttype;
 import com.itgaoshu.yiyuan.bean.OutpatienttypeExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface OutpatienttypeMapper {
     int countByExample(OutpatienttypeExample example);

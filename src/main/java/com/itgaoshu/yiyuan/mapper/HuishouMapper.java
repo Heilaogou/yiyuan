@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Huishou;
 import com.itgaoshu.yiyuan.bean.HuishouExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface HuishouMapper {
     int countByExample(HuishouExample example);

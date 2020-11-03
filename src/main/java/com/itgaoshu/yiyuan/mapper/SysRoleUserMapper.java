@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.SysRoleUserExample;
 import com.itgaoshu.yiyuan.bean.SysRoleUserKey;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SysRoleUserMapper {
     int countByExample(SysRoleUserExample example);

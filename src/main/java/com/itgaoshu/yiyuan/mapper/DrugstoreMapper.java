@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Drugstore;
 import com.itgaoshu.yiyuan.bean.DrugstoreExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface DrugstoreMapper {
     int countByExample(DrugstoreExample example);

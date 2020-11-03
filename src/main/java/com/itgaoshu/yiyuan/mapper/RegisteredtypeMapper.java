@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Registeredtype;
 import com.itgaoshu.yiyuan.bean.RegisteredtypeExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface RegisteredtypeMapper {
     int countByExample(RegisteredtypeExample example);

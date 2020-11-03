@@ -84,7 +84,7 @@
     registerid, userName, age, sex, department, doctor, diagnose, address, Phone, Idcard, 
     registerDate, bedNum, Operator, money, state, endDate, price, discount, zhuan
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.RegisterExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.RegisterExample" >
     select
     <if test="distinct" >
       distinct
@@ -129,13 +129,13 @@
     delete from register
     where registerid = #{registerid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.RegisterExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.RegisterExample" >
     delete from register
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Register" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Register" >
     insert into register (registerid, userName, age, 
       sex, department, doctor, 
       diagnose, address, Phone, 
@@ -151,7 +151,7 @@
       #{enddate,jdbcType=TIMESTAMP}, #{price,jdbcType=DOUBLE}, #{discount,jdbcType=VARCHAR}, 
       #{zhuan,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Register" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Register" >
     insert into register
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="registerid != null" >
@@ -272,7 +272,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.RegisterExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.RegisterExample" resultType="java.lang.Integer" >
     select count(*) from register
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -368,7 +368,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Register" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Register" >
     update register
     <set >
       <if test="username != null" >
@@ -428,7 +428,7 @@
     </set>
     where registerid = #{registerid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Register" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Register" >
     update register
     set userName = #{username,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},

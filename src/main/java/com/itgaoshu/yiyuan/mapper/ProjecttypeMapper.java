@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Projecttype;
 import com.itgaoshu.yiyuan.bean.ProjecttypeExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ProjecttypeMapper {
     int countByExample(ProjecttypeExample example);

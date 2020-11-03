@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.WarehuoseMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Warehuose" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.WarehuoseMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Warehuose" >
     <id column="warehouseId" property="warehouseid" jdbcType="INTEGER" />
     <result column="supplierName" property="suppliername" jdbcType="VARCHAR" />
   </resultMap>
@@ -66,7 +66,7 @@
   <sql id="Base_Column_List" >
     warehouseId, supplierName
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.WarehuoseExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.WarehuoseExample" >
     select
     <if test="distinct" >
       distinct
@@ -90,17 +90,17 @@
     delete from warehuose
     where warehouseId = #{warehouseid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.WarehuoseExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.WarehuoseExample" >
     delete from warehuose
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Warehuose" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Warehuose" >
     insert into warehuose (warehouseId, supplierName)
     values (#{warehouseid,jdbcType=INTEGER}, #{suppliername,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Warehuose" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Warehuose" >
     insert into warehuose
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="warehouseid != null" >
@@ -119,7 +119,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.WarehuoseExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.WarehuoseExample" resultType="java.lang.Integer" >
     select count(*) from warehuose
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -147,7 +147,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Warehuose" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Warehuose" >
     update warehuose
     <set >
       <if test="suppliername != null" >
@@ -156,7 +156,7 @@
     </set>
     where warehouseId = #{warehouseid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Warehuose" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Warehuose" >
     update warehuose
     set supplierName = #{suppliername,jdbcType=VARCHAR}
     where warehouseId = #{warehouseid,jdbcType=INTEGER}

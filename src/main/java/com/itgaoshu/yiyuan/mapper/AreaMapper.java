@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Area;
 import com.itgaoshu.yiyuan.bean.AreaExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AreaMapper {
     int countByExample(AreaExample example);

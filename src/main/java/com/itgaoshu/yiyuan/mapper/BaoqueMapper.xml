@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.BaoqueMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Baoque" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.BaoqueMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Baoque" >
     <id column="baoqueid" property="baoqueid" jdbcType="INTEGER" />
     <result column="baoqueName" property="baoquename" jdbcType="VARCHAR" />
     <result column="baoqueNum" property="baoquenum" jdbcType="INTEGER" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List" >
     baoqueid, baoqueName, baoqueNum
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.BaoqueExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.BaoqueExample" >
     select
     <if test="distinct" >
       distinct
@@ -91,19 +91,19 @@
     delete from baoque
     where baoqueid = #{baoqueid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.BaoqueExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.BaoqueExample" >
     delete from baoque
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Baoque" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Baoque" >
     insert into baoque (baoqueid, baoqueName, baoqueNum
       )
     values (#{baoqueid,jdbcType=INTEGER}, #{baoquename,jdbcType=VARCHAR}, #{baoquenum,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Baoque" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Baoque" >
     insert into baoque
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="baoqueid != null" >
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.BaoqueExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.BaoqueExample" resultType="java.lang.Integer" >
     select count(*) from baoque
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Baoque" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Baoque" >
     update baoque
     <set >
       <if test="baoquename != null" >
@@ -172,7 +172,7 @@
     </set>
     where baoqueid = #{baoqueid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Baoque" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Baoque" >
     update baoque
     set baoqueName = #{baoquename,jdbcType=VARCHAR},
       baoqueNum = #{baoquenum,jdbcType=INTEGER}

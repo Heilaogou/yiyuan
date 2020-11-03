@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.SysMenuMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysMenu" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.SysMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.SysMenu" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="pid" property="pid" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
   <sql id="Base_Column_List" >
     id, pid, title, href, spread, target, icon, available
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysMenuExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.SysMenuExample" >
     select
     <if test="distinct" >
       distinct
@@ -96,13 +96,13 @@
     delete from sys_menu
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysMenuExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.SysMenuExample" >
     delete from sys_menu
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysMenu" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.SysMenu" >
     insert into sys_menu (id, pid, title, 
       href, spread, target, 
       icon, available)
@@ -110,7 +110,7 @@
       #{href,jdbcType=VARCHAR}, #{spread,jdbcType=INTEGER}, #{target,jdbcType=VARCHAR}, 
       #{icon,jdbcType=VARCHAR}, #{available,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysMenu" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.SysMenu" >
     insert into sys_menu
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysMenuExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.SysMenuExample" resultType="java.lang.Integer" >
     select count(*) from sys_menu
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -217,7 +217,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysMenu" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.SysMenu" >
     update sys_menu
     <set >
       <if test="pid != null" >
@@ -244,7 +244,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysMenu" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.SysMenu" >
     update sys_menu
     set pid = #{pid,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},

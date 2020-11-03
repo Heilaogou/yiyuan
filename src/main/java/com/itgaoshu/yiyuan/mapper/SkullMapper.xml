@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.SkullMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Skull" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.SkullMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Skull" >
     <id column="skullId" property="skullid" jdbcType="INTEGER" />
     <result column="skullName" property="skullname" jdbcType="VARCHAR" />
   </resultMap>
@@ -66,7 +66,7 @@
   <sql id="Base_Column_List" >
     skullId, skullName
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SkullExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.SkullExample" >
     select
     <if test="distinct" >
       distinct
@@ -90,17 +90,17 @@
     delete from skull
     where skullId = #{skullid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SkullExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.SkullExample" >
     delete from skull
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Skull" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Skull" >
     insert into skull (skullId, skullName)
     values (#{skullid,jdbcType=INTEGER}, #{skullname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Skull" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Skull" >
     insert into skull
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="skullid != null" >
@@ -119,7 +119,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SkullExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.SkullExample" resultType="java.lang.Integer" >
     select count(*) from skull
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -147,7 +147,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Skull" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Skull" >
     update skull
     <set >
       <if test="skullname != null" >
@@ -156,7 +156,7 @@
     </set>
     where skullId = #{skullid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Skull" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Skull" >
     update skull
     set skullName = #{skullname,jdbcType=VARCHAR}
     where skullId = #{skullid,jdbcType=INTEGER}

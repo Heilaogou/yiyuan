@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Baoque;
 import com.itgaoshu.yiyuan.bean.BaoqueExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface BaoqueMapper {
     int countByExample(BaoqueExample example);

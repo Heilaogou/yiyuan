@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.SysRoleMenuMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleMenuKey" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.SysRoleMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.SysRoleMenuKey" >
     <id column="rid" property="rid" jdbcType="INTEGER" />
     <id column="mid" property="mid" jdbcType="INTEGER" />
   </resultMap>
@@ -66,7 +66,7 @@
   <sql id="Base_Column_List" >
     rid, mid
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleMenuExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.SysRoleMenuExample" >
     select
     <if test="distinct" >
       distinct
@@ -80,22 +80,22 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleMenuKey" >
+  <delete id="deleteByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.SysRoleMenuKey" >
     delete from sys_role_menu
     where rid = #{rid,jdbcType=INTEGER}
       and mid = #{mid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleMenuExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.SysRoleMenuExample" >
     delete from sys_role_menu
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleMenuKey" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.SysRoleMenuKey" >
     insert into sys_role_menu (rid, mid)
     values (#{rid,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleMenuKey" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.SysRoleMenuKey" >
     insert into sys_role_menu
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="rid != null" >
@@ -114,7 +114,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.SysRoleMenuExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.SysRoleMenuExample" resultType="java.lang.Integer" >
     select count(*) from sys_role_menu
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />

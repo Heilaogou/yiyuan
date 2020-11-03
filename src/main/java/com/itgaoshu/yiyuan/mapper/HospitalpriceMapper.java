@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Hospitalprice;
 import com.itgaoshu.yiyuan.bean.HospitalpriceExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface HospitalpriceMapper {
     int countByExample(HospitalpriceExample example);

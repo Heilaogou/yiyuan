@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Upplier;
 import com.itgaoshu.yiyuan.bean.UpplierExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UpplierMapper {
     int countByExample(UpplierExample example);

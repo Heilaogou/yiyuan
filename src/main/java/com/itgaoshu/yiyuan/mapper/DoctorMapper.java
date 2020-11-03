@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Doctor;
 import com.itgaoshu.yiyuan.bean.DoctorExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface DoctorMapper {
     int countByExample(DoctorExample example);

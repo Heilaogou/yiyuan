@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Paiban;
 import com.itgaoshu.yiyuan.bean.PaibanExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PaibanMapper {
     int countByExample(PaibanExample example);

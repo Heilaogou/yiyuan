@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.HomeMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Home" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.HomeMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Home" >
     <id column="homeId" property="homeid" jdbcType="INTEGER" />
     <result column="homeName" property="homename" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     homeId, homeName, sex, age, carId, phone
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.HomeExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.HomeExample" >
     select
     <if test="distinct" >
       distinct
@@ -94,19 +94,19 @@
     delete from home
     where homeId = #{homeid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.HomeExample" >
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.HomeExample" >
     delete from home
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Home" >
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Home" >
     insert into home (homeId, homeName, sex, 
       age, carId, phone)
     values (#{homeid,jdbcType=INTEGER}, #{homename,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER}, #{carid,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Home" >
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Home" >
     insert into home
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="homeid != null" >
@@ -149,7 +149,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.HomeExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.HomeExample" resultType="java.lang.Integer" >
     select count(*) from home
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -193,7 +193,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Home" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Home" >
     update home
     <set >
       <if test="homename != null" >
@@ -214,7 +214,7 @@
     </set>
     where homeId = #{homeid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.com.itgaoshu.yiyuan.bean.Home" >
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Home" >
     update home
     set homeName = #{homename,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},

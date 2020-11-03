@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Warehuose;
 import com.itgaoshu.yiyuan.bean.WarehuoseExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface WarehuoseMapper {
     int countByExample(WarehuoseExample example);

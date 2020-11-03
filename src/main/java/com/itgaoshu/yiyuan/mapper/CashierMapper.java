@@ -2,8 +2,9 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Cashier;
 import com.itgaoshu.yiyuan.bean.CashierExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CashierMapper {
     int countByExample(CashierExample example);
