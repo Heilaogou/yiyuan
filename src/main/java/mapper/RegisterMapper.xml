@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.RegisterMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Register" >
+    <id column="registerid" property="registerid" jdbcType="INTEGER" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="INTEGER" />
+    <result column="doctor" property="doctor" jdbcType="INTEGER" />
+    <result column="diagnose" property="diagnose" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="Phone" property="phone" jdbcType="VARCHAR" />
+    <result column="Idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="registerDate" property="registerdate" jdbcType="TIMESTAMP" />
+    <result column="bedNum" property="bednum" jdbcType="INTEGER" />
+    <result column="Operator" property="operator" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="endDate" property="enddate" jdbcType="TIMESTAMP" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="discount" property="discount" jdbcType="VARCHAR" />
+    <result column="zhuan" property="zhuan" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    registerid, userName, age, sex, department, doctor, diagnose, address, Phone, Idcard, 
+    registerDate, bedNum, Operator, money, state, endDate, price, discount, zhuan
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.RegisterExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from register
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from register
+    where registerid = #{registerid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from register
+    where registerid = #{registerid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.RegisterExample" >
+    delete from register
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Register" >
+    insert into register (registerid, userName, age, 
+      sex, department, doctor, 
+      diagnose, address, Phone, 
+      Idcard, registerDate, bedNum, 
+      Operator, money, state, 
+      endDate, price, discount, 
+      zhuan)
+    values (#{registerid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{sex,jdbcType=VARCHAR}, #{department,jdbcType=INTEGER}, #{doctor,jdbcType=INTEGER}, 
+      #{diagnose,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{registerdate,jdbcType=TIMESTAMP}, #{bednum,jdbcType=INTEGER}, 
+      #{operator,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}, #{state,jdbcType=INTEGER}, 
+      #{enddate,jdbcType=TIMESTAMP}, #{price,jdbcType=DOUBLE}, #{discount,jdbcType=VARCHAR}, 
+      #{zhuan,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Register" >
+    insert into register
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="registerid != null" >
+        registerid,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="doctor != null" >
+        doctor,
+      </if>
+      <if test="diagnose != null" >
+        diagnose,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="idcard != null" >
+        Idcard,
+      </if>
+      <if test="registerdate != null" >
+        registerDate,
+      </if>
+      <if test="bednum != null" >
+        bedNum,
+      </if>
+      <if test="operator != null" >
+        Operator,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="enddate != null" >
+        endDate,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="zhuan != null" >
+        zhuan,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="registerid != null" >
+        #{registerid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=INTEGER},
+      </if>
+      <if test="doctor != null" >
+        #{doctor,jdbcType=INTEGER},
+      </if>
+      <if test="diagnose != null" >
+        #{diagnose,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="registerdate != null" >
+        #{registerdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bednum != null" >
+        #{bednum,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuan != null" >
+        #{zhuan,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.RegisterExample" resultType="java.lang.Integer" >
+    select count(*) from register
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update register
+    <set >
+      <if test="record.registerid != null" >
+        registerid = #{record.registerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null" >
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.department != null" >
+        department = #{record.department,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctor != null" >
+        doctor = #{record.doctor,jdbcType=INTEGER},
+      </if>
+      <if test="record.diagnose != null" >
+        diagnose = #{record.diagnose,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        Phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null" >
+        Idcard = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registerdate != null" >
+        registerDate = #{record.registerdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bednum != null" >
+        bedNum = #{record.bednum,jdbcType=INTEGER},
+      </if>
+      <if test="record.operator != null" >
+        Operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money,jdbcType=DOUBLE},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.enddate != null" >
+        endDate = #{record.enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.discount != null" >
+        discount = #{record.discount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhuan != null" >
+        zhuan = #{record.zhuan,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update register
+    set registerid = #{record.registerid,jdbcType=INTEGER},
+      userName = #{record.username,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=INTEGER},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      department = #{record.department,jdbcType=INTEGER},
+      doctor = #{record.doctor,jdbcType=INTEGER},
+      diagnose = #{record.diagnose,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      Phone = #{record.phone,jdbcType=VARCHAR},
+      Idcard = #{record.idcard,jdbcType=VARCHAR},
+      registerDate = #{record.registerdate,jdbcType=TIMESTAMP},
+      bedNum = #{record.bednum,jdbcType=INTEGER},
+      Operator = #{record.operator,jdbcType=VARCHAR},
+      money = #{record.money,jdbcType=DOUBLE},
+      state = #{record.state,jdbcType=INTEGER},
+      endDate = #{record.enddate,jdbcType=TIMESTAMP},
+      price = #{record.price,jdbcType=DOUBLE},
+      discount = #{record.discount,jdbcType=VARCHAR},
+      zhuan = #{record.zhuan,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Register" >
+    update register
+    <set >
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=INTEGER},
+      </if>
+      <if test="doctor != null" >
+        doctor = #{doctor,jdbcType=INTEGER},
+      </if>
+      <if test="diagnose != null" >
+        diagnose = #{diagnose,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        Idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="registerdate != null" >
+        registerDate = #{registerdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bednum != null" >
+        bedNum = #{bednum,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null" >
+        Operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="enddate != null" >
+        endDate = #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuan != null" >
+        zhuan = #{zhuan,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where registerid = #{registerid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Register" >
+    update register
+    set userName = #{username,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      department = #{department,jdbcType=INTEGER},
+      doctor = #{doctor,jdbcType=INTEGER},
+      diagnose = #{diagnose,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Idcard = #{idcard,jdbcType=VARCHAR},
+      registerDate = #{registerdate,jdbcType=TIMESTAMP},
+      bedNum = #{bednum,jdbcType=INTEGER},
+      Operator = #{operator,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DOUBLE},
+      state = #{state,jdbcType=INTEGER},
+      endDate = #{enddate,jdbcType=TIMESTAMP},
+      price = #{price,jdbcType=DOUBLE},
+      discount = #{discount,jdbcType=VARCHAR},
+      zhuan = #{zhuan,jdbcType=TIMESTAMP}
+    where registerid = #{registerid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.HuishouMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Huishou" >
+    <id column="huishouid" property="huishouid" jdbcType="INTEGER" />
+    <result column="huishouname" property="huishouname" jdbcType="VARCHAR" />
+    <result column="huishounumber" property="huishounumber" jdbcType="INTEGER" />
+    <result column="huishoupihao" property="huishoupihao" jdbcType="VARCHAR" />
+    <result column="jbr" property="jbr" jdbcType="VARCHAR" />
+    <result column="beizhu" property="beizhu" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    huishouid, huishouname, huishounumber, huishoupihao, jbr, beizhu
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.HuishouExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from huishou
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from huishou
+    where huishouid = #{huishouid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from huishou
+    where huishouid = #{huishouid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.HuishouExample" >
+    delete from huishou
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Huishou" >
+    insert into huishou (huishouid, huishouname, huishounumber, 
+      huishoupihao, jbr, beizhu
+      )
+    values (#{huishouid,jdbcType=INTEGER}, #{huishouname,jdbcType=VARCHAR}, #{huishounumber,jdbcType=INTEGER}, 
+      #{huishoupihao,jdbcType=VARCHAR}, #{jbr,jdbcType=VARCHAR}, #{beizhu,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Huishou" >
+    insert into huishou
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="huishouid != null" >
+        huishouid,
+      </if>
+      <if test="huishouname != null" >
+        huishouname,
+      </if>
+      <if test="huishounumber != null" >
+        huishounumber,
+      </if>
+      <if test="huishoupihao != null" >
+        huishoupihao,
+      </if>
+      <if test="jbr != null" >
+        jbr,
+      </if>
+      <if test="beizhu != null" >
+        beizhu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="huishouid != null" >
+        #{huishouid,jdbcType=INTEGER},
+      </if>
+      <if test="huishouname != null" >
+        #{huishouname,jdbcType=VARCHAR},
+      </if>
+      <if test="huishounumber != null" >
+        #{huishounumber,jdbcType=INTEGER},
+      </if>
+      <if test="huishoupihao != null" >
+        #{huishoupihao,jdbcType=VARCHAR},
+      </if>
+      <if test="jbr != null" >
+        #{jbr,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null" >
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.HuishouExample" resultType="java.lang.Integer" >
+    select count(*) from huishou
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update huishou
+    <set >
+      <if test="record.huishouid != null" >
+        huishouid = #{record.huishouid,jdbcType=INTEGER},
+      </if>
+      <if test="record.huishouname != null" >
+        huishouname = #{record.huishouname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.huishounumber != null" >
+        huishounumber = #{record.huishounumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.huishoupihao != null" >
+        huishoupihao = #{record.huishoupihao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jbr != null" >
+        jbr = #{record.jbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beizhu != null" >
+        beizhu = #{record.beizhu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update huishou
+    set huishouid = #{record.huishouid,jdbcType=INTEGER},
+      huishouname = #{record.huishouname,jdbcType=VARCHAR},
+      huishounumber = #{record.huishounumber,jdbcType=INTEGER},
+      huishoupihao = #{record.huishoupihao,jdbcType=VARCHAR},
+      jbr = #{record.jbr,jdbcType=VARCHAR},
+      beizhu = #{record.beizhu,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Huishou" >
+    update huishou
+    <set >
+      <if test="huishouname != null" >
+        huishouname = #{huishouname,jdbcType=VARCHAR},
+      </if>
+      <if test="huishounumber != null" >
+        huishounumber = #{huishounumber,jdbcType=INTEGER},
+      </if>
+      <if test="huishoupihao != null" >
+        huishoupihao = #{huishoupihao,jdbcType=VARCHAR},
+      </if>
+      <if test="jbr != null" >
+        jbr = #{jbr,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null" >
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where huishouid = #{huishouid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Huishou" >
+    update huishou
+    set huishouname = #{huishouname,jdbcType=VARCHAR},
+      huishounumber = #{huishounumber,jdbcType=INTEGER},
+      huishoupihao = #{huishoupihao,jdbcType=VARCHAR},
+      jbr = #{jbr,jdbcType=VARCHAR},
+      beizhu = #{beizhu,jdbcType=VARCHAR}
+    where huishouid = #{huishouid,jdbcType=INTEGER}
+  </update>
+</mapper>

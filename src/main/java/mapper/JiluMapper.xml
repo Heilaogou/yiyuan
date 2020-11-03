@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.JiluMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Jilu" >
+    <id column="jiluid" property="jiluid" jdbcType="INTEGER" />
+    <result column="jiluname" property="jiluname" jdbcType="VARCHAR" />
+    <result column="jilutime" property="jilutime" jdbcType="TIMESTAMP" />
+    <result column="jilutype" property="jilutype" jdbcType="VARCHAR" />
+    <result column="jilupeople" property="jilupeople" jdbcType="VARCHAR" />
+    <result column="jilunumber" property="jilunumber" jdbcType="INTEGER" />
+    <result column="jilupihao" property="jilupihao" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    jiluid, jiluname, jilutime, jilutype, jilupeople, jilunumber, jilupihao
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.JiluExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jilu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jilu
+    where jiluid = #{jiluid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jilu
+    where jiluid = #{jiluid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.JiluExample" >
+    delete from jilu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Jilu" >
+    insert into jilu (jiluid, jiluname, jilutime, 
+      jilutype, jilupeople, jilunumber, 
+      jilupihao)
+    values (#{jiluid,jdbcType=INTEGER}, #{jiluname,jdbcType=VARCHAR}, #{jilutime,jdbcType=TIMESTAMP}, 
+      #{jilutype,jdbcType=VARCHAR}, #{jilupeople,jdbcType=VARCHAR}, #{jilunumber,jdbcType=INTEGER}, 
+      #{jilupihao,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Jilu" >
+    insert into jilu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jiluid != null" >
+        jiluid,
+      </if>
+      <if test="jiluname != null" >
+        jiluname,
+      </if>
+      <if test="jilutime != null" >
+        jilutime,
+      </if>
+      <if test="jilutype != null" >
+        jilutype,
+      </if>
+      <if test="jilupeople != null" >
+        jilupeople,
+      </if>
+      <if test="jilunumber != null" >
+        jilunumber,
+      </if>
+      <if test="jilupihao != null" >
+        jilupihao,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jiluid != null" >
+        #{jiluid,jdbcType=INTEGER},
+      </if>
+      <if test="jiluname != null" >
+        #{jiluname,jdbcType=VARCHAR},
+      </if>
+      <if test="jilutime != null" >
+        #{jilutime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jilutype != null" >
+        #{jilutype,jdbcType=VARCHAR},
+      </if>
+      <if test="jilupeople != null" >
+        #{jilupeople,jdbcType=VARCHAR},
+      </if>
+      <if test="jilunumber != null" >
+        #{jilunumber,jdbcType=INTEGER},
+      </if>
+      <if test="jilupihao != null" >
+        #{jilupihao,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.JiluExample" resultType="java.lang.Integer" >
+    select count(*) from jilu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jilu
+    <set >
+      <if test="record.jiluid != null" >
+        jiluid = #{record.jiluid,jdbcType=INTEGER},
+      </if>
+      <if test="record.jiluname != null" >
+        jiluname = #{record.jiluname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jilutime != null" >
+        jilutime = #{record.jilutime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jilutype != null" >
+        jilutype = #{record.jilutype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jilupeople != null" >
+        jilupeople = #{record.jilupeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jilunumber != null" >
+        jilunumber = #{record.jilunumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.jilupihao != null" >
+        jilupihao = #{record.jilupihao,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jilu
+    set jiluid = #{record.jiluid,jdbcType=INTEGER},
+      jiluname = #{record.jiluname,jdbcType=VARCHAR},
+      jilutime = #{record.jilutime,jdbcType=TIMESTAMP},
+      jilutype = #{record.jilutype,jdbcType=VARCHAR},
+      jilupeople = #{record.jilupeople,jdbcType=VARCHAR},
+      jilunumber = #{record.jilunumber,jdbcType=INTEGER},
+      jilupihao = #{record.jilupihao,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Jilu" >
+    update jilu
+    <set >
+      <if test="jiluname != null" >
+        jiluname = #{jiluname,jdbcType=VARCHAR},
+      </if>
+      <if test="jilutime != null" >
+        jilutime = #{jilutime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jilutype != null" >
+        jilutype = #{jilutype,jdbcType=VARCHAR},
+      </if>
+      <if test="jilupeople != null" >
+        jilupeople = #{jilupeople,jdbcType=VARCHAR},
+      </if>
+      <if test="jilunumber != null" >
+        jilunumber = #{jilunumber,jdbcType=INTEGER},
+      </if>
+      <if test="jilupihao != null" >
+        jilupihao = #{jilupihao,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where jiluid = #{jiluid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Jilu" >
+    update jilu
+    set jiluname = #{jiluname,jdbcType=VARCHAR},
+      jilutime = #{jilutime,jdbcType=TIMESTAMP},
+      jilutype = #{jilutype,jdbcType=VARCHAR},
+      jilupeople = #{jilupeople,jdbcType=VARCHAR},
+      jilunumber = #{jilunumber,jdbcType=INTEGER},
+      jilupihao = #{jilupihao,jdbcType=VARCHAR}
+    where jiluid = #{jiluid,jdbcType=INTEGER}
+  </update>
+</mapper>
