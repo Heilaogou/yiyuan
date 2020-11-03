@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DepartmentsMapper {
+
+    //查询所有科室
+    List<Departments> selectAll();
+
     int countByExample(DepartmentsExample example);
 
     int deleteByExample(DepartmentsExample example);
@@ -18,9 +22,6 @@ public interface DepartmentsMapper {
     int insertSelective(Departments record);
 
     List<Departments> selectByExample(DepartmentsExample example);
-
-    //查询所有科室
-    List<Departments> selectAll();
 
     Departments selectByPrimaryKey(Integer departmentid);
 

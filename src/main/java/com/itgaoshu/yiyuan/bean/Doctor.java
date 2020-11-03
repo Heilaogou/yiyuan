@@ -11,13 +11,13 @@ public class Doctor {
 
     private Integer dstate;
 
-    private String amstarttime;
+    private String amstarttime="8:00";
 
-    private String amendtime;
+    private String amendtime="12:00";
 
-    private String pmstarttime;
+    private String pmstarttime="14:00";
 
-    private String pmendtime;
+    private String pmendtime="18:00";
 
     public Integer getDoctorid() {
         return doctorid;
@@ -89,5 +89,20 @@ public class Doctor {
 
     public void setPmendtime(String pmendtime) {
         this.pmendtime = pmendtime == null ? null : pmendtime.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "doctorid=" + doctorid +
+                ", doctorname='" + doctorname + '\'' +
+                ", departmentid=" + departmentid +
+                ", registeredid=" + registeredid +
+                ", dstate=" + dstate +
+                ", amstarttime='" + amstarttime + '\'' +
+                ", amendtime='" + amendtime + '\'' +
+                ", pmstarttime='" + pmstarttime + '\'' +
+                ", pmendtime='" + pmendtime + '\'' +
+                '}';
     }
 }
