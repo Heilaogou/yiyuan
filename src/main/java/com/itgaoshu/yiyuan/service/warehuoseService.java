@@ -2,7 +2,13 @@ package com.itgaoshu.yiyuan.service;
 
 import com.itgaoshu.yiyuan.bean.Warehuose;
 
+import java.util.List;
+
 public interface warehuoseService {
     //新增仓库
-    public int addWarehuose(Warehuose wh);
+    int addWarehuose(Warehuose wh);
+    //删除仓库
+    int deletewarehuose(Integer warehuoseId);
+    //模糊查询所有仓库
+    List<Warehuose> findAllWarehuose(Warehuose wh);
 }

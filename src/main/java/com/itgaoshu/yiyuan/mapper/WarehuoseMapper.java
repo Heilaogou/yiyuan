@@ -18,7 +18,8 @@ public interface WarehuoseMapper {
     int insertSelective(Warehuose record);
 
     List<Warehuose> selectByExample(WarehuoseExample example);
-
+    //自己新增的模糊查询方法
+    List<Warehuose> findAllWarehuose(Warehuose wh);
     Warehuose selectByPrimaryKey(Integer warehouseid);
 
     int updateByExampleSelective(@Param("record") Warehuose record, @Param("example") WarehuoseExample example);
