@@ -21,7 +21,7 @@ public interface SysMenuService {
     //添加菜单
     int addSysMenu(SysMenu sysMenu);
     //删除菜单
-    int deleteSysMenu(Integer pid);
+    int deleteSysMenu(Integer id);
     //修改菜单
     int updateSysMenu(SysMenu sysMenu);
     //检查是否存在子级目录

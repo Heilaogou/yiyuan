@@ -37,8 +37,8 @@ public class SysMenuController {
     //登陆   shiro登陆
     @RequestMapping("login")
     public String login(Model model, HttpServletRequest request, String loginname, String pwd) {
-
-
+        System.out.println(loginname);
+        System.out.println(pwd);
         //第一步：建立subject
         Subject subject = SecurityUtils.getSubject();
         //第二步：封装token  凭证
@@ -141,6 +141,7 @@ public class SysMenuController {
     }
     //添加菜单
     @RequestMapping("addMenu")
+    @ResponseBody
     public String addMenu(SysMenu sysMenu){
 
         int i=sms.addSysMenu(sysMenu);
@@ -155,12 +156,21 @@ public class SysMenuController {
     }
     //删除菜单
     @RequestMapping("deleteMenu")
+    @ResponseBody
     public String deleteMenu(Integer id){
+        System.out.println(id);
         int i=sms.deleteSysMenu(id);
-        return "true";
+        System.out.println(i);
+        if(i!=0){
+            return "true";
+        }else{
+            return "false";
+        }
+
     }
     //修改菜单
     @RequestMapping("updateMenu")
+    @ResponseBody
     public Object updateMenu(SysMenu sysMenu){
         int i=sms.updateSysMenu(sysMenu);
         System.out.println(i);
@@ -173,6 +183,7 @@ public class SysMenuController {
     }
     //检查是否存在子级目录
     @RequestMapping("checkMenuHasChildren")
+    @ResponseBody
     public String checkMenuHasChildren(Integer id){
         int i=sms.checkSysMenuChildren(id);
         if(i<=0){

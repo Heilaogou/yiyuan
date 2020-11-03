@@ -270,8 +270,23 @@
   <!-- 添加菜单 -->
   <insert id="addSysMenu" parameterType="SysMenu">
         insert into
-        sys_menu(pid,title,href,spread,target,icon,available)values(#{pid},#{title},#{href},#{spread},null,#{icon},#{available})
+        <if test="spread==true">
+          sys_menu(pid,title,href,spread,target,icon,available)values(#{pid},#{title},#{href},1,null,#{icon},#{available})
+        </if>
+        <if test="spread==false">
+          sys_menu(pid,title,href,spread,target,icon,available)values(#{pid},#{title},#{href},0,null,#{icon},#{available})
+        </if>
     </insert>
+    <update id="updateSysMenu" parameterType="SysMenu">
+        update sys_menu set
+        <if test="spread==true">
+          pid=#{pid},title=#{title},href=#{href},spread=1,target=#{target},icon=#{icon},available=#{available}
+        </if>
+        <if test="spread==false">
+          pid=#{pid},title=#{title},href=#{href},spread=0,target=#{target},icon=#{icon},available=#{available}
+        </if>
+        where id=#{id}
+    </update>
     <!-- 加载左侧导航 查询所有可用菜单-->
     <select id="loadAvailableMenu" resultType="SysMenu">
         select *from sys_menu where available=1

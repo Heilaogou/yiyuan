@@ -48,21 +48,23 @@ public class SysMenuServiceImpl implements SysMenuService {
     //添加菜单
     @Override
     public int addSysMenu(SysMenu sysMenu) {
-        return 0;
+
+        return smm.addSysMenu(sysMenu);
     }
     //删除菜单
     @Override
-    public int deleteSysMenu(Integer pid) {
-        return 0;
+    public int deleteSysMenu(Integer id) {
+        return smm.deleteSysMenu(id);
     }
     //修改菜单
     @Override
     public int updateSysMenu(SysMenu sysMenu) {
-        return 0;
+
+        return smm.updateSysMenu(sysMenu);
     }
     //检查是否存在子级目录
     @Override
     public int checkSysMenuChildren(Integer id) {
-        return 0;
+        return smm.checkSysMenuChildren(id);
     }
 }

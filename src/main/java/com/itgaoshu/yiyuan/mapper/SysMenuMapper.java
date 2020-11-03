@@ -44,10 +44,9 @@ public interface SysMenuMapper {
     //添加菜单
     int addSysMenu(SysMenu sysMenu);
     //删除菜单
-    @Delete("delete from sys_menu where pid=#{pid}")
-    int deleteSysMenu(Integer pid);
+    @Delete("delete from sys_menu where id=#{id}")
+    int deleteSysMenu(Integer id);
     //修改菜单
-    @Update("update sys_menu set pid=#{pid},title=#{title},href=#{href},spread=#{spread},target=#{target},icon=#{icon},available=#{available} where id=#{id}")
     int updateSysMenu(SysMenu sysMenu);
     //检查是否存在子级目录
     @Select("select count(*) from sys_menu s1 inner join sys_menu s2 on s1.id=s2.pid where s1.id=#{id}")
