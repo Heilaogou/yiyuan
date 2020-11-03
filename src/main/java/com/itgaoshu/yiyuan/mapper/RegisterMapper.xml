@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itgaoshu.com.itgaoshu.yiyuan.mapper.RegisterMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.com.itgaoshu.yiyuan.bean.Register" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.RegisterMapper" >
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Register" >
     <id column="registerid" property="registerid" jdbcType="INTEGER" />
     <result column="userName" property="username" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
@@ -98,6 +98,27 @@
       order by ${orderByClause}
     </if>
   </select>
+  <!-- 查询患者 -->
+  <select id="selectAllRegister" parameterType="Register" resultType="Register">
+    select r.registerid,r.userName,r.age,r.sex,d.department department,r.money,r.department departmentId,r.doctor doctorId,r.bedNum bedId,c.doctorName doctorName,r.address,r.phone,r.idcard,r.registerDate,b.bedname bedName,r.operator,r.discount
+    from register r,departments d,doctor c,bed b
+    <where>
+      r.state=0 and r.department=d.departmentId and r.doctor=c.doctorId and r.bedNum=b.bedId
+      <if test="userName!=null and userName!=''">
+        and r.userName like concat('%',concat(#{userName},'%'))
+      </if>
+      <if test="registerid!=null and registerid!=''">
+        and r.registerid=#{registerid}
+      </if>
+      <if test="idcard!=null and idcard!=''">
+        and r.idcard=#{idcard}
+      </if>
+      order by r.registerDate desc
+    </where>
+  </select>
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
