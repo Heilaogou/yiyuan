@@ -19,4 +19,9 @@ public class SysUserServiceImpl implements SysUserService {
     public List<SysUser> selectAllSysUser(SysUser sysUser) {
         return sum.selectAllSysUser(sysUser);
     }
+    //添加用户
+    @Override
+    public int insertSysUser(SysUser sysUser) {
+        return sum.insertSysUser(sysUser);
+    }
 }

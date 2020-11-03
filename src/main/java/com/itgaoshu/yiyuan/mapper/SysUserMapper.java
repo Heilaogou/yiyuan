@@ -2,6 +2,7 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.SysUser;
 import com.itgaoshu.yiyuan.bean.SysUserExample;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -30,4 +31,7 @@ public interface SysUserMapper {
     int updateByPrimaryKey(SysUser record);
     //查询全部用户  模糊查询
     List<SysUser> selectAllSysUser(SysUser sysUser);
+    //添加用户
+    @Insert("insert into sys_user values(null,#{loginname},#{identity},#{realname},#{sex},#{address},#{phone},#{pwd},#{position},#{type},#{available},#{salt})")
+    int insertSysUser(SysUser sysUser);
 }
