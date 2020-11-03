@@ -28,4 +28,6 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+    //查询全部用户  模糊查询
+    List<SysUser> selectAllSysUser(SysUser sysUser);
 }

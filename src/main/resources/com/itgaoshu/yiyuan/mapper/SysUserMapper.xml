@@ -320,4 +320,24 @@
       salt = #{salt,jdbcType=VARCHAR}
     where userid = #{userid,jdbcType=INTEGER}
   </update>
+  <select id="selectAllSysUser" resultType="SysUser">
+    select * from sys_user
+    <where>
+      <if test="realname!=null and realname!=''">
+        realname like concat('%',concat(#{realname}),'%')
+      </if>
+      <if test="loginname!=null and loginname!=''">
+        and loginname like concat('%',concat(#{loginname}),'%')
+      </if>
+      <if test="address!=null and address!=''">
+        and address like concat('%',concat(#{address}),'%')
+      </if>
+      <if test="phone!=null and phone!=''">
+        and phone like concat('%',concat(#{phone}),'%')
+      </if>
+      <if test="identity!=null and identity!=''">
+        and identity like concat('%',concat(#{identity}),'%')
+      </if>
+    </where>
+  </select>
 </mapper>
