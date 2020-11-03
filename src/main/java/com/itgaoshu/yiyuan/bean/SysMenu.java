@@ -1,20 +1,26 @@
 package com.itgaoshu.yiyuan.bean;
+/**
+ * 菜单表
+ * spread属性改为boolean类型
+ *
+ */
 
 public class SysMenu {
+    //菜单id
     private Integer id;
-
+    //上级菜单id
     private Integer pid;
-
+    //标题
     private String title;
-
+    //路径
     private String href;
-
-    private Integer spread;
-
+    //是否展开
+    private Boolean spread;
+    //
     private String target;
-
+    //图标
     private String icon;
-
+    //是否可用
     private Integer available;
 
     public Integer getId() {
@@ -49,11 +55,11 @@ public class SysMenu {
         this.href = href == null ? null : href.trim();
     }
 
-    public Integer getSpread() {
+    public Boolean getSpread() {
         return spread;
     }
 
-    public void setSpread(Integer spread) {
+    public void setSpread(Boolean spread) {
         this.spread = spread;
     }
 
