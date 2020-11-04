@@ -7,6 +7,11 @@ public class Outpatienttype {
 
     private Integer unit;
 
+    private String unitname;
+    public String getUnitname(){
+        return unitname;
+    }
+
     private Integer bigprojectid;
 
     private Double price;

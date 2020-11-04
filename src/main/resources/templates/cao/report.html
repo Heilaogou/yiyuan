@@ -256,7 +256,7 @@
                 layer.msg("对不起您选择的不是当天的挂号")
             }else{
                 //查询该用户处方上是否有药品
-                $.post("../caoout/selch",{reportId:ids},function(res) {
+                $.post("../cao/selch",{reportId:ids},function(res) {
                     if (res == 0) {
                         //判断该用户是否有缴费未做的项目
                         $.post("../caocc/seljiao",{"reid":ids},function(res) {
@@ -408,7 +408,7 @@
                 <label class="layui-form-label">姓名:</label>
                 <div class="layui-input-inline">
                     <input type="hidden" name="id">
-                    <input type="text" name="reportName"  lay-verify="required"   placeholder="请输入用户姓名" autocomplete="off"
+                    <input type="text" name="reportname"  lay-verify="required"   placeholder="请输入用户姓名" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>

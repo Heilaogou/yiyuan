@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>处方划价</title>
+    <title>项目划价?</title>
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
     <style>
         .nam{
@@ -101,8 +101,8 @@
             <tr>
                 <td class="nam">姓名:</td>
                 <td class="valu">
-                    <input id="reid" type="hidden" class="layui-input" readonly name="reportId"/>
-                    <input id="rename" class="layui-input" type="text" readonly name="reportName"/> </td>
+                    <input id="reid" type="hidden" class="layui-input" readonly name="reportid"/>
+                    <input id="rename" class="layui-input" type="text" readonly name="reportname"/> </td>
                 <td class="nam">身份证号:</td>
                 <td class="valu"><input id="carid" class="layui-input" type="text" readonly name="carid"/> </td>
                 <td class="nam">性别:</td>
@@ -197,7 +197,7 @@
                 success:function(index){
                     people=table.render({
                         elem: '#userTable'   //渲染的目标对象
-                        ,url:'../caocc/selpreson' //数据接口
+                        ,url:'../cao/selpreson' //数据接口
                         ,title: '用户数据表'//数据导出来的标题
                         ,cellMinWidth:200 //设置列的最小默认宽度
                         /*,parseData:function(res){
@@ -210,15 +210,15 @@
                         ,limits: [5, 10, 15]
                         ,limit: 5//默认采用3
                         ,cols: [[   //列表数据
-                            {field:'reportId', title:'单据号',align:'center',width:"8%"}
-                            ,{field:'reportName', title:'姓名',align:'center',width:"8%"}
+                            {field:'reportid', title:'单据号',align:'center',width:"8%"}
+                            ,{field:'reportname', title:'姓名',align:'center',width:"8%"}
                             ,{field:'phone', title:'电话',align:'center',width:"8%"}
                             ,{field:'carid', title:'身份证号',align:'center',width:"8%"}
                             ,{field:'sex', title:'性别',align:'center',width:"8%"}
                             ,{field:'age', title:'年龄',align:'center',width:"8%"}
-                            ,{field:'department', title:'科室',align:'center',width:"8%"}
+                            ,{field:'depName', title:'科室',align:'center',width:"8%"}
                             ,{field:'doctorName', title:'医生',align:'center',width:"8%"}
-                            ,{field:'type', title:'挂号类别',align:'center',width:"8%"}
+                            ,{field:'typeName', title:'挂号类别',align:'center',width:"8%"}
                             ,{field:'time', title:'挂号时间',align:'center',width:"8%"}
                             ,{field:'price', title:'挂号费',align:'center',width:"8%"}
                             ,{fixed: 'right', title:'操作', toolbar: '#userBar',align:'center',width:'8%'}
@@ -226,8 +226,8 @@
                     })
                     xinagmu=table.render({
                         elem: '#drugtable'   //渲染的目标对象
-                        ,url:'../caoout/selout' //数据接口
-                        ,title: '药品信息'
+                        ,url:'../cao/selout' //数据接口
+                        ,title: '项目信息'
                         ,cellMinWidth:200 //设置列的最小默认宽度
                         /*,parseData:function(res){
                             return{
@@ -238,9 +238,9 @@
                         ,page: 1  //是否启用分页, limits: [10, 20, 30]
                         ,limits: [5, 10, 15]
                         ,limit: 5//默认采用3
-                        ,cols: [[   //列表    数据
-                            {field:'projectName', title:'药品名称',align:'center',width:"25%"}
-                            ,{field:'unitName', title:'单位',align:'center',width:"25%"}
+                        ,cols: [[   //列表  数据
+                            {field:'projectname', title:'项目名称',align:'center',width:"25%"}
+                            ,{field:'unitname', title:'单位',align:'center',width:"25%"}
                             ,{field:'price', title:'单价',align:'center',width:"25%"}
                             ,{fixed: 'right', title:'操作', toolbar: '#userBar',align:'center',width:'25%'}
                         ]]
@@ -257,8 +257,8 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'edit'){ //编辑
-                $("#reid").val(data.reportId)
-                $("#rename").val(data.reportName)
+                $("#reid").val(data.reportid)
+                $("#rename").val(data.reportname)
                 $("#resex").val(data.sex)
                 $("#age").val(data.age)
                 $("#rede").val(data.department);
@@ -266,13 +266,13 @@
                 $("#carid").val(data.carid);
                 $("#phone").val(data.phone);
                 $("#price").val(data.price);
-                var perid=data.reportId;
+                var perid=data.reportid;
                 //查询该用户的处方
                 layer.close(mainIndex)
                 wareid=data.value;//获取选中的药房的id
                 hua=table.render({
                     elem: '#repiid'   //渲染的目标对象
-                    ,url:'../caocc/selximu?perid='+perid //数据接口
+                    ,url:'../cao/selximu?perid='+perid //数据接口
                     ,title: '患者处方'
                     ,cellMinWidth:200 //设置列的最小默认宽度
                     ,page: 1  //是否启用分页, limits: [10, 20, 30]
@@ -283,7 +283,7 @@
                         ,{field:'durgnum', title:'数量',align:'center',width:"15%"}
                         ,{field:'repiceprice', title:'单价',align:'center',width:"15%"}
                         ,{field:'repicetotal', title:'小计',align:'center',width:"15%"}
-                        ,{field:'ostate', title:'受否检查',align:'center',width:"20%",templet:function(w){
+                        ,{field:'ostate', title:'是否检查',align:'center',width:"20%",templet:function(w){
                                 return w.ostate==0?'<font color="blue">非检查</font>':'<font color="red">需检查</font>'
                             }}
                         ,{fixed: 'right', title:'操作',align:'center',width:'15%',templet:function(d){
@@ -313,7 +313,7 @@
             if(reid==''){
                 layer.msg("请选择患者");
             }else {
-                $.post("../caocc/selbing", {"reid": reid}, function (obj) {
+                $.post("../cao/selbing", {"reid": reid}, function (obj) {
                     if (obj == '') {
                         layer.msg("请先填写病因");
                     } else {
@@ -323,8 +323,8 @@
                             content: $("#drugnum"),
                             area: ['300px', '200px']
                         });
-                        $("#uni").text(data.unitName);//单位
-                        $("#mename").val(data.projectName);//药品名字
+                        $("#uni").text(data.unitname);//单位
+                        $("#mename").val(data.projectname);//药品名字
                         $("#sellingPrice").val(data.price);//药品单价
                         $("#ostate").val(data.ostate);//项目状态证明要不要检查
                     }
@@ -350,7 +350,7 @@
             }else if(reid==""){//判断是否选中用户如果没有选中用户着提示
                 layer.msg("请选择患者");
             }else{
-                $.post("../caoout/addchuo",{"reportId":reid,"durgname":mename,"durgnum":num,"repiceprice":sellingPrice,"repicetotal":price,"drugstorenum":num,"ostate":ostate},function(obj){
+                $.post("../cao/addchuo",{"reportId":reid,"durgname":mename,"durgnum":num,"repiceprice":sellingPrice,"repicetotal":price,"drugstorenum":num,"ostate":ostate},function(obj){
                     layer.msg("添加成功");
                     layer.close(mainIndex);
                     hua.reload();
@@ -389,7 +389,7 @@
         $(document).on('click',"#selbut",function(){
             var projectName=$("#selinp").val()
             xinagmu.reload({
-                url:"../caoout/selout?projectName="+projectName
+                url:"../cao/selout?projectName="+projectName
             })
         });
     })

@@ -19,6 +19,8 @@ public class Report {
 
     private Double price;
 
+    //数据库导出页面时json格式化
+    //@JSONField(format="yyyy-MM-dd")
     private Date time;
 
     private String users;
@@ -34,6 +36,19 @@ public class Report {
     private Doctor doc;
     private Departments departments;
     private Registeredtype registeredtype;
+
+    //==============================
+    //这些方法是为了前端layui获取到数据
+    public String getDepName(){
+        return departments.getDepartment();
+    }
+    public String getDoctorName(){
+        return doc.getDoctorname();
+    }
+    public String getTypeName(){
+        return registeredtype.getType();
+    }
+    //==============================
 
     @Override
     public String toString() {
