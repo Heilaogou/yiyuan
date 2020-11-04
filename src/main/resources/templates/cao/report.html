@@ -256,7 +256,7 @@
                 layer.msg("对不起您选择的不是当天的挂号")
             }else{
                 //查询该用户处方上是否有药品
-                $.post("../report/selch",{reportId:ids},function(res) {
+                $.post("../cao/selch",{reportId:ids},function(res) {
                     if (res == 0) {
                         //判断该用户是否有缴费未做的项目
                         $.post("../caocc/seljiao",{"reid":ids},function(res) {

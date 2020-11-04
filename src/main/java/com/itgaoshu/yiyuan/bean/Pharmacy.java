@@ -16,7 +16,7 @@ public class Pharmacy {
     private Integer unit;
 
     private Unit u;
-    public String getUnitName(){
+    public String getUnitname(){
         return u.getUnitname();
     }
 

@@ -62,7 +62,7 @@
     </association>
   </resultMap>
   <select id="seldrug" resultMap="dMap">
-    select * from pharmacy p,unit u where p.unit=u.unitid
+    select * from pharmacy p,unit u where p.unit=u.unitid and p.pharmacyname like '%${value}%'
   </select>
 
 

@@ -1,9 +1,7 @@
 package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.*;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -51,15 +49,83 @@ public interface ReportMapper {
     @Insert("INSERT INTO report (reportname,sex,age,department,doctor,reporttype,price,time,users,state,phone,carid)\n" +
             " VALUES (#{reportname},#{sex},#{age},#{department},#{doctor},#{reporttype},#{price},NOW(),#{users},1,#{phone},#{carid})")
     int addre(Report r);
+    //添加挂号费
+    @Insert("insert cashier(reportid,durgname,durgnum,repiceprice,repicetotal,state,ctime,)" +
+            "values(#{id},'挂号费',1,#{price},#{price},2,NOW())")
+    int addCashierOfReport(@Param("id") Integer id,@Param("price")Double price);
 
     //根据挂号id查询处方信息
     @Select("select * from cashier where reportid=#{perid}")
     List<Cashier> selcha(Integer perid);
 
     //查询药房中的所有药品信息
-    List<Pharmacy> seldrug();
+    List<Pharmacy> seldrug(String drugname);
 
-    int countByExample(ReportExample example);
+    //根据挂号id查询病因
+    @Select("select zhuan from report where reportid=#{reid}")
+    String selbing(Integer reid);
+    //根据挂号id更新病因
+    @Update("update report set zhuan=#{bing} where reportid=#{id}")
+    int addbing(@Param("id") Integer reid,@Param("bing") String bing);
+
+    //根据挂号id查询病人处方中当前药品的数量
+    @Select("select durgnum from cashier where reportid=#{id} and durgname=#{name}")
+    Integer selchu(@Param("id") Integer reid,@Param("name") String mename);
+
+    //根据挂号id在处方表中添加药品,即state=0
+    @Insert("insert into cashier(reportid,durgname,durgnum,repiceprice,repicetotal,state,ctime)" +
+            "values(#{id},#{dname},#{dnum},#{price},#{total},0,NOW())")
+    int addchu(@Param("id") Integer reid,@Param("dname") String durgname,
+               @Param("dnum") Integer durgnum,@Param("price") Double repiceprice,
+               @Param("total") Double repicetotal);
+
+    //更新药房中药品的数量
+    @Update("update pharmacy set drugstorenum=drugstorenum-#{num} where pharmacyName=#{name}")
+    int updPharmacyOfnum(@Param("name") String durgname,@Param("num") Integer durgnum);
+
+    //根据挂号id更新处方表的药品
+    @Update("update cashier set durgnum=durgnum+#{num},repicetotal=#{total},ctime=NOW() " +
+            "where reportid=#{id} and durgname=#{name} and state=0")
+    int updchu(@Param("id") Integer reid,@Param("name") String durgname,
+               @Param("num") Integer durgnum,@Param("total") Double repicetotal);
+
+    //(模糊)查询所有项目信息
+    @Select("select * from outpatienttype o,unit u " +
+            "where u.unitid =o.unit and o.projectname like '%${value}%'")
+    List<Outpatienttype> selout(String projectName);
+
+    //根据挂号id查询病人处方中的项目信息
+    @Select("select * from cashier where reportid=#{perid} and state=1")
+    List<Cashier> selximu(Integer perid);
+
+    //给选中的病人添加项目
+    @Insert("insert into cashier(reportid,durgname,durgnum,repiceprice,repicetotal,state,ctime,ostate,mstate)" +
+            "values(#{id},#{dname},#{dnum},#{price},#{total},1,NOW(),#{ostate},0)")
+    int addchuo(@Param("id") Integer reportId,@Param("dname") String durgname,
+                @Param("dnum") Integer durgnum,@Param("price") Double repiceprice,
+                @Param("total") Double repicetotal,@Param("ostate") Integer ostate);
+
+    //根据处方id删除项目
+    @Delete("delete from cashier where cashier=#{id}")
+    int delo(Integer cashier);
+
+    //根据挂号id查询当前病人所有未缴费的项目
+    @Select("select * from cashier where reportid=#{perid} and state=1 and mstate=0")
+    List<Cashier> selxiang(Integer perid);
+
+    //根据挂号id查询当前病人要交的项目费用
+    @Select("select sum(repicetotal) from cashier where reportid=#{perid} and state=1 and mstate=0")
+    Double selshoux(Integer perid);
+
+
+
+
+
+
+
+
+
+        int countByExample(ReportExample example);
 
     int deleteByExample(ReportExample example);
 

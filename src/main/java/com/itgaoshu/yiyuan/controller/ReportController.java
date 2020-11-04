@@ -1,5 +1,6 @@
 package com.itgaoshu.yiyuan.controller;
 
+import com.alibaba.druid.sql.dialect.mysql.ast.MysqlForeignKey;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.itgaoshu.yiyuan.bean.*;
@@ -20,6 +21,19 @@ import java.util.Map;
 public class ReportController {
     @Autowired
     private ReportService reportService;
+
+    //==============================用户挂号========================================
+    //左侧菜单栏点击处方划价跳转页面
+    //查询挂号信息
+    //cc:1-查询所有，2-当天挂号,3-预约挂号
+    @RequestMapping("/index")
+    public String index(String params, Integer cc, Model model){
+        if(params==null)
+            params="";
+        List<Report> report = reportService.selAll(params,cc);
+        model.addAttribute("report",report);
+        return "cao/report";
+    }
 
     //查询所有科室
     @RequestMapping("/seldep")
@@ -66,16 +80,7 @@ public class ReportController {
         }
         return 3;
     }
-    //查询挂号信息
-    //cc:1-查询所有，2-当天挂号,3-预约挂号
-    @RequestMapping("/index")
-    public String index(String params, Integer cc, Model model){
-        if(params==null)
-            params="";
-        List<Report> report = reportService.selAll(params,cc);
-        model.addAttribute("report",report);
-        return "cao/report";
-    }
+
     //添加挂号
     @RequestMapping("/addre")
     @ResponseBody
@@ -88,7 +93,7 @@ public class ReportController {
             return "添加失败，请重新尝试";
         }
     }
-    //删除前查询处方总价
+    //(!!!!!!!!!未实现)删除前查询处方总价
     @RequestMapping("/selch")
     public int selch(int reportId){
         return 0;
@@ -105,7 +110,7 @@ public class ReportController {
         }
     }
 
-    //===========================================
+    //======================================处方划价=========================================
     //左侧菜单栏点击处方划价跳转页面
     @RequestMapping("/cc")
     public String cc(){
@@ -132,7 +137,7 @@ public class ReportController {
         return tableData;
     }
     //查询被选中病人的处方
-    @RequestMapping("/selcha")
+    @RequestMapping("/selall")
     @ResponseBody
     public Object selcha(Integer perid,Integer page,Integer limit){
         PageHelper.startPage(page,limit);
@@ -148,12 +153,14 @@ public class ReportController {
         tableData.put("data", pageInfo.getList());
         return tableData;
     }
-    //查询药房中的药品信息
+    //(模糊)查询药房中的药品信息
     @RequestMapping("/seldrug")
     @ResponseBody
-    public Object seldrug(Integer page,Integer limit){
+    public Object seldrug(String durgname,Integer page,Integer limit){
         PageHelper.startPage(page,limit);
-        List<Pharmacy> list = reportService.seldrug();
+        if(durgname==null) durgname="";
+        System.out.println("report-seldrug"+durgname);
+        List<Pharmacy> list = reportService.seldrug(durgname);
         PageInfo pageInfo = new PageInfo(list);
         Map<String, Object> tableData = new HashMap<String, Object>();
         //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
@@ -164,5 +171,134 @@ public class ReportController {
         //将分页后的数据返回（每页要显示的数据）
         tableData.put("data", pageInfo.getList());
         return tableData;
+    }
+    //根据挂号id查询病人的病因
+    @RequestMapping("/selbing")
+    @ResponseBody
+    public String selbing(Integer reid){
+        String bing = reportService.selbing(reid);
+        return bing;
+    }
+    //根据挂号id更新病人病因
+    @RequestMapping("/addbing")
+    @ResponseBody
+    public int addbing(Integer reid,String bing){
+        int res = reportService.addbing(reid,bing);
+        return res;
+    }
+
+    //根据挂号id查询病人处方中当前药品的数量
+    @RequestMapping("/selchu")
+    @ResponseBody
+    public int selchu(Integer reid,String mename){
+        int num = reportService.selchu(reid,mename);
+        return num;
+    }
+    //如果selchu=0则添加处方并修改药房
+    @RequestMapping("/addchu")
+    @ResponseBody
+    //前端bug:durgnum与drugstorenum是一个数，遂弃用drugstorenum，然后在mapper中自行计算
+    public int addchu(Integer reportId,String durgname,Integer durgnum,Double repiceprice,Double repicetotal,Integer drugstorenum){
+        int res = reportService.addchu(reportId,durgname,durgnum,repiceprice,repicetotal,drugstorenum);
+        return res;
+    }
+    //如果selchu!=0则修改处方并修改药房
+    @RequestMapping("/updchu")
+    @ResponseBody
+    public int updchu(Integer reportId,String durgname,Integer durgnum,Double repicetotal,Integer drugstorenum){
+        int res = reportService.updchu(reportId, durgname, durgnum, repicetotal, drugstorenum);
+        return  res;
+    }
+
+
+    //=========================================项目划价=====================================
+    //左侧菜单栏点击项目划价跳转页面
+    @RequestMapping("/xiang")
+    public String xiang(){
+        return "cao/Cxiangmu";
+    }
+    //查询所有的项目信息
+    @RequestMapping("/selout")
+    @ResponseBody
+    public Object selout(String projectName,Integer page,Integer limit){
+        PageHelper.startPage(page,limit);
+        if(projectName==null) projectName="";
+        List<Outpatienttype> list = reportService.selout(projectName);
+        PageInfo pageInfo = new PageInfo(list);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
+        //注意!!!!!map中的四个键不可变，是layui规定好的
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        return tableData;
+    }
+    //根据挂号id查询病人处方中的项目
+    @RequestMapping("/selximu")
+    @ResponseBody
+    public Object selximu(Integer perid,Integer page,Integer limit){
+        PageHelper.startPage(page,limit);
+        List<Cashier> list = reportService.selximu(perid);
+        PageInfo pageInfo = new PageInfo(list);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        return tableData;
+    }
+    //给选中的病人添加项目
+    @RequestMapping("/addchuo")
+    @ResponseBody
+    public int addchuo(Integer reportId,String durgname,Integer durgnum,Double repiceprice,Double repicetotal,Integer ostate){
+        int res = reportService.addchuo(reportId,durgname,durgnum,repiceprice,repicetotal,ostate);
+        return res;
+    }
+    //根据处方id删除选中的项目
+    @RequestMapping("/delo")
+    @ResponseBody
+    public String delo(Integer cashier){
+        int res = reportService.delo(cashier);
+        if(res==1){
+            return "删除成功";
+        }else{
+            return "删除失败，请稍后重新尝试";
+        }
+    }
+    //=========================================项目缴费=====================================
+    //左侧菜单栏点击项目缴费跳转页面
+    @RequestMapping("/xiangpay")
+    public String xiangpay(){
+        return "cao/xaingmupay";
+    }
+    //根据挂号id查询当前病人需要缴费的项目
+    @RequestMapping("/selxiang")
+    @ResponseBody
+    public Object selxiang(Integer perid,Integer page,Integer limit){
+        PageHelper.startPage(page,limit);
+        List<Cashier> list = reportService.selxiang(perid);
+        PageInfo pageInfo = new PageInfo(list);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        return tableData;
+    }
+    //根据挂号id查询病人需要缴纳的费用
+    @RequestMapping("/selshoux")
+    @ResponseBody
+    public Double selshoux(Integer perid){
+        Double sum = reportService.selshoux(perid);
+        return sum;
     }
 }
