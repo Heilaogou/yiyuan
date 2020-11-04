@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itgaoshu.yiyuan.mapper.RegisterMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Register" >
-    <id column="registerid" property="registerid" jdbcType="INTEGER" />
-    <result column="userName" property="username" jdbcType="VARCHAR" />
-    <result column="age" property="age" jdbcType="INTEGER" />
-    <result column="sex" property="sex" jdbcType="VARCHAR" />
-    <result column="department" property="department" jdbcType="INTEGER" />
-    <result column="doctor" property="doctor" jdbcType="INTEGER" />
-    <result column="diagnose" property="diagnose" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="Phone" property="phone" jdbcType="VARCHAR" />
-    <result column="Idcard" property="idcard" jdbcType="VARCHAR" />
-    <result column="registerDate" property="registerdate" jdbcType="TIMESTAMP" />
-    <result column="bedNum" property="bednum" jdbcType="INTEGER" />
-    <result column="Operator" property="operator" jdbcType="VARCHAR" />
-    <result column="money" property="money" jdbcType="DOUBLE" />
-    <result column="state" property="state" jdbcType="INTEGER" />
-    <result column="endDate" property="enddate" jdbcType="TIMESTAMP" />
-    <result column="price" property="price" jdbcType="DOUBLE" />
-    <result column="discount" property="discount" jdbcType="VARCHAR" />
-    <result column="zhuan" property="zhuan" jdbcType="TIMESTAMP" />
-  </resultMap>
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -98,27 +78,6 @@
       order by ${orderByClause}
     </if>
   </select>
-  <!-- 查询患者 -->
-  <select id="selectAllRegister" parameterType="Register" resultType="Register">
-    select r.registerid,r.userName,r.age,r.sex,d.department department,r.money,r.department departmentId,r.doctor doctorId,r.bedNum bedId,c.doctorName doctorName,r.address,r.phone,r.idcard,r.registerDate,b.bedname bedName,r.operator,r.discount
-    from register r,departments d,doctor c,bed b
-    <where>
-      r.state=0 and r.department=d.departmentId and r.doctor=c.doctorId and r.bedNum=b.bedId
-      <if test="userName!=null and userName!=''">
-        and r.userName like concat('%',concat(#{userName},'%'))
-      </if>
-      <if test="registerid!=null and registerid!=''">
-        and r.registerid=#{registerid}
-      </if>
-      <if test="idcard!=null and idcard!=''">
-        and r.idcard=#{idcard}
-      </if>
-      order by r.registerDate desc
-    </where>
-  </select>
-
-
-
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -450,4 +409,91 @@
       zhuan = #{zhuan,jdbcType=TIMESTAMP}
     where registerid = #{registerid,jdbcType=INTEGER}
   </update>
+<!--             {field:'registerid', title:'住院号',align:'center',width:'7%',sort: true}
+                ,{field:'userName', title:'姓名',align:'center',width:'6%'}
+                ,{field:'sex', title:'性别',align:'center',width:'6%',sort: true}
+                ,{field:'age', title:'年龄',align:'center',width:'6%',sort: true}
+                ,{field:'address', title:'地址',align:'center',width:'10%'}
+                ,{field:'phone', title:'电话',align:'center',width:'11%'}
+                ,{field:'idcard', title:'身份证号',align:'center',width:'15%'}
+                ,{field:'registerDate', title:'入院日期',align:'center',width:'13%',sort: true}
+                ,{field:'department', title:'科室',align:'center',width:'6%'}
+                ,{field:'doctorName', title:'医生',align:'center',width:'6%'}
+                ,{field:'bedName', title:'床位',align:'center',width:'7%'}
+                ,{fixed: '', title:'操作', toolbar: '#ToolBarss',align:'center',width:'7%'}-->
+  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Register" >
+    <id column="registerid" property="registerid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="departmentId" property="departmentid" jdbcType="INTEGER" />
+    <result column="doctor" property="doctor" jdbcType="INTEGER" />
+    <result column="bedNum" property="bednum" jdbcType="INTEGER" />
+    <result column="doctorName" property="doctorname" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="Phone" property="phone" jdbcType="VARCHAR" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="registerDate" property="registerdate" jdbcType="TIMESTAMP" />
+    <result column="bedName" property="bedname" jdbcType="VARCHAR" />
+    <result column="Operator" property="operator" jdbcType="VARCHAR" />
+    <result column="zhuan" property="zhuan" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <!-- 查询患者 -->
+  <select id="selectAllRegister" parameterType="Register" resultMap="BaseResultMap">
+    select r.registerid,r.username userName,r.age,r.sex,d.department department,r.money,r.department departmentId,r.doctor,r.bedNum,c.doctorname doctorName,r.address,r.Phone,r.idcard,r.registerDate,b.bedname bedName,r.Operator,r.zhuan
+    from register r,departments d,doctor c,bed b
+    <where>
+      r.state=0 and r.department=d.departmentId and r.doctor=c.doctorId and r.bedNum=b.bedId
+      <if test="username!=null and username!=''">
+        and r.username like concat('%',concat(#{username},'%'))
+      </if>
+      <if test="registerid!=null and registerid!=''">
+        and r.registerid=#{registerid}
+      </if>
+      <if test="idcard!=null and idcard!=''">
+        and r.idcard=#{idcard}
+      </if>
+      order by r.registerDate desc
+    </where>
+  </select>
+
+  <!--查询科室信息-->
+  <select id="selectAllDepartment" resultType="Departments">
+        select * from departments
+  </select>
+
+  <!--查询医生-->
+  <select id="selectAllDoctor" parameterType="Doctor" resultType="Doctor">
+        select * from doctor where departmentId=#{departmentid} and dstate=1
+  </select>
+
+  <!--查询床位-->
+  <select id="selBed" parameterType="Bed" resultType="Bed">
+        select * from bed where state=#{state} and departmentId=#{departmentid}
+  </select>
+
+  <!--添加或者-->
+  <insert id="addRegister" parameterType="Register">
+        insert into register(userName,age,sex,department,doctor,diagnose,address,Phone,Idcard,registerDate,bedNum,Operator,money,state,discount)
+        values(#{userName},#{age},#{sex},#{departmentId},#{doctorId},#{diagnose},#{address},#{phone},#{idcard},NOW(),#{bedId},#{operator},#{money},0,#{discount})
+  </insert>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </mapper>
