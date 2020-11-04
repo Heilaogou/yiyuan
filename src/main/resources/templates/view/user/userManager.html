@@ -225,7 +225,7 @@
 			  if(layEvent === 'del'){ //删除
 				  layer.confirm('真的删除【'+data.realname+'】这个用户吗', function(index){
 				       //向服务端发送删除指令
-				       $.post("user/deleteUser",{userid:data.userid},function(res){
+				       $.post("user/deleteSysUser",{userid:data.userid},function(res){
 				    	   layer.msg(res);
 				    	    //刷新数据 表格
 							tableIns.reload();
@@ -233,7 +233,7 @@
 				     }); 
 			   } else if(layEvent === 'edit'){ //编辑
 			     openUpdateUser(data);
-			   }else if(layEvent==='resetUserPwd'){
+			   }else if(layEvent==='resetUserPwd'){//重置密码
 				   layer.confirm('真的重置【'+data.realname+'】这个用户的密码吗', function(index){
 				       //向服务端发送删除指令
 				       $.post("user/resetUserPwd",{userid:data.userid},function(res){
@@ -307,7 +307,7 @@
 					    	params+="&ids="+item.roleid;
 						});
 					    //保存
-					    $.post("user/saveUserRole",params,function(obj){
+					    $.post("user/insertRoleUser",params,function(obj){
 					    	layer.msg(obj);
 					    })
 					},
@@ -315,7 +315,7 @@
 						//渲染数据表格
 						 var roleTableIns=table.render({
 							 elem: '#roleTable'   //渲染的目标对象
-						    ,url:'user/initUserRole?userid='+data.userid //数据接口
+						    ,url:'user/selectAllRole?userid='+data.userid //数据接口
 						    ,title: '角色列表'//数据导出来的标题
 						    ,cellMinWidth:100 //设置列的最小默认宽度
 						    ,cols: [[   //列表数据
