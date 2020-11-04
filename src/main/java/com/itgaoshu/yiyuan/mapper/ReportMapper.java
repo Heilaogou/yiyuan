@@ -116,6 +116,7 @@ public interface ReportMapper {
     //根据挂号id查询当前病人要交的项目费用
     @Select("select sum(repicetotal) from cashier where reportid=#{perid} and state=1 and mstate=0")
     Double selshoux(Integer perid);
+    //
 
 
 
