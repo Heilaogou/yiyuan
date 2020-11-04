@@ -15,4 +15,14 @@ public class DepartmentsServiceImpl implements DepartmentsService {
     public List<Departments> selectAll(Departments dm) {
         return departmentsMapper.selectAll(dm);
     }
+
+    @Override
+    public int addDepartment(Departments dm) {
+        return departmentsMapper.addDepartment(dm);
+    }
+
+    @Override
+    public int count(Departments dm) {
+        return departmentsMapper.count(dm);
+    }
 }
