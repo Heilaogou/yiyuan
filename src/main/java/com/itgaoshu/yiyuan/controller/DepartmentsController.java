@@ -7,6 +7,7 @@ import com.itgaoshu.yiyuan.service.DepartmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +19,7 @@ public class DepartmentsController {
     @Autowired
     private DepartmentsService departmentsService;
     @RequestMapping("departmentList")
+    @ResponseBody
     public Object departmentList(Departments dm,Integer page,Integer limit){
         PageHelper.startPage(page,limit);
         List<Departments> dmlist=departmentsService.selectAll(dm);

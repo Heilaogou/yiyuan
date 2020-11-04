@@ -2,9 +2,7 @@ package com.itgaoshu.yiyuan.mapper;
 
 import com.itgaoshu.yiyuan.bean.Warehuose;
 import com.itgaoshu.yiyuan.bean.WarehuoseExample;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -19,7 +17,7 @@ public interface WarehuoseMapper {
     int count(Warehuose wh);
 
 
-    /*int insertSelective(Warehuose record);
+    int insertSelective(Warehuose record);
     int countByExample(WarehuoseExample example);
     int deleteByExample(WarehuoseExample example);
     List<Warehuose> selectByExample(WarehuoseExample example);
@@ -27,5 +25,5 @@ public interface WarehuoseMapper {
     int updateByExampleSelective(@Param("record") Warehuose record, @Param("example") WarehuoseExample example);
     int updateByExample(@Param("record") Warehuose record, @Param("example") WarehuoseExample example);
     int updateByPrimaryKeySelective(Warehuose record);
-    int updateByPrimaryKey(Warehuose record);*/
+    int updateByPrimaryKey(Warehuose record);
 }

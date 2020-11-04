@@ -4,9 +4,10 @@ import com.itgaoshu.yiyuan.bean.Departments;
 import com.itgaoshu.yiyuan.mapper.DepartmentsMapper;
 import com.itgaoshu.yiyuan.service.DepartmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class DepartmentsServiceImpl implements DepartmentsService {
     @Autowired
     private DepartmentsMapper departmentsMapper;
