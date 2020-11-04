@@ -1,9 +1,9 @@
 package com.itgaoshu.yiyuan.bean;
 
 public class Doctor {
-    private Integer doctorid;
+    private Integer doctorId;
 
-    private String doctorname;
+    private String doctorName;
 
     private Integer departmentid;
 
@@ -19,20 +19,20 @@ public class Doctor {
 
     private String pmendtime="18:00";
 
-    public Integer getDoctorid() {
-        return doctorid;
+    public Integer getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctorid(Integer doctorid) {
-        this.doctorid = doctorid;
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
     }
 
-    public String getDoctorname() {
-        return doctorname;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setDoctorname(String doctorname) {
-        this.doctorname = doctorname == null ? null : doctorname.trim();
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName == null ? null : doctorName.trim();
     }
 
     public Integer getDepartmentid() {
@@ -94,8 +94,8 @@ public class Doctor {
     @Override
     public String toString() {
         return "Doctor{" +
-                "doctorid=" + doctorid +
-                ", doctorname='" + doctorname + '\'' +
+                "doctorid=" + doctorId +
+                ", doctorname='" + doctorName + '\'' +
                 ", departmentid=" + departmentid +
                 ", registeredid=" + registeredid +
                 ", dstate=" + dstate +

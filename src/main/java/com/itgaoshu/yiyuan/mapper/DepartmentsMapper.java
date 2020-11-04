@@ -23,7 +23,8 @@ public interface DepartmentsMapper {
     Departments selectByPrimaryKey(Integer departmentid);
     //根据主键修改科室
     int updateByPrimaryKey(Departments record);
-
+    //页
+    int count(Departments dm);
     int insertSelective(Departments record);
 
     List<Departments> selectByExample(DepartmentsExample example);
