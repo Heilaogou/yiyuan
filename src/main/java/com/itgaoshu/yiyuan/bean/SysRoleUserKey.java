@@ -1,9 +1,18 @@
 package com.itgaoshu.yiyuan.bean;
-
+//角色用户表
 public class SysRoleUserKey {
+    private Integer id;
     private Integer uid;
 
     private Integer rid;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getUid() {
         return uid;

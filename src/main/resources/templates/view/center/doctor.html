@@ -17,7 +17,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">姓名:</label>
             <div class="layui-input-inline">
-                <input type="text" name="doctorName"  autocomplete="off" class="layui-input" style="width:200px" >
+                <input type="text" name="doctorname"  autocomplete="off" class="layui-input" style="width:200px" >
             </div>
         </div>
         <div class="layui-inline">
@@ -43,8 +43,8 @@
             <div class="layui-inline">
                 <label class="layui-form-label">姓名:</label>
                 <div class="layui-input-inline">
-                    <input type="hidden" name="doctorId">
-                    <input type="text" name="doctorName" lay-verify="required"   placeholder="请输入姓名" autocomplete="off"
+                    <input type="hidden" name="doctorid">
+                    <input type="text" name="doctorname" lay-verify="required"   placeholder="请输入姓名" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -53,7 +53,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">科室:</label>
                 <div class="layui-input-inline">
-                   <select name="departmentId" id="departmentId" lay-verify="required" lay-filter="xmFilter">
+                   <select name="departmentid" id="departmentid" lay-verify="required" lay-filter="xmFilter">
                         <option value=""></option>
                     </select>
                 </div>
@@ -63,7 +63,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">挂号类型:</label>
                 <div class="layui-input-inline">
-                    <select name="registeredId" id="registeredId" lay-verify="required" lay-filter="xmFilter">
+                    <select name="registeredid" id="registeredid" lay-verify="required" lay-filter="xmFilter">
                         <option value=""></option>
                     </select>
                 </div>
@@ -123,8 +123,8 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'doctorId', title:'ID',align:'center',width:'10%',sort: true}
-                ,{field:'doctorName', title:'姓名',align:'center',width:"15%"}
+                {field:'doctorid', title:'ID',align:'center',width:'10%',sort: true}
+                ,{field:'doctorname', title:'姓名',align:'center',width:"15%"}
                 ,{field:'department', title:'科室',align:'center',width:"20%"}
                 ,{field:'type', title:'挂号类型',align:'center',width:"25%"}
                 ,{field:'dstate', title:'类型',align:'center',width:"10%",templet:function(d){
@@ -154,9 +154,9 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.doctorName+'】这个医生吗', function(index){
+                layer.confirm('真的删除【'+data.doctorname+'】这个医生吗', function(index){
                     //向服务端发送删除指令
-                    $.post("doctor/deleteDoctor",{doctorId:data.doctorId},function(res){
+                    $.post("doctor/deleteDoctor",{doctorid:data.doctorid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns.reload();
@@ -204,7 +204,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#departmentId').append(new Option(item.department, item.departmentId));// 下拉菜单里添加元素
+                    $('#departmentid').append(new Option(item.department, item.departmentid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -215,7 +215,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#registeredId').append(new Option(item.type, item.registeredId));// 下拉菜单里添加元素
+                    $('#registeredid').append(new Option(item.type, item.registeredid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }

@@ -118,7 +118,7 @@
         //渲染数据表格
         tableIns = table.render({
             elem: '#roleTable'   //渲染的目标对象
-            , url: 'role/loadAllRole' //数据接口
+            , url: 'role/selectAllSysRole' //数据接口
             , title: '用户数据表'//数据导出来的标题
             , toolbar: "#roleToolBar"   //表格的工具条
             , height: 'full-210'
@@ -143,7 +143,7 @@
         $("#doSearch").click(function () {
             var params = $("#searchFrm").serialize();
             tableIns.reload({
-                url: "role/loadAllRole?" + params
+                url: "role/selectAllSysRole?" + params
             })
         });
 
@@ -163,7 +163,7 @@
             if (layEvent === 'del') { //删除
                 layer.confirm('真的删除【' + data.rolename + '】这个角色吗', function (index) {
                     //向服务端发送删除指令
-                    $.post("role/deleteRole", {roleid: data.roleid}, function (res) {
+                    $.post("role/deleteSysRole", {roleid: data.roleid}, function (res) {
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns.reload();
@@ -189,7 +189,7 @@
                 success: function (index) {
                     //清空表单数据
                     $("#dataFrm")[0].reset();
-                    url = "role/insertRole";
+                    url = "role/insertSysRole";
                 }
             });
         }
@@ -203,7 +203,7 @@
                 area: ['800px', '300px'],
                 success: function (index) {
                     form.val("dataFrm", data);
-                    url = "role/updateRole";
+                    url = "role/updateSysRole";
                 }
             });
         }
@@ -243,8 +243,9 @@
                     })
 
                     //保存角色和菜单的关系
-                    $.post("role/saveRoleMenu", params, function (obj) {
+                    $.post("role/insertSysRoleMenuKey", params, function (obj) {
                         layer.msg(obj);
+                        layer.close(mainIndex);
                     })
                 },
                 success: function (index) {
@@ -257,7 +258,7 @@
                         checkbar: true,//复选框
                         checkbarType: "all", // 默认就是all
                         checkbarData: "choose",
-                        url: "role/initRoleMenuTreeJson?roleid=" + data.roleid // 使用url加载（可与data加载同时存在）
+                        url: "role/selectAllMenu?roleid=" + data.roleid // 使用url加载（可与data加载同时存在）
                     });
                 }
             });

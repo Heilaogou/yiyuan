@@ -5,6 +5,10 @@ public class Doctor {
 
     private String doctorname;
 
+    private String department;
+
+    private String type;
+
     private Integer departmentid;
 
     private Integer registeredid;
@@ -35,6 +39,14 @@ public class Doctor {
         this.doctorname = doctorname == null ? null : doctorname.trim();
     }
 
+    public String getDepartment() { return department; }
+
+    public void setDepartment(String department) { this.department = department; }
+
+    public String getType() { return type; }
+
+    public void setType(String type) { this.type = type; }
+
     public Integer getDepartmentid() {
         return departmentid;
     }
@@ -47,9 +59,7 @@ public class Doctor {
         return registeredid;
     }
 
-    public void setRegisteredid(Integer registeredid) {
-        this.registeredid = registeredid;
-    }
+    public void setRegisteredid(Integer registeredid) { this.registeredid = registeredid; }
 
     public Integer getDstate() {
         return dstate;
@@ -96,6 +106,8 @@ public class Doctor {
         return "Doctor{" +
                 "doctorid=" + doctorid +
                 ", doctorname='" + doctorname + '\'' +
+                ", department='" + department + '\'' +
+                ", type='" + type + '\'' +
                 ", departmentid=" + departmentid +
                 ", registeredid=" + registeredid +
                 ", dstate=" + dstate +
