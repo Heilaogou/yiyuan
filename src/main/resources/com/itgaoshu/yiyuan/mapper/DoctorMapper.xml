@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itgaoshu.yiyuan.mapper.DoctorMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Doctor" >
+  <select id="doctorList" resultType="doctor">
+    select * from doctor d,departments de,registeredtype r where d.departmentId=de.departmentId and d.registeredId=r.registeredId
+    <if test="doctorName!=null and doctorName!=''">
+      and   d.doctorName like concat('%',concat(#{doctorName},'%'))
+    </if>
+    <if test="dstate!=null">
+      and   d.dstate =#{dstate}
+    </if> and dstate!=3
+    ORDER BY doctorId asc
+  </select>
+  <!--<resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Doctor" >
     <id column="doctorId" property="doctorid" jdbcType="INTEGER" />
     <result column="doctorName" property="doctorname" jdbcType="VARCHAR" />
     <result column="departmentId" property="departmentid" jdbcType="INTEGER" />
@@ -272,5 +282,5 @@
       pmStartTime = #{pmstarttime,jdbcType=VARCHAR},
       pmEndTime = #{pmendtime,jdbcType=VARCHAR}
     where doctorId = #{doctorid,jdbcType=INTEGER}
-  </update>
+  </update>-->
 </mapper>
