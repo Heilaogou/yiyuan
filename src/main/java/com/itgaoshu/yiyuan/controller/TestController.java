@@ -10,4 +10,6 @@ public class TestController {
     public String report(){
         return "cao/report";
     }
+    @RequestMapping("/warehuose")
+    public String warehuose(){return "view/center/warehuose";}
 }

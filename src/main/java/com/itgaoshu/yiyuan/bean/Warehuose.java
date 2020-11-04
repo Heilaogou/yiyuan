@@ -2,23 +2,23 @@ package com.itgaoshu.yiyuan.bean;
 
 public class Warehuose {
     //仓库id
-    private Integer warehouseid;
+    private Integer warehouseId;
     //仓库名
-    private String suppliername;
+    private String supplierName;
 
-    public Integer getWarehouseid() {
-        return warehouseid;
+    public Integer getWarehouseId() {
+        return warehouseId;
     }
 
-    public void setWarehouseid(Integer warehouseid) {
-        this.warehouseid = warehouseid;
+    public void setWarehouseId(Integer warehouseId) {
+        this.warehouseId = warehouseId;
     }
 
-    public String getSuppliername() {
-        return suppliername;
+    public String getSupplierName() {
+        return supplierName;
     }
 
-    public void setSuppliername(String suppliername) {
-        this.suppliername = suppliername == null ? null : suppliername.trim();
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName == null ? null : supplierName.trim();
     }
 }

@@ -14,16 +14,21 @@ public class warehuoseServiceImpl implements warehuoseService {
     private WarehuoseMapper warehuosemapper;
     @Override
     public int addWarehuose(Warehuose wh) {
-        return warehuosemapper.insert(wh);
+        return warehuosemapper.addWarehuose(wh);
     }
 
     @Override
-    public int deletewarehuose(Integer warehuoseId) {
-        return warehuosemapper.deleteByPrimaryKey(warehuoseId);
+    public int deleteWarehuose(Integer warehuoseId) {
+        return warehuosemapper.deleteWarehuose(warehuoseId);
     }
 
     @Override
     public List<Warehuose> findAllWarehuose(Warehuose wh) {
         return warehuosemapper.findAllWarehuose(wh);
+    }
+
+    @Override
+    public int count(Warehuose wh) {
+        return warehuosemapper.count(wh);
     }
 }
