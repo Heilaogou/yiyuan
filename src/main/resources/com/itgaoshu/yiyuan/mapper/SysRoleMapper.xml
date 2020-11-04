@@ -193,4 +193,18 @@
       available = #{available,jdbcType=INTEGER}
     where roleid = #{roleid,jdbcType=INTEGER}
   </update>
+  <select id="selectAllSysRole" resultType="SysRole">
+    select * from sys_role
+    <where>
+      <if test="rolename!=null and rolename!=''">
+        rolename like concat('%',concat(#{rolename}),'%')
+      </if>
+      <if test="roledesc!=null and roledesc!=''">
+        and roledesc like concat('%',concat(#{roledesc}),'%')
+      </if>
+      <if test="available!=null and available!=''">
+        and available=#{available}
+      </if>
+    </where>
+  </select>
 </mapper>
