@@ -1,9 +1,13 @@
 package com.itgaoshu.yiyuan.bean;
 
 public class Doctor {
-    private Integer doctorId;
+    private Integer doctorid;
 
-    private String doctorName;
+    private String doctorname;
+
+    private String department;
+
+    private String type;
 
     private Integer departmentid;
 
@@ -19,21 +23,29 @@ public class Doctor {
 
     private String pmendtime="18:00";
 
-    public Integer getDoctorId() {
-        return doctorId;
+    public Integer getDoctorid() {
+        return doctorid;
     }
 
-    public void setDoctorId(Integer doctorId) {
-        this.doctorId = doctorId;
+    public void setDoctorid(Integer doctorid) {
+        this.doctorid = doctorid;
     }
 
-    public String getDoctorName() {
-        return doctorName;
+    public String getDoctorname() {
+        return doctorname;
     }
 
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName == null ? null : doctorName.trim();
+    public void setDoctorname(String doctorname) {
+        this.doctorname = doctorname == null ? null : doctorname.trim();
     }
+
+    public String getDepartment() { return department; }
+
+    public void setDepartment(String department) { this.department = department; }
+
+    public String getType() { return type; }
+
+    public void setType(String type) { this.type = type; }
 
     public Integer getDepartmentid() {
         return departmentid;
@@ -47,9 +59,7 @@ public class Doctor {
         return registeredid;
     }
 
-    public void setRegisteredid(Integer registeredid) {
-        this.registeredid = registeredid;
-    }
+    public void setRegisteredid(Integer registeredid) { this.registeredid = registeredid; }
 
     public Integer getDstate() {
         return dstate;
@@ -94,8 +104,10 @@ public class Doctor {
     @Override
     public String toString() {
         return "Doctor{" +
-                "doctorid=" + doctorId +
-                ", doctorname='" + doctorName + '\'' +
+                "doctorid=" + doctorid +
+                ", doctorname='" + doctorname + '\'' +
+                ", department='" + department + '\'' +
+                ", type='" + type + '\'' +
                 ", departmentid=" + departmentid +
                 ", registeredid=" + registeredid +
                 ", dstate=" + dstate +
