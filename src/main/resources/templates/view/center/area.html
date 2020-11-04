@@ -17,7 +17,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">产地:</label>
             <div class="layui-input-inline">
-                <input type="text" name="areaName"  autocomplete="off" class="layui-input" >
+                <input type="text" name="areaname"  autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-inline">
@@ -36,8 +36,8 @@
             <div class="layui-inline">
                 <label class="layui-form-label">产地:</label>
                 <div class="layui-input-inline">
-                    <input type="hidden" name="areaId">
-                    <input type="text" name="areaName"  lay-verify="required"   placeholder="请输入产地" autocomplete="off"
+                    <input type="hidden" name="areaid">
+                    <input type="text" name="areaname"  lay-verify="required"   placeholder="请输入产地" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -86,8 +86,8 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'areaId', title:'ID',align:'center',width:'30%'}
-                ,{field:'areaName', title:'药品产地',align:'center',width:"70%"}
+                {field:'areaid', title:'ID',align:'center',width:'30%'}
+                ,{field:'areaname', title:'药品产地',align:'center',width:"70%"}
             ]]
         })
         //模糊查询
@@ -111,9 +111,9 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.areaName+'】这个公司吗', function(index){
+                layer.confirm('真的删除【'+data.areaname+'】这个公司吗', function(index){
                     //向服务端发送删除指令
-                    $.post("area/deleteArea",{areaId:data.areaId},function(res){
+                    $.post("area/deleteArea",{areaid:data.areaid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns.reload();

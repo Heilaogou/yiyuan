@@ -7,6 +7,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface AreaMapper {
+    //查询所有药品产地
+    List<Area> findAllArea(Area a);
+    //新增药品产地
+    int addArea(Area a);
+    int count(Area a);
     int countByExample(AreaExample example);
 
     int deleteByExample(AreaExample example);
