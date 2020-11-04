@@ -1,8 +1,7 @@
 package com.itgaoshu.yiyuan.mapper;
 
-import com.itgaoshu.yiyuan.bean.Doctor;
-import com.itgaoshu.yiyuan.bean.Report;
-import com.itgaoshu.yiyuan.bean.ReportExample;
+import com.itgaoshu.yiyuan.bean.*;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -47,6 +46,18 @@ public interface ReportMapper {
     //查询所有挂号
     //@Select("select * from report where reportName like '%${name}%'")
     List<Report> selAll(@Param("name") String name,Integer cc);
+
+    //添加挂号
+    @Insert("INSERT INTO report (reportname,sex,age,department,doctor,reporttype,price,time,users,state,phone,carid)\n" +
+            " VALUES (#{reportname},#{sex},#{age},#{department},#{doctor},#{reporttype},#{price},NOW(),#{users},1,#{phone},#{carid})")
+    int addre(Report r);
+
+    //根据挂号id查询处方信息
+    @Select("select * from cashier where reportid=#{perid}")
+    List<Cashier> selcha(Integer perid);
+
+    //查询药房中的所有药品信息
+    List<Pharmacy> seldrug();
 
     int countByExample(ReportExample example);
 

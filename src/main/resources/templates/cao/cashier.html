@@ -183,7 +183,7 @@
                 success:function(index){
                     people=table.render({
                         elem: '#userTable'   //渲染的目标对象
-                        ,url:'selpreson' //数据接口
+                        ,url:'../cao/selpreson' //数据接口
                         ,title: '用户数据表'//数据导出来的标题
                         ,cellMinWidth:200 //设置列的最小默认宽度
                        /*,parseData:function(res){
@@ -196,15 +196,15 @@
                         ,limits: [5, 10, 15]
                         ,limit: 5//默认采用3
                         ,cols: [[   //列表数据
-                            {field:'reportId', title:'单据号',align:'center',width:"8%"}
-                            ,{field:'reportName', title:'姓名',align:'center',width:"8%"}
+                            {field:'reportid', title:'单据号',align:'center',width:"8%"}
+                            ,{field:'reportname', title:'姓名',align:'center',width:"8%"}
                             ,{field:'phone', title:'电话',align:'center',width:"8%"}
                             ,{field:'carid', title:'身份证号',align:'center',width:"8%"}
                             ,{field:'sex', title:'性别',align:'center',width:"8%"}
                             ,{field:'age', title:'年龄',align:'center',width:"8%"}
-                            ,{field:'department', title:'科室',align:'center',width:"8%"}
+                            ,{field:'depName', title:'科室',align:'center',width:"8%"}
                             ,{field:'doctorName', title:'医生',align:'center',width:"8%"}
-                            ,{field:'type', title:'挂号类别',align:'center',width:"8%"}
+                            ,{field:'typeName', title:'挂号类别',align:'center',width:"8%"}
                             ,{field:'time', title:'挂号时间',align:'center',width:"8%"}
                             ,{field:'price', title:'挂号费',align:'center',width:"8%"}
                             ,{fixed: 'right', title:'操作', toolbar: '#userBar',align:'center',width:'8%'}
@@ -212,7 +212,7 @@
                     })
                     yaopin=table.render({
                         elem: '#drugtable'   //渲染的目标对象
-                        ,url:'seldrug' //数据接口
+                        ,url:'../cao/seldrug' //数据接口
                         ,title: '药品信息'
                         ,toolbar:"#adddrug"   //表格的工具条
                         ,cellMinWidth:200 //设置列的最小默认宽度
@@ -226,10 +226,10 @@
                         ,limits: [5, 10, 15]
                         ,limit: 5//默认采用3
                         ,cols: [[   //列表    数据
-                        {field:'pharmacyName', title:'药品名称',align:'center',width:"20%"}
+                        {field:'pharmacyname', title:'药品名称',align:'center',width:"20%"}
                         ,{field:'drugstorenum', title:'库存',align:'center',width:"20%"}
                         ,{field:'unitname', title:'单位',align:'center',width:"20%"}
-                        ,{field:'sellingPrice', title:'单价',align:'center',width:"20%"}
+                        ,{field:'sellingprice', title:'单价',align:'center',width:"20%"}
                         ,{fixed: 'right', title:'操作', toolbar: '#userBar',align:'center',width:'20%'}
                     ]]
                 })

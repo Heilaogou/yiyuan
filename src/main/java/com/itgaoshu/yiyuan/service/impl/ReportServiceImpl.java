@@ -63,12 +63,23 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public int addre(Report r) {
-        return reportMapper.insert(r);
+        //return reportMapper.insert(r);
+        return reportMapper.addre(r);
     }
 
     @Override
     public int delre(int id) {
         return reportMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Cashier> selcha(Integer perid) {
+        return reportMapper.selcha(perid);
+    }
+
+    @Override
+    public List<Pharmacy> seldrug() {
+        return reportMapper.seldrug();
     }
 
 }

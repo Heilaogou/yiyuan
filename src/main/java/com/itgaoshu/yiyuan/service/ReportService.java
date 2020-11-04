@@ -1,9 +1,6 @@
 package com.itgaoshu.yiyuan.service;
 
-import com.itgaoshu.yiyuan.bean.Departments;
-import com.itgaoshu.yiyuan.bean.Doctor;
-import com.itgaoshu.yiyuan.bean.Registeredtype;
-import com.itgaoshu.yiyuan.bean.Report;
+import com.itgaoshu.yiyuan.bean.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,4 +27,8 @@ public interface ReportService {
     int addre(Report r);
     //删除挂号
     int delre(int id);
+    //根据挂号id查询病人的处方信息
+    List<Cashier> selcha(Integer perid);
+    //查询药房中的所有药品
+    List<Pharmacy> seldrug();
 }

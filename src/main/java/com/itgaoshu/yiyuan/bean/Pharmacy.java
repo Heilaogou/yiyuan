@@ -15,6 +15,11 @@ public class Pharmacy {
 
     private Integer unit;
 
+    private Unit u;
+    public String getUnitName(){
+        return u.getUnitname();
+    }
+
     private Double sellingprice;
 
     private Integer area;
