@@ -78,4 +78,14 @@ public class SysUserServiceImpl implements SysUserService {
     public int insertRoleUser(Integer uid, Integer rid) {
         return sum.insertRoleUser(uid,rid);
     }
+    //根据uid和rid查询角色
+    @Override
+    public int selectUidRid(Integer uid, Integer rid) {
+        return sum.selectUidRid(uid,rid);
+    }
+    //分配角色前根据uid删除已分配角色
+    @Override
+    public int deleteByUid(Integer uid) {
+        return sum.deleteByUid(uid);
+    }
 }

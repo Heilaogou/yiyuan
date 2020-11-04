@@ -2,6 +2,7 @@ package com.itgaoshu.yiyuan.service;
 
 import com.itgaoshu.yiyuan.bean.DataGridView;
 import com.itgaoshu.yiyuan.bean.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,8 @@ public interface SysUserService {
     DataGridView selectAllRole(Integer userid);
     //分配角色
     int insertRoleUser(Integer uid,Integer rid);
+    //根据uid和rid查询角色
+    int selectUidRid(Integer uid,Integer rid);
+    //分配角色前根据uid删除已分配角色
+    int deleteByUid(Integer uid);
 }

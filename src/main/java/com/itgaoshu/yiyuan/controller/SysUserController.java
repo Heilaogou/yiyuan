@@ -104,10 +104,12 @@ public class SysUserController {
     @RequestMapping("insertRoleUser")
     @ResponseBody
     public String insertRoleUser(Integer userid,Integer[] ids){
+        System.out.println(userid);
         Integer uid=userid;
         int i=0;
-        for (Integer rid:ids) {
-            i=sus.insertRoleUser(uid,rid);
+        sus.deleteByUid(uid);
+        for (int n=0;n<ids.length;n++) {
+            i=sus.insertRoleUser(uid,ids[n]);
         }
         if(i!=0){
             return "分配成功";

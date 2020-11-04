@@ -52,6 +52,12 @@ public interface SysUserMapper {
     List<SysRoleUserKey> selectAllSysRoleByUser(Integer uid);
     DataGridView selectAllRole(Integer userid);
     //分配角色
-    @Insert("insert into sys_role_user values(#{uid},#{rid})")
-    int insertRoleUser(Integer uid,Integer rid);
+    @Insert("insert into sys_role_user values(null,#{uid},#{rid})")
+    int insertRoleUser(@Param("uid") Integer uid,@Param("rid") Integer rid);
+    //根据uid和rid查询角色
+    @Select("select count(*) from sys_role_user where uid=#{uid} and rid=#{rid}")
+    int selectUidRid(@Param("uid") Integer uid,@Param("rid") Integer rid);
+    //分配角色前根据uid删除已分配角色
+    @Delete("delete from sys_role_user where uid=#{uid}")
+    int deleteByUid(Integer uid);
 }

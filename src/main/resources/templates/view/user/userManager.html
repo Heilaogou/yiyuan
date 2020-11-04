@@ -309,6 +309,10 @@
 					    //保存
 					    $.post("user/insertRoleUser",params,function(obj){
 					    	layer.msg(obj);
+					    	layer.close(mainIndex);
+                            tableIns.reload({
+                                url:"user/selectAllUser"
+                            });
 					    })
 					},
 					success:function(index){
