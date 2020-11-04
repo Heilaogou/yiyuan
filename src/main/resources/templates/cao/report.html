@@ -46,13 +46,13 @@
             var name=$("#im").val();
             var cc= $('input[name="dang"]:checked').val();
             //alert(cc);
-            location.href ="index?params="+name+"&cc="+cc;
+            location.href ="/cao/index?params="+name+"&cc="+cc;
         });
         //单选框选择当天的和全部的病人
         $("input[name='dang']").click(function(){
             var name=$("#im").val();
             var cc= $('input[name="dang"]:checked').val();
-            location.href ="index?params="+name+"&cc="+cc;
+            location.href ="/cao/index?params="+name+"&cc="+cc;
         })
         $(function (){
             var ban=$("#ban").val();
@@ -80,7 +80,7 @@
                 //渲染下拉框中的值
                 $.ajax({
                     //要跳转的地址
-                    url: '../report/seldoctor',
+                    url: '../cao/seldoctor',
                     data:{"registeredid":registeredId,"departmentId":departmentId},
                     //数据类型
                     dataType: 'json',
@@ -88,9 +88,11 @@
                     type: 'post',
                     //查询成功后执行的方法
                     success: function (data) {
+                        console.log("doc"+data);
                         $.each(data, function (index, item) {
+                            console.log(item);
                             $('#doctorId').append(new Option(""));
-                            $('#doctorId').append(new Option(item.doctorName, item.doctorId));// 下拉菜单里添加元素
+                            $('#doctorId').append(new Option(item.doctorname, item.doctorid));// 下拉菜单里添加元素
                         });
                         layui.form.render("select");//重新渲染 固定写法
                     }
@@ -122,7 +124,7 @@
                 //渲染下拉框中的值
                 $.ajax({
                     //要跳转的地址
-                    url: '../zmm/seldoctor',
+                    url: '../cao/seldoctor',
                     data:{"registeredid":registeredId,"departmentId":departmentId},
                     //数据类型
                     dataType: 'json',
@@ -131,7 +133,7 @@
                     //查询成功后执行的方法
                     success: function (data) {
                         $.each(data, function (index, item) {
-                            $('#doctorId').append(new Option(item.doctorName, item.doctorId));// 下拉菜单里添加元素
+                            $('#doctorId').append(new Option(item.doctorname, item.doctorid));// 下拉菜单里添加元素
                         });
                         layui.form.render("select");//重新渲染 固定写法
                     }
@@ -141,7 +143,7 @@
         //渲染科室下拉框中的值
         $.ajax({
             //要跳转的地址
-            url: '../report/seldep',
+            url: '../cao/seldep',
             //数据类型
             dataType: 'json',
             //提交类型
@@ -149,7 +151,8 @@
             //查询成功后执行的方法
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#departmentId').append(new Option(item.department, item.departmentId));// 下拉菜单里添加元素
+                    console.log("dep"+item.departmentId);
+                    $('#departmentId').append(new Option(item.department, item.departmentid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -157,7 +160,7 @@
         //渲染挂号类型的下拉框
         $.ajax({
             //要跳转的地址
-            url: '../report/selreg',
+            url: '../cao/selreg',
             //数据类型
             dataType: 'json',
             //提交类型
@@ -165,7 +168,7 @@
             //查询成功后执行的方法
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#registeredId').append(new Option(item.type, item.registeredId));// 下拉菜单里添加元素
+                    $('#registeredId').append(new Option(item.type, item.registeredid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -183,7 +186,7 @@
                 success:function(index){
                     //清空表单数据
                     $("#dataFrm")[0].reset();
-                    url="addre";
+                    url="/cao/addre";
                 }
             });
         });
@@ -224,7 +227,7 @@
             $.post("../caoout/selch",{reportId:params},function(res) {
                 if (res == 0) {
                     layer.confirm('真的删除这个用户吗', function (index) {
-                        $.post('delre',{'id':params},function(obj){
+                        $.post('/report/delre',{'id':params},function(obj){
                             layer.msg(obj);
                             location.reload();
                         })
@@ -318,7 +321,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">用户信息:</label>
             <div class="layui-input-inline">
-                <input type="text" name="reportName" id="im" placeholder="请输入你要查询的信息"  autocomplete="off" class="layui-input">
+                <input type="text" name="reportname" id="im" placeholder="请输入你要查询的信息"  autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-inline">
@@ -344,13 +347,13 @@
                 <div class="layui-form-item" style="height: 30px;line-height: 30px;">
                     <label class="layui-form-label"  style="text-align: right">就诊号:</label>
                     <div class="layui-input-block" style="text-align: left">
-                        <span th:text="${map.reportId}"></span>
+                        <span th:text="${map.reportid}"></span>
                     </div>
                 </div>
                 <div class="layui-form-item" style="margin-top: -5px;">
                     <label class="layui-form-label"  style="text-align: right">患者姓名:</label>
                         <div class="layui-input-block" style="text-align: left">
-                        <span th:text="${map.reportName}"></span>
+                        <span th:text="${map.reportname}"></span>
                     </div>
                 </div>
                     <div class="layui-form-item"style="margin-top:-10px;">
@@ -362,38 +365,38 @@
                     <div class="layui-form-item"style="margin-top:-10px;">
                         <label class="layui-form-label"  style="text-align: right">身份证号:</label>
                         <div class="layui-input-block" style="text-align: left">
-                            <span th:text="${map.carido}"></span><span>****</span><span th:text="${map.caridt}"></span>
+                            <span th:text="${map.carid}"></span><!--<span>****</span><span th:text="${map.caridt}"></span>-->
                         </div>
                     </div>
                 <div class="layui-form-item"style="margin-top:-10px;">
                     <label class="layui-form-label" style="text-align: right">挂号类型:</label>
                     <div class="layui-input-block"  style="text-align: left">
-                        <span th:text="${map.type}"></span>
+                        <span th:text="${map.registeredtype.type}"></span>
                     </div>
                 </div>
                     <div class="layui-form-item"style="margin-top:-10px;">
                         <label class="layui-form-label" style="text-align: right">挂号时间:</label>
                         <div class="layui-input-block"  style="text-align: left">
-                            <span th:text="${map.datime}"></span>
+                            <span th:text="${map.time}"></span>
                         </div>
                     </div>
                 <div class="layui-form-item"style="margin-top:-10px;">
                     <label class="layui-form-label" >所属科室:</label>
                     <div class="layui-input-block"  style="text-align: left">
-                        <span th:text="${map.department}"></span>
+                        <span th:text="${map.departments.department}"></span>
                     </div>
                 </div>
                 <div class="layui-form-item"style="margin-top:-10px;">
                     <label class="layui-form-label" >就诊医生:</label>
                     <div class="layui-input-block" style="text-align: left">
-                        <span th:text="${map.doctorName}"></span>
+                        <span th:text="${map.doc.doctorname}"></span>
                     </div>
                 </div>
-                    <input type="hidden" th:value="${map.reportId}">
+                    <input type="hidden" th:value="${map.reportid}">
                     <button type="button"style="width:100px;margin-top:-10px;" id="delre" class="layui-btn">删除</button>
-                    <input type="hidden" th:value="${map.reportName}">
+                    <input type="hidden" th:value="${map.reportname}">
                     <button type="button"style="width:100px;margin-top:-10px;" id="zhuanyuan" class="layui-btn">转住院</button>
-                    <input type="hidden" th:value="${map.datime}">
+                    <input type="hidden" th:value="${map.time}">
                 </form>
             </li>
         </ul>

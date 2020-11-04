@@ -86,4 +86,18 @@ public class SysMenu {
     public void setAvailable(Integer available) {
         this.available = available;
     }
+
+    @Override
+    public String toString() {
+        return "SysMenu{" +
+                "id=" + id +
+                ", pid=" + pid +
+                ", title='" + title + '\'' +
+                ", href='" + href + '\'' +
+                ", spread=" + spread +
+                ", target='" + target + '\'' +
+                ", icon='" + icon + '\'' +
+                ", available=" + available +
+                '}';
+    }
 }

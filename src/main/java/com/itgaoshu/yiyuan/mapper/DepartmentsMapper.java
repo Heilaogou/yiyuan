@@ -7,22 +7,27 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DepartmentsMapper {
+
+
+
     int countByExample(DepartmentsExample example);
 
     int deleteByExample(DepartmentsExample example);
-
+    //查询所有科室
+    List<Departments> selectAll(Departments dm);
+    //根据主键删除科室
     int deleteByPrimaryKey(Integer departmentid);
-
-    int insert(Departments record);
+    //新增科室
+    int addDepartment(Departments dm);
+    //根据id查询科室
+    Departments selectByPrimaryKey(Integer departmentid);
+    //根据主键修改科室
+    int updateByPrimaryKey(Departments record);
 
     int insertSelective(Departments record);
 
     List<Departments> selectByExample(DepartmentsExample example);
 
-    //查询所有科室
-    List<Departments> selectAll();
-
-    Departments selectByPrimaryKey(Integer departmentid);
 
     int updateByExampleSelective(@Param("record") Departments record, @Param("example") DepartmentsExample example);
 
@@ -30,5 +35,4 @@ public interface DepartmentsMapper {
 
     int updateByPrimaryKeySelective(Departments record);
 
-    int updateByPrimaryKey(Departments record);
 }

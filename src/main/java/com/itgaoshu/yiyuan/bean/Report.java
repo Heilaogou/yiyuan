@@ -31,6 +31,57 @@ public class Report {
 
     private String zhuan;
 
+    private Doctor doc;
+    private Departments departments;
+    private Registeredtype registeredtype;
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "reportid=" + reportid +
+                ", reportname='" + reportname + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", department=" + department +
+                ", doctor=" + doctor +
+                ", reporttype=" + reporttype +
+                ", price=" + price +
+                ", time=" + time +
+                ", users='" + users + '\'' +
+                ", state=" + state +
+                ", phone='" + phone + '\'' +
+                ", carid='" + carid + '\'' +
+                ", zhuan='" + zhuan + '\'' +
+                ", doc=" + doc +
+                ", departments=" + departments +
+                ", registeredtype=" + registeredtype +
+                '}';
+    }
+
+    public Doctor getDoc() {
+        return doc;
+    }
+
+    public void setDoc(Doctor doc) {
+        this.doc = doc;
+    }
+
+    public Departments getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Departments departments) {
+        this.departments = departments;
+    }
+
+    public Registeredtype getRegisteredtype() {
+        return registeredtype;
+    }
+
+    public void setRegisteredtype(Registeredtype registeredtype) {
+        this.registeredtype = registeredtype;
+    }
+
     public Integer getReportid() {
         return reportid;
     }
