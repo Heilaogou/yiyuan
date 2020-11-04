@@ -18,6 +18,7 @@ import java.util.Map;
 public class DepartmentsController {
     @Autowired
     private DepartmentsService departmentsService;
+    //查询所有科室
     @RequestMapping("departmentList")
     @ResponseBody
     public Object departmentList(Departments dm,Integer page,Integer limit){
@@ -30,5 +31,21 @@ public class DepartmentsController {
         map.put("count", pageInfo.getTotal());
         map.put("data", pageInfo.getList());
         return map;
+    }
+    //新增科室
+    @RequestMapping("addDepartment")
+    @ResponseBody
+    public String addDepartment(Departments dm){
+        int count=departmentsService.count(dm);
+        if(count==0){
+            int result=departmentsService.addDepartment(dm);
+            if(result==1){
+                return "新增成功";
+            }else{
+                return "新增失败，请重新新增";
+            }
+        }else {
+            return dm.getDepartment()+"已存在，请重新输入!";
+        }
     }
 }

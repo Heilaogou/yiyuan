@@ -36,7 +36,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">类型:</label>
                 <div class="layui-input-inline">
-                    <input type="hidden" name="departmentId">
+                    <input type="hidden" name="departmentid">
                     <input type="text" name="department" lay-verify="required"   placeholder="请输入科室" autocomplete="off"
                            class="layui-input">
                 </div>
@@ -86,7 +86,7 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'departmentId', title:'ID',align:'center',width:'30%'}
+                {field:'departmentid', title:'ID',align:'center',width:'30%'}
                 ,{field:'department', title:'部门',align:'center',width:"70%"}
             ]]
         })
@@ -113,7 +113,7 @@
             if(layEvent === 'del'){ //删除
                 layer.confirm('真的删除【'+data.department+'】这个科室吗', function(index){
                     //向服务端发送删除指令
-                    $.post("department/deleteDepartment",{departmentId:data.departmentId},function(res){
+                    $.post("department/deleteDepartment",{departmentid:data.departmentid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns.reload();

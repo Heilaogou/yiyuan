@@ -1,16 +1,16 @@
 package com.itgaoshu.yiyuan.bean;
 
 public class Departments {
-    private Integer departmentId;
+    private Integer departmentid;
 
     private String department;
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public Integer getDepartmentid() {
+        return departmentid;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartmentid(Integer departmentid) {
+        this.departmentid = departmentid;
     }
 
     public String getDepartment() {
