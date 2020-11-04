@@ -1,6 +1,8 @@
 package com.itgaoshu.yiyuan.controller;
 
 
+import com.itgaoshu.yiyuan.bean.SysUser;
+import com.itgaoshu.yiyuan.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +13,7 @@ import java.util.List;
 @Controller
 public class SysController {
     @Autowired
-    //private UserService userService;
+    private SysUserService userService;
 
     /*
      * 跳转管理菜单
@@ -136,12 +138,12 @@ public class SysController {
     /*
      * 跳转加载updateLogin.html
      * */
-   /* @RequestMapping("toUpdateLogin")
-    public String toUpdateLogin(User user, Integer userid, Model model) {
-        List<User> users = userService.updateLogin(user);
+   @RequestMapping("toUpdateLogin")
+    public String toUpdateLogin(SysUser user, Integer userid, Model model) {
+        List<SysUser> users = userService.updateLogin(user);
         model.addAttribute("usersLogin",users);
         return "view/user/updateLogin";
-    }*/
+    }
     /*
      * 跳转加载projectTypeManage.html
      * */

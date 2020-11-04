@@ -27,4 +27,8 @@ public interface SysUserService {
     int selectUidRid(Integer uid,Integer rid);
     //分配角色前根据uid删除已分配角色
     int deleteByUid(Integer uid);
+    //查询登陆者信息
+    List<SysUser> selectLogin(SysUser sysUser);
+    //修改用户2(个人资料)
+    int updateSysUserIs(SysUser sysUser);
 }

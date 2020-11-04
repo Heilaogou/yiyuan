@@ -60,4 +60,10 @@ public interface SysUserMapper {
     //分配角色前根据uid删除已分配角色
     @Delete("delete from sys_role_user where uid=#{uid}")
     int deleteByUid(Integer uid);
+    //查询登陆者信息
+    @Select("select * from sys_user where userid=#{userid}")
+    List<SysUser> selectLogin(SysUser sysUser);
+    //修改用户2(个人资料)
+    @Select("update sys_user set realname=#{realname},identity=#{identity},address=#{address},phone=#{phone},sex=#{sex} where userid=#{userid}")
+    int updateSysUserIs(SysUser sysUser);
 }

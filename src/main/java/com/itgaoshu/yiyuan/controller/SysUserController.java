@@ -117,4 +117,8 @@ public class SysUserController {
             return "分配失败";
         }
     }
+    //修改用户2(个人资料)
+    public String updateSysUserIs(SysUser sysUser){
+        int i=sus;
+    }
 }
