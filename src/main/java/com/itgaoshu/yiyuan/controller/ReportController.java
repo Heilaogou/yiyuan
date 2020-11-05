@@ -55,7 +55,7 @@ public class ReportController {
     @ResponseBody
     public List<Doctor> seldoctor(int registeredid,int departmentId){
         List<Doctor> doc = reportService.seldoctor(registeredid,departmentId);
-        System.out.println("report-seldoctor-doc"+doc.size()+doc.get(0));
+        //System.out.println("report-seldoctor-doc"+doc.size()+doc.get(0));
         return doc;
     }
     //根据挂号类型查询挂号费

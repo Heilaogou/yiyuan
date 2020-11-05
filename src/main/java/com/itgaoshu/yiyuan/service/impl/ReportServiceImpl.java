@@ -16,23 +16,19 @@ import java.util.List;
 @Transactional
 public class ReportServiceImpl implements ReportService {
     @Autowired
-    private DepartmentsMapper departmentsMapper;
-    @Autowired
-    private RegisteredtypeMapper registeredtypeMapper;
-    @Autowired
     private ReportMapper reportMapper;
     @Override
     public List<Departments> selDep() {
         //查询所有科室
         DepartmentsExample departmentsExample = new DepartmentsExample();
         //return departmentsMapper.selectAll();
-        return departmentsMapper.selectByExample(null);
+        return reportMapper.selDep();
     }
 
     @Override
     public List<Registeredtype> selreg() {
         //查询所有挂号类型
-        return registeredtypeMapper.selectByExample(new RegisteredtypeExample());
+        return reportMapper.selreg();
     }
 
     @Override
@@ -64,10 +60,13 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public int addre(Report r) {
         //return reportMapper.insert(r);
-        //根据挂号类型查询挂号费
-        double price = reportMapper.seltymo(r.getReporttype());
-        //然后在处方表cashier中添加挂号费
-        reportMapper.addCashierOfReport(r.getReportid(),price);
+        //report中带有price挂号费属性
+        /*//根据挂号类型查询挂号费
+        //double price = reportMapper.seltymo(r.getReporttype());*/
+        //!!!!!!bug:添加挂号时，无法获取到reportid
+        //!!!!!!解决：按照原项目，在药品缴费中收费时添加挂号费
+        /*//然后在处方表cashier中添加挂号费
+        reportMapper.addCashierOfReport(r.getReportid(),r.getPrice());*/
         return reportMapper.addre(r);
     }
 
@@ -200,7 +199,8 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public Integer shoufeic(Integer reid, Double price) {
         //根据挂号id缴纳药品费用，并且缴纳挂号费用，并且修改病人状态report.state=2表示该病人看诊结束
-        reportMapper.shoufeic(reid,price);
+        reportMapper.shoufeic(reid);
+        reportMapper.addCashierOfReport(reid,price);
         return reportMapper.updState2(reid);
     }
 

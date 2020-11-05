@@ -20,7 +20,14 @@
     <result column="doctor" property="doctor"/>
     <result column="department" property="department"/>
     <result column="reporttype" property="reporttype"/>
-    <result column="time" property="time" jdbcType="DATE"/>
+    <!--通过jdbcType将java.sql.date转为java.util.date-->
+    <!--!!!!!!!!但是数据库中字段类型为datetime，指定了jdbctype为date时将自动截掉时间
+        而不指定的话，mybatis会智能地自动将sql.date转为util.date
+        所以，不需要写jdbctype!!!!!!
+        那么对于util.date如何显示的问题，最快捷的方法是在配置文件中统一配置时间戳,详见application.properties
+    -->
+    <!--<result column="time" property="time" jdbcType="DATE"/>-->
+    <result column="time" property="time"/>
     <result column="zhuan" property="zhuan"/>
     <association property="doc" javaType="doctor">
       <id column="doctor" property="doctorid"/>

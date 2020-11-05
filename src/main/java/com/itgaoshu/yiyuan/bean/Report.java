@@ -1,5 +1,7 @@
 package com.itgaoshu.yiyuan.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Report {
@@ -19,8 +21,10 @@ public class Report {
 
     private Double price;
 
+    //没有用，好像和SpringBoot默认返回json冲突
     //数据库导出页面时json格式化
     //@JSONField(format="yyyy-MM-dd")
+    //@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date time;
 
     private String users;

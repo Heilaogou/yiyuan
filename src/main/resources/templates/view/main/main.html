@@ -148,91 +148,91 @@
         var form = layui.form;
         var table = layui.table;
         $.ajax({
-            url: 'main/one',
+            url: 'main/selectOne',
             dataType: 'json',
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
                     $("#one").append(
-                        "<li class='day'>"+item.doctorName+"</li>"
+                        "<li class='day'>"+item.doctorname+"</li>"
                     )
                 });
             }
         })
         $.ajax({
-            url: 'main/two',
+            url: 'main/selectTwo',
             dataType: 'json',
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
                     $("#two").append(
-                        "<li class='day'>"+item.doctorName+"</li>"
+                        "<li class='day'>"+item.doctorname+"</li>"
                     )
                 });
             }
         })
         $.ajax({
-            url: 'main/three',
+            url: 'main/selectThree',
             dataType: 'json',
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
                     $("#three").append(
-                        "<li class='day'>"+item.doctorName+"</li>"
+                        "<li class='day'>"+item.doctorname+"</li>"
                     )
                 });
             }
         })
         $.ajax({
-            url: 'main/four',
+            url: 'main/selectFour',
             dataType: 'json',
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
                     $("#four").append(
-                        "<li class='day'>"+item.doctorName+"</li>"
+                        "<li class='day'>"+item.doctorname+"</li>"
                     )
                 });
             }
         })
         $.ajax({
-            url: 'main/five',
+            url: 'main/selectFive',
             dataType: 'json',
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
                     $("#five").append(
-                        "<li class='day'>"+item.doctorName+"</li>"
+                        "<li class='day'>"+item.doctorname+"</li>"
                     )
                 });
             }
         })
         $.ajax({
-            url: 'main/six',
+            url: 'main/selectSix',
             dataType: 'json',
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
                     $("#six").append(
-                        "<li class='day'>"+item.doctorName+"</li>"
+                        "<li class='day'>"+item.doctorname+"</li>"
                     )
                 });
             }
         })
         $.ajax({
-            url: 'main/seven',
+            url: 'main/selectSeven',
             dataType: 'json',
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
                     $("#seven").append(
-                        "<li class='day'>"+item.doctorName+"</li>"
+                        "<li class='day'>"+item.doctorname+"</li>"
                     )
                 });
             }
         })
         $.ajax({
-            url: 'main/currentNum',
+            url: 'main/selectReportToday',
             dataType: 'json',
             type: 'post',
             success: function (data) {
@@ -240,7 +240,7 @@
             }
         })
         $.ajax({
-        url: 'main/Total',
+        url: 'main/selectAllReports',
         dataType: 'json',
         type: 'post',
         success: function (data) {
@@ -248,7 +248,7 @@
         }
     })
         $.ajax({
-            url: 'main/zhuyuanTotal',
+            url: 'main/selectAllRegister',
             dataType: 'json',
             type: 'post',
             success: function (data) {
@@ -256,7 +256,7 @@
             }
         })
         $.ajax({
-            url: 'main/currentZhuYuan',
+            url: 'main/selectRegisterToday',
             dataType: 'json',
             type: 'post',
             success: function (data) {
