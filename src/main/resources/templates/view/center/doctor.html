@@ -204,7 +204,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#departmentid').append(new Option(item.department, item.departmentId));// 下拉菜单里添加元素
+                    $('#departmentid').append(new Option(item.department, item.departmentid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }

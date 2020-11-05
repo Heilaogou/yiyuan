@@ -16,7 +16,11 @@
     <result column="age" property="age"/>
     <result column="phone" property="phone"/>
     <result column="carid" property="carid"/>
-    <result column="time" property="time"/>
+    <result column="price" property="price"/>
+    <result column="doctor" property="doctor"/>
+    <result column="department" property="department"/>
+    <result column="reporttype" property="reporttype"/>
+    <result column="time" property="time" jdbcType="DATE"/>
     <association property="doc" javaType="doctor">
       <id column="doctor" property="doctorid"/>
       <result column="doname" property="doctorname"/>
@@ -36,8 +40,34 @@
     where r.department = dep.departmentId
       and r.doctor = doc.doctorId
       and r.reportType = reg.registeredId
-      and r.reportName like '%${name}%';
+      and r.reportName like '%${name}%'
   </select>
+  <resultMap id="dMap" type="pharmacy">
+    <id column="pahrmacyid" property="pharmacyid"/>
+    <result column="pharmacyname" property="pharmacyname"/>
+    <result column="drugstoreid" property="drugstoreid"/>
+    <result column="skullid" property="skullid"/>
+    <result column="warehouseid" property="warehouseid"/>
+    <result column="unit" property="unit"/>
+    <result column="sellingprice" property="sellingprice"/>
+    <result column="area" property="area"/>
+    <result column="type" property="type"/>
+    <result column="produceDate" property="producedate" jdbcType="DATE"/>
+    <result column="validdate" property="validdate" jdbcType="DATE"/>
+    <result column="drugstorenum" property="drugstorenum"/>
+    <result column="skullbatch" property="skullbatch"/>
+    <association property="u" javaType="unit">
+      <id column="unit" property="unitid"/>
+      <result column="unitname" property="unitname"/>
+    </association>
+  </resultMap>
+  <select id="seldrug" resultMap="dMap">
+    select * from pharmacy p,unit u where p.unit=u.unitid and p.pharmacyname like '%${value}%'
+  </select>
+
+
+
+
 
 
 

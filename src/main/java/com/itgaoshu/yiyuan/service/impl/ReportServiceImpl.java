@@ -63,12 +63,92 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public int addre(Report r) {
-        return reportMapper.insert(r);
+        //return reportMapper.insert(r);
+        //根据挂号类型查询挂号费
+        double price = reportMapper.seltymo(r.getReporttype());
+        //然后在处方表cashier中添加挂号费
+        reportMapper.addCashierOfReport(r.getReportid(),price);
+        return reportMapper.addre(r);
     }
 
     @Override
     public int delre(int id) {
         return reportMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Cashier> selcha(Integer perid) {
+        return reportMapper.selcha(perid);
+    }
+
+    @Override
+    public List<Pharmacy> seldrug(String drugname) {
+        return reportMapper.seldrug(drugname);
+    }
+
+    @Override
+    public String selbing(Integer reid) {
+        return reportMapper.selbing(reid);
+    }
+
+    @Override
+    public int addbing(Integer reid, String bing) {
+        return reportMapper.addbing(reid,bing);
+    }
+
+    @Override
+    public int selchu(Integer reid, String mename) {
+        Integer res =  reportMapper.selchu(reid,mename);
+        if(res==null)
+            return 0;
+        return res;
+    }
+
+    @Override
+    public int addchu(Integer reid, String durgname, Integer durgnum, Double repiceprice, Double repicetotal, Integer drugstorenum) {
+        //return reportMapper.addchu(reid,durgname,durgnum,repiceprice,repicetotal,drugstorenum);
+        //先在处方表cashier中添加用药信息
+        reportMapper.addchu(reid, durgname, durgnum, repiceprice, repicetotal);
+        //更新药房中的药品数量
+        return reportMapper.updPharmacyOfnum(durgname,durgnum);
+    }
+
+    @Override
+    public int updchu(Integer reid, String durgname, Integer durgnum, Double repicetotal, Integer drugstorenum) {
+        //更新药房中的药品数量
+        reportMapper.updPharmacyOfnum(durgname, durgnum);
+        //更新处方中的药品
+        return reportMapper.updchu(reid,durgname,durgnum,repicetotal);
+    }
+
+    @Override
+    public List<Outpatienttype> selout(String projectName) {
+        return reportMapper.selout(projectName);
+    }
+
+    @Override
+    public List<Cashier> selximu(Integer perid) {
+        return reportMapper.selximu(perid);
+    }
+
+    @Override
+    public int addchuo(Integer reportId, String durgname, Integer durgnum, Double repiceprice, Double repicetotal, Integer ostate) {
+        return reportMapper.addchuo(reportId,durgname,durgnum,repiceprice,repicetotal,ostate);
+    }
+
+    @Override
+    public int delo(Integer cashier) {
+        return reportMapper.delo(cashier);
+    }
+
+    @Override
+    public List<Cashier> selxiang(Integer perid) {
+        return reportMapper.selxiang(perid);
+    }
+
+    @Override
+    public Double selshoux(Integer perid) {
+        return reportMapper.selshoux(perid);
     }
 
 }

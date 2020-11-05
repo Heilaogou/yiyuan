@@ -7,13 +7,20 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface RegisteredtypeMapper {
+    //模糊查询挂号类型
+    List<Registeredtype> registeredTypeList(Registeredtype registeredtype);
+    //新增挂号类型
+    int addRegisteredType(Registeredtype registeredtype);
+    int count(Registeredtype registeredtype);
+    //修改挂号类型
+    int editRegisteredType(Registeredtype registeredtype);
+
     int countByExample(RegisteredtypeExample example);
 
     int deleteByExample(RegisteredtypeExample example);
 
     int deleteByPrimaryKey(Integer registeredid);
 
-    int insert(Registeredtype record);
 
     int insertSelective(Registeredtype record);
 
