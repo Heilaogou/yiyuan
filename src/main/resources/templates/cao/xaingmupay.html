@@ -277,10 +277,10 @@
             if(z>=0 && r!=''){
                 layer.msg("缴费成功");
                 //修改用户状态变成已缴费
-                $.post("../xpay/shoufei",{"perid":reid},function(res) {
+                $.post("../cao/shoufei",{"perid":reid},function(res) {
                     //5秒后跳转也面
                     setTimeout(function(){
-                        location.href="../xpay/xiangpay";
+                        location.href="../cao/xiangpay";
                     },1000)
                 })
             }else{

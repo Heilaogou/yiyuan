@@ -279,7 +279,7 @@
                                     } else {
                                         layer.confirm("你有项目未做是否继续操作", function () {
                                             layer.confirm('你确定要【' + params + '】转入住院部吗', function (index) {
-                                                $.post("../caocc/selbing", {"reid": ids}, function (obj) {
+                                                $.post("../cao/selbing", {"reid": ids}, function (obj) {
                                                     $("#bingying").val(obj);
                                                 });
                                                 mainIndex = layer.open({

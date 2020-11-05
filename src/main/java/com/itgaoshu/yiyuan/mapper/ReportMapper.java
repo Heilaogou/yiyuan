@@ -49,14 +49,23 @@ public interface ReportMapper {
     @Insert("INSERT INTO report (reportname,sex,age,department,doctor,reporttype,price,time,users,state,phone,carid)\n" +
             " VALUES (#{reportname},#{sex},#{age},#{department},#{doctor},#{reporttype},#{price},NOW(),#{users},1,#{phone},#{carid})")
     int addre(Report r);
-    //添加挂号费
-    @Insert("insert cashier(reportid,durgname,durgnum,repiceprice,repicetotal,state,ctime,)" +
-            "values(#{id},'挂号费',1,#{price},#{price},2,NOW())")
+    //添加挂号费(挂号时就缴纳完毕)
+    @Insert("insert cashier(reportid,durgname,durgnum,repiceprice,repicetotal,state,ctime,mstate)" +
+            "values(#{id},'挂号费',1,#{price},#{price},2,NOW(),1)")
     int addCashierOfReport(@Param("id") Integer id,@Param("price")Double price);
 
-    //根据挂号id查询处方信息
+    //删除挂号，置state=0
+    @Update("update report set state=0 where reportid=#{id}")
+    int delre(Integer id);
+
+    //转住院
+    @Update("update report set state=4,zhuan=#{zhuan} where reportid=#{id}")
+    Integer zhuanyuan(@Param("id") Integer id,@Param("zhuan") String zhuan);
+    //======================================处方划价=========================================
+
+    //根据挂号id查询病人的处方信息
     @Select("select * from cashier where reportid=#{perid}")
-    List<Cashier> selcha(Integer perid);
+    List<Cashier> selall(Integer perid);
 
     //查询药房中的所有药品信息
     List<Pharmacy> seldrug(String drugname);
@@ -73,8 +82,8 @@ public interface ReportMapper {
     Integer selchu(@Param("id") Integer reid,@Param("name") String mename);
 
     //根据挂号id在处方表中添加药品,即state=0
-    @Insert("insert into cashier(reportid,durgname,durgnum,repiceprice,repicetotal,state,ctime)" +
-            "values(#{id},#{dname},#{dnum},#{price},#{total},0,NOW())")
+    @Insert("insert into cashier(reportid,durgname,durgnum,repiceprice,repicetotal,state,ctime,mstate)" +
+            "values(#{id},#{dname},#{dnum},#{price},#{total},0,NOW(),0)")
     int addchu(@Param("id") Integer reid,@Param("dname") String durgname,
                @Param("dnum") Integer durgnum,@Param("price") Double repiceprice,
                @Param("total") Double repicetotal);
@@ -116,7 +125,43 @@ public interface ReportMapper {
     //根据挂号id查询当前病人要交的项目费用
     @Select("select sum(repicetotal) from cashier where reportid=#{perid} and state=1 and mstate=0")
     Double selshoux(Integer perid);
-    //
+    //根据挂号id缴费
+    @Update("update cashier set mstate=1 where reportid=#{perid} and state=1")
+    Integer shoufei(Integer perid);
+
+    //根据挂号id查询病人已缴费且需要检查的项目
+    @Select("select * from cashier where reportid=#{perid} and state=1 and ostate=1 and mstate=1")
+    List<Cashier> selcha(Integer perid);
+    //病人做完需要检查的项目后填写检查到的病因
+    @Update("update cashier set jie=#{bing} where reportid=#{reid} and cashier=#{cashier}")
+    Integer addbingc(@Param("reid") Integer reid,@Param("bing") String bing,
+                     @Param("cashier")Integer cashier);
+
+    //根据挂号id查询当前病人处方中的所有药品信息
+    @Select("select * from cashier where reportid=#{perid} and state=0")
+    List<Cashier> selpepi(Integer perid);
+    //根据挂号id查询未缴费的项目
+    @Select("select count(*) from cashier where reportid=#{reid} and state=1 and mstate=0")
+    Integer seljiao(Integer reid);
+    //根据挂号id查询已缴费但未检查的项目
+    @Select("select count(*) from cashier where reportid=#{reid} and state=1 " +
+            "and ostate=1 and (jie is null or jie='')")
+    Integer selwei(Integer reid);
+    //根据挂号id查询处方中药品总价
+    @Select("select sum(repicetotal) from cashier where reportid=#{reportId} and state=0 and mstate=0")
+    Double selch(Integer reportId);
+    //根据挂号id缴纳药品费用
+    @Update("update cashier set mstate=1 where reportid=#{id} and state=0 and mstate=0")
+    Integer shoufeic(@Param("id") Integer reid,@Param("price")Double price);
+    //缴纳完药品费用后更改挂号状态为2，表示此病人看诊结束
+    @Update("update report set state=2 where reportid=#{reid}")
+    Integer updState2(Integer reid);
+
+    //模糊查询所有患者
+    List<Report> selhuan(String name);
+    //根据挂号id查询病人挂号的总费用
+    @Select("select sum(repicetotal) from cashier where reportid=#{reid} and mstate=1")
+    Double zong(Integer reid);
 
 
 
@@ -124,9 +169,7 @@ public interface ReportMapper {
 
 
 
-
-
-        int countByExample(ReportExample example);
+    int countByExample(ReportExample example);
 
     int deleteByExample(ReportExample example);
 

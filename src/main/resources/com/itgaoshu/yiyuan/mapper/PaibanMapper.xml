@@ -272,4 +272,14 @@
       doctorId = #{doctorid,jdbcType=INTEGER}
     where paiId = #{paiid,jdbcType=INTEGER}
   </update>
+  <select id="selectAllPaiban" resultType="Paiban">
+    SELECT p.*,d.doctorName,d.doctorid did FROM paiban p right JOIN doctor d ON p.doctorId=d.doctorId
+     <where>
+       <if test="doctorname!=null and doctorname!=''">
+         d.doctorname like concat('%',concat(#{doctorname}),'%')
+       </if>
+     </where>
+     ORDER BY p.doctorid
+
+  </select>
 </mapper>

@@ -43,8 +43,26 @@ public interface RegisterMapper {
     //查询空床位
     List<Bed> selBed(Bed bed);
 
+    //修改床位
+    int updBed(Register register);
+
     //添加住院患者信息
     int addRegister(Register register);
+
+    //查询折扣
+    List<Moneytype> selDis();
+
+    //查询门诊过来的患者
+    List<Register> selDoor();
+
+    //逻辑删除转院人员
+    int updZ(Register register);
+
+    //转科室
+    int updKe(Register register);
+
+    //把用户的曾经床位改成空床
+    int updBstate(Register register);
 
 
 }

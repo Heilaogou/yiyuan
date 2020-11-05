@@ -1,5 +1,5 @@
 package com.itgaoshu.yiyuan.bean;
-
+//排班表
 public class Paiban {
     private Integer paiid;
 
@@ -18,6 +18,26 @@ public class Paiban {
     private String seven;
 
     private Integer doctorid;
+    //添加医生姓名属性
+    private String doctorname;
+    //添加医生id
+    private Integer did;
+
+    public Integer getDid() {
+        return did;
+    }
+
+    public void setDid(Integer did) {
+        this.did = did;
+    }
+
+    public String getDoctorname() {
+        return doctorname;
+    }
+
+    public void setDoctorname(String doctorname) {
+        this.doctorname = doctorname;
+    }
 
     public Integer getPaiid() {
         return paiid;
@@ -89,5 +109,22 @@ public class Paiban {
 
     public void setDoctorid(Integer doctorid) {
         this.doctorid = doctorid;
+    }
+
+    @Override
+    public String toString() {
+        return "Paiban{" +
+                "paiid=" + paiid +
+                ", one='" + one + '\'' +
+                ", two='" + two + '\'' +
+                ", three='" + three + '\'' +
+                ", four='" + four + '\'' +
+                ", five='" + five + '\'' +
+                ", six='" + six + '\'' +
+                ", seven='" + seven + '\'' +
+                ", doctorid=" + doctorid +
+                ", doctorname='" + doctorname + '\'' +
+                ", did=" + did +
+                '}';
     }
 }
