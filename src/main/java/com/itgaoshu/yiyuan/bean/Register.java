@@ -35,7 +35,7 @@ public class Register {
 
     private String department;
 
-    private Integer doctor;
+    private Integer doctorid;
 
     private String doctorname;
 
@@ -153,12 +153,12 @@ public class Register {
         this.department = department;
     }
 
-    public Integer getDoctor() {
-        return doctor;
+    public Integer getDoctorid() {
+        return doctorid;
     }
 
-    public void setDoctor(Integer doctor) {
-        this.doctor = doctor;
+    public void setDoctorid(Integer doctorid) {
+        this.doctorid = doctorid;
     }
 
     public String getDiagnose() {
@@ -259,4 +259,32 @@ public class Register {
         this.zhuan = zhuan;
     }
 
+    @Override
+    public String toString() {
+        return "Register{" +
+                "registerid=" + registerid +
+                ", username='" + username + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", departmentid=" + departmentid +
+                ", department='" + department + '\'' +
+                ", doctorid=" + doctorid +
+                ", doctorname='" + doctorname + '\'' +
+                ", diagnose='" + diagnose + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", idcard='" + idcard + '\'' +
+                ", registerdate=" + registerdate +
+                ", bednum=" + bednum +
+                ", bedname='" + bedname + '\'' +
+                ", operator='" + operator + '\'' +
+                ", money=" + money +
+                ", state=" + state +
+                ", enddate=" + enddate +
+                ", price=" + price +
+                ", discount='" + discount + '\'' +
+                ", zhuan=" + zhuan +
+                ", reportid=" + reportid +
+                '}';
+    }
 }

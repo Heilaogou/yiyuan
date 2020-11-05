@@ -66,9 +66,9 @@ public class RegisterController {
      */
     @RequestMapping("/selDoctor")
     @ResponseBody
-    public Object selDoctor(Integer departmentId){
+    public Object selDoctor(Integer departmentid){
         Doctor doctor = new Doctor();
-        doctor.setDepartmentid(departmentId);
+        doctor.setDepartmentid(departmentid);
         System.out.println(doctor.getDepartmentid());
         List<Doctor> doctors = registerService.selectAllDoctor(doctor);
         return doctors;
@@ -106,6 +106,7 @@ public class RegisterController {
             //获取管理人员姓名
             String yonghu = (String)request.getSession().getAttribute("yonghu");
             register.setOperator(yonghu);
+
             //添加患者信息
             int i = registerService.addRegister(register);
             if(i==1){
@@ -153,7 +154,8 @@ public class RegisterController {
     //转科室
     @RequestMapping("/updKe")
     @ResponseBody
-    public Object updKe(Register register){
+    public Object updKe(Register register,Integer bedid){
+        register.setBednum(bedid);
         //把用户要住的床改成已住
         registerService.updBed(register);
         //把用户的曾经床位改成空床

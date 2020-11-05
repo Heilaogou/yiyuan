@@ -429,7 +429,7 @@
     <result column="department" property="department" jdbcType="VARCHAR" />
     <result column="money" property="money" jdbcType="DOUBLE" />
     <result column="departmentId" property="departmentid" jdbcType="INTEGER" />
-    <result column="doctor" property="doctor" jdbcType="INTEGER" />
+    <result column="doctorid" property="doctorid" jdbcType="INTEGER" />
     <result column="bedNum" property="bednum" jdbcType="INTEGER" />
     <result column="doctorName" property="doctorname" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
@@ -442,7 +442,7 @@
   </resultMap>
   <!-- 查询患者 -->
   <select id="selectAllRegister" parameterType="Register" resultMap="BaseResultMap">
-    select r.registerid,r.username userName,r.age,r.sex,d.department department,r.money,r.department departmentId,r.doctor,r.bedNum,c.doctorname doctorName,r.address,r.Phone,r.idcard,r.registerDate,b.bedname bedName,r.Operator,r.zhuan
+    select r.registerid,r.username userName,r.age,r.sex,d.department department,r.money,r.department departmentId,r.doctor doctorid,r.bedNum,c.doctorname doctorName,r.address,r.Phone,r.idcard,r.registerDate,b.bedname bedName,r.Operator,r.zhuan
     from register r,departments d,doctor c,bed b
     <where>
       r.state=0 and r.department=d.departmentId and r.doctor=c.doctorId and r.bedNum=b.bedId
@@ -482,7 +482,7 @@
   <!--添加患者-->
   <insert id="addRegister" parameterType="Register">
         insert into register(userName,age,sex,department,doctor,diagnose,address,Phone,Idcard,registerDate,bedNum,Operator,money,state,discount)
-        values(#{username},#{age},#{sex},#{departmentid},#{doctor},#{diagnose},#{address},#{phone},#{idcard},NOW(),#{bednum},#{operator},#{money},0,#{discount})
+        values(#{username},#{age},#{sex},#{departmentid},#{doctorid},#{diagnose},#{address},#{phone},#{idcard},NOW(),#{bednum},#{operator},#{money},0,#{discount})
   </insert>
 
   <!--查询门诊患者-->
@@ -503,7 +503,7 @@
   <update id="updKe" parameterType="Register">
         update register set price=(select (1-(cast(replace(b.discount,'%','') as decimal(18,2))/100))*a.price*(TO_DAYS(NOW())-TO_DAYS(ifnull(b.zhuan,b.registerDate)))+IFNULL(b.price,0) price
         from (select price from bed where bedid=(select bedNum from register where registerid=#{registerid}))a,(select * from register where registerid=#{registerid}) b),
-        zhuan=NOW(),department=#{departmentid},doctor=#{doctor},bedNum=#{bednum}
+        zhuan=NOW(),department=#{departmentid},doctor=#{doctorid},bedNum=#{bednum}
         where registerid=#{registerid}
   </update>
 
