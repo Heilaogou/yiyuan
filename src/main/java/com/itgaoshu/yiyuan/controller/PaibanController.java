@@ -45,10 +45,10 @@ public class PaibanController {
     @ResponseBody
     public String updatePaiban(Paiban paiban){
         int count=ps.selectBanByDid(paiban.getDid());
+        paiban.setDoctorid(paiban.getDid());
         if(count!=0){
             ps.updatePaiban(paiban);
         }else{
-            paiban.setDoctorid(paiban.getDid());
             ps.insertPaiBan(paiban);
             ps.updatePaiban(paiban);
         }
