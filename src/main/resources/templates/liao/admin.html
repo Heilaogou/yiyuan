@@ -15,7 +15,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">姓名:</label>
             <div class="layui-input-inline">
-                <input type="text" name="userName"  autocomplete="off" class="layui-input" style="width:200px" >
+                <input type="text" name="username"  autocomplete="off" class="layui-input" style="width:200px" >
             </div>
         </div>
         <div class="layui-inline" style="position: absolute;left: 340px;top:66px;">
@@ -34,7 +34,7 @@
                 <label class="layui-form-label">姓名:</label>
                 <div class="layui-input-inline">
                     <input type="hidden" name="reportid" id="reportid" value="0">
-                    <input type="text" name="userName" id="userName" lay-verify="required" readonly  placeholder="请输入姓名" autocomplete="off" class="layui-input" style="width:150px">
+                    <input type="text" name="username" id="username" lay-verify="required" readonly  placeholder="请输入姓名" autocomplete="off" class="layui-input" style="width:150px">
                     <button type="button" class="layui-btn layui-btn-sm" style="position:absolute;margin: -38px 0px 0px 150px;display: block;height: 38px;" id="zhuan">
                         <i class="layui-icon"></i>
                     </button>
@@ -76,7 +76,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">医生:</label>
                 <div class="layui-input-inline">
-                    <select name="doctorId" id="doctorId" lay-verify="required" lay-filter="doctor">
+                    <select name="doctorid" id="doctorid" lay-verify="required" lay-filter="doctor">
                         <option value=""></option>
                     </select>
                 </div>
@@ -92,7 +92,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">床位:</label>
             <div class="layui-input-inline">
-                <select name="bedId" id="bedId" lay-verify="required" lay-filter="bedNum">
+                <select name="bedid" id="bedid" lay-verify="required" lay-filter="bedNum">
                     <option value=""></option>
                 </select>
             </div>
@@ -179,7 +179,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">医生:</label>
                     <div class="layui-input-inline">
-                        <select name="doctorId" id="doctorId1" lay-verify="required" lay-filter="doctor">
+                        <select name="doctorid" id="doctorid1" lay-verify="required" lay-filter="doctor">
                             <option value="">请选择</option>
                         </select>
                     </div>
@@ -197,7 +197,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">床位:</label>
                     <div class="layui-input-inline">
-                        <select name="bedId" id="bedId1" lay-verify="required" lay-filter="bedNum">
+                        <select name="bedid" id="bedid1" lay-verify="required" lay-filter="bedNum">
                             <option value="">请选择</option>
                         </select>
                     </div>
@@ -245,16 +245,16 @@
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
                 {field:'registerid', title:'住院号',align:'center',width:'7%',sort: true}
-                ,{field:'userName', title:'姓名',align:'center',width:'6%'}
+                ,{field:'username', title:'姓名',align:'center',width:'6%'}
                 ,{field:'sex', title:'性别',align:'center',width:'6%',sort: true}
                 ,{field:'age', title:'年龄',align:'center',width:'6%',sort: true}
                 ,{field:'address', title:'地址',align:'center',width:'10%'}
                 ,{field:'phone', title:'电话',align:'center',width:'11%'}
                 ,{field:'idcard', title:'身份证号',align:'center',width:'15%'}
-                ,{field:'registerDate', title:'入院日期',align:'center',width:'13%',sort: true}
+                ,{field:'registerdate', title:'入院日期',align:'center',width:'13%',sort: true}
                 ,{field:'department', title:'科室',align:'center',width:'6%'}
-                ,{field:'doctorName', title:'医生',align:'center',width:'6%'}
-                ,{field:'bedName', title:'床位',align:'center',width:'7%'}
+                ,{field:'doctorname', title:'医生',align:'center',width:'6%'}
+                ,{field:'bedname', title:'床位',align:'center',width:'7%'}
                 ,{fixed: '', title:'操作', toolbar: '#ToolBarss',align:'center',width:'7%'}
             ]]
         })
@@ -268,7 +268,7 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'userName', title:'姓名',align:'center',width:'12%'}
+                {field:'username', title:'姓名',align:'center',width:'12%'}
                 ,{field:'sex', title:'性别',align:'center',width:'10%',sort: true}
                 ,{field:'age', title:'年龄',align:'center',width:'10%',sort: true}
                 ,{field:'phone', title:'电话',align:'center',width:'16%'}
@@ -291,10 +291,10 @@
                 case 'add':
                     //清空表单数据
                     $("#dataFrm")[0].reset();
-                    $("#doctorId").empty();
-                    $("#bedId").empty();
-                    $("#doctorId1").empty();
-                    $("#bedId1").empty();
+                    $("#doctorid").empty();
+                    $("#bedid").empty();
+                    $("#doctorid1").empty();
+                    $("#bedid1").empty();
                     openAddDoctor();
                     break;
             };
@@ -340,10 +340,10 @@
         })
             // select下拉框选中触发事件
             form.on("select(department)", function(data){
-                $("#doctorId").empty();
-                $("#bedId").empty();
-                $("#doctorId1").empty();
-                $("#bedId1").empty();
+                $("#doctorid").empty();
+                $("#bedid").empty();
+                $("#doctorid1").empty();
+                $("#bedid1").empty();
                 $.ajax({
                     url: '../liao/selDoctor',
                     dataType: 'json',
@@ -353,8 +353,8 @@
                     },
                     success: function (data) {
                         $.each(data, function (index, item) {
-                            $('#doctorId').append(new Option(item.doctorName, item.doctorId));// 下拉菜单里添加元素
-                            $('#doctorId1').append(new Option(item.doctorName, item.doctorId));
+                            $('#doctorid').append(new Option(item.doctorname, item.doctorid));// 下拉菜单里添加元素
+                            $('#doctorid1').append(new Option(item.doctorname, item.doctorid));
                         });
                         layui.form.render("select");//重新渲染 固定写法
                     }
@@ -369,8 +369,8 @@
                     },
                     success: function (data) {
                         $.each(data, function (index, item) {
-                            $('#bedId').append(new Option(item.bedname, item.bedId));// 下拉菜单里添加元素
-                            $('#bedId1').append(new Option(item.bedname, item.bedId));
+                            $('#bedid').append(new Option(item.bedname, item.bedid));// 下拉菜单里添加元素
+                            $('#bedid1').append(new Option(item.bedname, item.bedid));
                         });
                         layui.form.render("select");//重新渲染 固定写法
                     }
@@ -440,17 +440,17 @@
         table.on('tool(selRegister)', function(obj){
             if(obj.event=='upd'){
                 $("#frm")[0].reset();
-                $("#doctorId").empty();
-                $("#bedId").empty();
-                $("#doctorId1").empty();
-                $("#bedId1").empty();
+                $("#doctorid").empty();
+                $("#bedid").empty();
+                $("#doctorid1").empty();
+                $("#bedid1").empty();
                 $("#t1").empty();
                 $("#t2").empty();
                 $("#t3").empty();
                 $("#t4").empty();
                 $("#t1").append("<option>"+obj.data.department+"</option>");
-                $("#t2").append("<option>"+obj.data.doctorName+"</option>");
-                $("#t3").append("<option>"+obj.data.bedName+"</option>");
+                $("#t2").append("<option>"+obj.data.doctorname+"</option>");
+                $("#t3").append("<option>"+obj.data.bedname+"</option>");
                 $("#t4").val(obj.data.registerid);
                 mainIndexss=layer.open({
                     type:1,

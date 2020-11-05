@@ -37,8 +37,6 @@ public class SysMenuController {
     //登陆   shiro登陆
     @RequestMapping("login")
     public String login(Model model, HttpServletRequest request, String loginname, String pwd) {
-        System.out.println(loginname);
-        System.out.println(pwd);
         //第一步：建立subject
         Subject subject = SecurityUtils.getSubject();
         //第二步：封装token  凭证

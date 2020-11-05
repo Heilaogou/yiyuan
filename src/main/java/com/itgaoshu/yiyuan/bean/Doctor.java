@@ -1,6 +1,14 @@
 package com.itgaoshu.yiyuan.bean;
 
 public class Doctor {
+    // 医生
+    /**
+     * doctorId	int	not null auto_increment PRIMARY key,	-- 序号
+     * doctorName	Varchar(300)	Not null,		-- 名称
+     * departmentId	int	Not null,		-- 所属科室
+     * registeredId	int	Not null		-- 挂号类型
+     * dstate  -- 排班状态     0-不在班    1-在班
+     */
     private Integer doctorid;
 
     private String doctorname;

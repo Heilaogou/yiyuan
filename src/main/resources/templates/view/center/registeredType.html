@@ -36,7 +36,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">类型:</label>
                     <div class="layui-input-inline">
-                        <input type="hidden" name="registeredId">
+                        <input type="hidden" name="registeredid">
                         <input type="text" name="type" lay-verify="required"   placeholder="请输入挂号类型" autocomplete="off"
                                class="layui-input">
                     </div>
@@ -95,7 +95,7 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'registeredId', title:'ID',align:'center',width:'20%'}
+                {field:'registeredid', title:'ID',align:'center',width:'20%'}
                 ,{field:'type', title:'类型',align:'center',width:"30%"}
                 ,{field:'price', title:'价格',align:'center',width:"30%"}
                 ,{fixed: 'right', title:'操作', toolbar: '#registered',align:'center',width:'20%'}
@@ -124,7 +124,7 @@
               if(layEvent === 'del'){ //删除
                   layer.confirm('真的删除【'+data.type+'】这个吗', function(index){
                       //向服务端发送删除指令
-                      $.post("registeredType/deleteType",{registeredId:data.registeredId},function(res){
+                      $.post("registeredType/deleteType",{registeredid:data.registeredid},function(res){
                           layer.msg(res);
                           //刷新数据 表格
                           tableIns.reload();

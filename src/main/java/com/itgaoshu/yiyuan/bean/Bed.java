@@ -1,6 +1,14 @@
 package com.itgaoshu.yiyuan.bean;
 
 public class Bed {
+    /**
+     * 床位
+     * bedId	int	Not null auto_increment	Primary key,	-- 序号
+     * bedname	Varchar(300)	Not null,		-- 名称
+     * departmentId	Int	Not null,	-- 科室
+     * state	Int,			-- 状态
+     * Price	Double			-- 价钱
+     */
     private Integer bedid;
 
     private String bedname;

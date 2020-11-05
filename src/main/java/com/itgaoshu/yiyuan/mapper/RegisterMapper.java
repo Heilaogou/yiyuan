@@ -1,10 +1,10 @@
 package com.itgaoshu.yiyuan.mapper;
 
-import com.itgaoshu.yiyuan.bean.Register;
-import com.itgaoshu.yiyuan.bean.RegisterExample;
+import com.itgaoshu.yiyuan.bean.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface RegisterMapper {
     int countByExample(RegisterExample example);
@@ -28,4 +28,23 @@ public interface RegisterMapper {
     int updateByPrimaryKeySelective(Register record);
 
     int updateByPrimaryKey(Register record);
+
+
+
+    //自添 查询全部患者信息
+    List<Map<String,Object>> selectAllRegister(Register register);
+
+    //查询科室信息
+    List<Departments> selectAllDepartment(Departments departments);
+
+    //查询科室内的医生信息
+    List<Doctor> selectAllDoctor(Doctor doctor);
+
+    //查询空床位
+    List<Bed> selBed(Bed bed);
+
+    //添加住院患者信息
+    int addRegister(Register register);
+
+
 }
