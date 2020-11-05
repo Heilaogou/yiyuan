@@ -20,6 +20,8 @@ public interface RegisterService {
 
     public int addRegister(Register register);
 
+    public int updBed(Register register);
+
 
 
 }

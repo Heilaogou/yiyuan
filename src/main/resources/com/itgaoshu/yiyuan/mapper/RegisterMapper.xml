@@ -474,7 +474,7 @@
         select * from bed where state=#{state} and departmentId=#{departmentid}
   </select>
 
-  <!--添加或者-->
+  <!--添加患者-->
   <insert id="addRegister" parameterType="Register">
         insert into register(userName,age,sex,department,doctor,diagnose,address,Phone,Idcard,registerDate,bedNum,Operator,money,state,discount)
         values(#{userName},#{age},#{sex},#{departmentId},#{doctorId},#{diagnose},#{address},#{phone},#{idcard},NOW(),#{bedId},#{operator},#{money},0,#{discount})

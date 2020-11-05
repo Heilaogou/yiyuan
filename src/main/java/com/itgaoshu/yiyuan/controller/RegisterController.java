@@ -94,26 +94,27 @@ public class RegisterController {
     /**
      * 添加患者
      */
-    /*@RequestMapping("/addRegister")
+    @RequestMapping("/addRegister")
     @ResponseBody
     public Object addRegister(Register register, HttpServletRequest request){
         Register register1=new Register();
         register1.setIdcard(register.getIdcard());
         //把患者的身份证号查询一下看看是否已经办理入住
-        List<Register> registers = ladminService.selRegister(register1);
-        if(registers.size()==0){
+        List<Map<String,Object>> selreg1 = registerService.selectAllRegister(register1);
+        if(selreg1.size()==0){
             //如果是门诊转过来的用户删除门诊患者信息
-            if(register.getReportid()!=0){
+            /*register1.setIdcard(register.);
+            if(selreg.()!=0){
                 ladminService.updZ(register);
-            }
+            }*/
             //获取管理人员姓名
             String yonghu = (String)request.getSession().getAttribute("yonghu");
             register.setOperator(yonghu);
             //添加患者信息
-            int i = ladminService.addRegister(register);
+            int i = registerService.addRegister(register);
             if(i==1){
                 //修改床位状态
-                int j = ladminService.updBed(register);
+                int j = registerService.updBed(register);
                 if(j==1){
                     return "添加成功";
                 }else{
@@ -125,6 +126,6 @@ public class RegisterController {
         }else{
             return "该患者已存在，请不要重复添加！";
         }
-    }*/
+    }
 
 }

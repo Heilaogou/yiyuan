@@ -41,6 +41,12 @@ public class RegisterServiceImpl  implements RegisterService {
 
     @Override
     public int addRegister(Register register) {
+        return registerMapper.addRegister(register);
+    }
+
+    //修改床位
+    @Override
+    public int updBed(Register register) {
         return 0;
     }
 }
