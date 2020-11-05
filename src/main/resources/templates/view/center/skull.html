@@ -17,7 +17,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">经办人:</label>
             <div class="layui-input-inline">
-                <input type="text" name="skullName"  autocomplete="off" class="layui-input" >
+                <input type="text" name="skullname"  autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-inline">
@@ -36,8 +36,8 @@
             <div class="layui-inline">
                 <label class="layui-form-label">经办人:</label>
                 <div class="layui-input-inline">
-                    <input type="hidden" name="skullId">
-                    <input type="text" name="skullName" lay-verify="required"   placeholder="请输入经办人" autocomplete="off"
+                    <input type="hidden" name="skullid">
+                    <input type="text" name="skullname" lay-verify="required"   placeholder="请输入经办人" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -89,8 +89,8 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'skullId', title:'ID',align:'center',width:'30%'}
-                ,{field:'skullName', title:'经办人',align:'center',width:"40%"}
+                {field:'skullid', title:'ID',align:'center',width:'30%'}
+                ,{field:'skullname', title:'经办人',align:'center',width:"40%"}
                 ,{fixed: 'right', title:'操作', toolbar: '#skull',align:'center',width:'30%'}
             ]]
         })
@@ -115,9 +115,9 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.skullName+'】这个经办人吗', function(index){
+                layer.confirm('真的删除【'+data.skullname+'】这个经办人吗', function(index){
                     //向服务端发送删除指令
-                    $.post("skull/deleteSkull",{skullId:data.skullId},function(res){
+                    $.post("skull/deleteSkull",{skullid:data.skullid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns.reload();

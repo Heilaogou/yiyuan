@@ -12,8 +12,14 @@ public interface SkullMapper {
     int deleteByExample(SkullExample example);
 
     int deleteByPrimaryKey(Integer skullid);
-
-    int insert(Skull record);
+    //查询所有经办人信息
+    List<Skull> findAllSkull(Skull skull);
+    //添加经办人
+    int addSkull(Skull skull);
+    //修改经办人
+    int editSkull(Skull skull);
+    //删除经办人
+    int deleteSkull(Integer skullid);
 
     int insertSelective(Skull record);
 

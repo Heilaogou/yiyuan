@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itgaoshu.yiyuan.mapper.SkullMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Skull" >
+  <select id="findAllSkull" resultType="Skull">
+    select *from Skull
+    <where>
+      <if test="skullname!=null and skullname!=''">
+        skullname like concat('%',concat(#{skullname},'%'))
+      </if>
+    </where>
+  </select>
+  <insert id="addSkull" parameterType="Skull">
+        insert into Skull(skullname)values(#{skullname})
+    </insert>
+  <update id="editSkull" parameterType="Skull">
+        update Skull set skullname=#{skullname} where skullId=#{skullid}
+    </update>
+  <delete id="deleteSkull" parameterType="Integer">
+        delete from Skull where skullId=#{skullid}
+    </delete>
+  <!--<resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Skull" >
     <id column="skullId" property="skullid" jdbcType="INTEGER" />
     <result column="skullName" property="skullname" jdbcType="VARCHAR" />
   </resultMap>
@@ -160,5 +177,5 @@
     update skull
     set skullName = #{skullname,jdbcType=VARCHAR}
     where skullId = #{skullid,jdbcType=INTEGER}
-  </update>
+  </update>-->
 </mapper>
