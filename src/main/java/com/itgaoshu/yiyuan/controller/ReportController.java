@@ -217,6 +217,13 @@ public class ReportController {
         return  res;
     }
 
+    //删除选中的药品
+    @RequestMapping("/del")
+    @ResponseBody
+    public Integer del(Integer cashier,String durnme,Integer durnum){
+        Integer res = reportService.del(cashier,durnme,durnum);
+        return res;
+    }
 
     //=========================================项目划价=====================================
     //左侧菜单栏点击项目划价跳转页面

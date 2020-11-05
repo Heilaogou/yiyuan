@@ -46,6 +46,9 @@ public interface ReportService {
     int addchu(Integer reid,String durgname,Integer durgnum,Double repiceprice,Double repicetotal,Integer drugstorenum);
     //根据挂号id更新处方+更新药房
     int updchu(Integer reid,String durgname,Integer durgnum,Double repicetotal,Integer drugstorenum);
+    //删除选中的药品
+    Integer del(Integer cashier,String durnme,Integer durnum);
+
     //=========================================项目划价=====================================
     //模糊查询所有的项目信息
     List<Outpatienttype> selout(String projectName);

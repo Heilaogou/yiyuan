@@ -99,10 +99,17 @@ public interface ReportMapper {
     int updPharmacyOfnum(@Param("name") String durgname,@Param("num") Integer durgnum);
 
     //根据挂号id更新处方表的药品
-    @Update("update cashier set durgnum=durgnum+#{num},repicetotal=#{total},ctime=NOW() " +
+    @Update("update cashier set durgnum=durgnum+#{num},repicetotal=repicetotal+#{total},ctime=NOW() " +
             "where reportid=#{id} and durgname=#{name} and state=0")
     int updchu(@Param("id") Integer reid,@Param("name") String durgname,
                @Param("num") Integer durgnum,@Param("total") Double repicetotal);
+
+    //根据挂号id删除药品
+    @Delete("delete from cashier where cashier=#{cashier}")
+    Integer  del(@Param("cashier")Integer cashier);
+    //删除处方中的药品的同时要恢复药房中的药品信息
+    @Update("update pharmacy set drugstorenum=drugstorenum+#{num} where pharmacyname=#{name}")
+    Integer backPharmacy(@Param("name")String durnme,@Param("num") Integer durnum);
 
     //(模糊)查询所有项目信息
     @Select("select * from outpatienttype o,unit u " +

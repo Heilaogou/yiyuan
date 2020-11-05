@@ -126,6 +126,14 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
+    public Integer del(Integer cashier, String durnme, Integer durnum) {
+        //恢复药房的药品
+        reportMapper.backPharmacy(durnme,durnum);
+        //删除选中的药品
+        return reportMapper.del(cashier);
+    }
+
+    @Override
     public List<Outpatienttype> selout(String projectName) {
         return reportMapper.selout(projectName);
     }

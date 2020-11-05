@@ -227,7 +227,7 @@
             $.post("../cao/selch",{reportId:params},function(res) {
                 if (res == 0) {
                     layer.confirm('真的删除这个用户吗', function (index) {
-                        $.post('/report/delre',{'id':params},function(obj){
+                        $.post('/cao/delre',{'id':params},function(obj){
                             layer.msg(obj);
                             location.reload();
                         })
@@ -378,7 +378,7 @@
                         <label class="layui-form-label" style="text-align: right">挂号时间:</label>
                         <div class="layui-input-block"  style="text-align: left">
                             <!--利用Thymeleaf的函数将java.util.date格式化显示-->
-                            <span th:text="${#dates.format(map.time,'yyyy-MM-dd')}"></span>
+                            <span th:text="${#dates.format(map.time,'yyyy-MM-dd HH:mm:ss')}"></span>
                             <!--<span th:text="${map.time}"></span>-->
                         </div>
                     </div>
