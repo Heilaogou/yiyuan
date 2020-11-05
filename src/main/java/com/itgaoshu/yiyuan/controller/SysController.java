@@ -140,7 +140,7 @@ public class SysController {
      * */
    @RequestMapping("toUpdateLogin")
     public String toUpdateLogin(SysUser user, Integer userid, Model model) {
-        List<SysUser> users = userService.updateLogin(user);
+        List<SysUser> users = userService.selectLogin(user);
         model.addAttribute("usersLogin",users);
         return "view/user/updateLogin";
     }

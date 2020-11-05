@@ -95,6 +95,13 @@ public class SysUserServiceImpl implements SysUserService {
     //修改用户2(个人资料)
     @Override
     public int updateSysUserIs(SysUser sysUser) {
-        return sum.updateSysUserIs(sysUser);
+        int i=sum.updateSysUserIs(sysUser);
+        System.out.println(i);
+        return i;
+    }
+    //修改用户密码(个人资料)
+    @Override
+    public int updateSysUserIsPwd(SysUser sysUser) {
+        return sum.updateSysUserIsPwd(sysUser);
     }
 }

@@ -31,4 +31,6 @@ public interface SysUserService {
     List<SysUser> selectLogin(SysUser sysUser);
     //修改用户2(个人资料)
     int updateSysUserIs(SysUser sysUser);
+    //修改用户密码(个人资料)
+    int updateSysUserIsPwd(SysUser sysUser);
 }
