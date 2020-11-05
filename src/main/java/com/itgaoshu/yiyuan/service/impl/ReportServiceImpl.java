@@ -211,6 +211,7 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public Double zong(Integer reid) {
+        //转住院
         return reportMapper.zong(reid);
     }
 }
