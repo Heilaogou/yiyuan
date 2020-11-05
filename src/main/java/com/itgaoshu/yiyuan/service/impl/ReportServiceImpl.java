@@ -77,6 +77,11 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
+    public Integer zhuanyuan(Integer id, String zhuan) {
+        return reportMapper.zhuanyuan(id,zhuan);
+    }
+
+    @Override
     public List<Cashier> selall(Integer perid) {
         return reportMapper.selall(perid);
     }
