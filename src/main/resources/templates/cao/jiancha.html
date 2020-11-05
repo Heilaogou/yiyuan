@@ -263,7 +263,7 @@
             var reid=$("#reid").val();
             var bing=$("#bingyi").val();
             var cashier=$("#cashier").val();
-            $.post("../xpay/addbing",{"reid":reid,"bing":bing,cashier:cashier},function(obj){
+            $.post("../cao/addbingc",{"reid":reid,"bing":bing,cashier:cashier},function(obj){
                 if(obj>0){
                     $("#bingyi").val("");
                     layer.msg("添加成功");

@@ -15,7 +15,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">星期一:</label>
                 <div class="layui-input-inline">
-                    <input type="hidden" name="doctorId">
+                    <input type="hidden" name="did">
                     <select name="one" class="bid" lay-verify="required" lay-filter="xmFilter">
                         <option value=""></option>
                     </select>
@@ -106,7 +106,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">姓名:</label>
             <div class="layui-input-inline">
-                <input type="text" name="doctorName"  autocomplete="off" class="layui-input" style="width:200px" >
+                <input type="text" name="doctorname"  autocomplete="off" class="layui-input" style="width:200px" >
             </div>
         </div>
         <div class="layui-inline" style="position: absolute;left: 340px;top:81px;">
@@ -139,15 +139,15 @@
         //渲染数据表格
         tableIns=table.render({
             elem: '#paibanTable'   //渲染的目标对象
-            ,url:'paiban/findAllPaiban' //数据接口
+            ,url:'paiban/selectAllPaiban' //数据接口
             ,title: '用户数据表'//数据导出来的标题
             ,height:'full-170'
             ,page: 1  //是否启用分页, limits: [10, 20, 30]
             ,limits: [10, 20, 30]
             ,limit: 10//默认采用10
             ,cols: [[   //列表数据
-                {field:'doctorId', title:'ID',align:'center',width:'10%',sort:true}
-                ,{field:'doctorName', title:'姓名',align:'center',width:'10%'}
+                {field:'did', title:'ID',align:'center',width:'10%',sort:true}
+                ,{field:'doctorname', title:'姓名',align:'center',width:'10%'}
                 ,{field:'one', title:'星期一',align:'center',width:"10%",templet:function(d){
                         if(d.one==null){
                             return "无班";
@@ -206,11 +206,11 @@
         $("#doSearch").click(function(){
             var params=$("#searchFrm").serialize();
             tableIns.reload({
-                url:"paiban/findAllPaiban?"+params
+                url:"paiban/selectAllPaiban?"+params
             })
         });
         $.ajax({
-            url: 'paiban/findAllBan',
+            url: 'paiban/selectAllBan',
             dataType: 'json',
             type: 'post',
             success: function (data) {
@@ -248,7 +248,7 @@
                 area:['500px','600px'],
                 success:function(index){
                     form.val("dataFrm",data);
-                    url="paiban/editPaiban";
+                    url="paiban/updatePaiban";
                 }
             });
         }

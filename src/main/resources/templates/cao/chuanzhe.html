@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>门诊患者库</title>
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
 
 </head>
@@ -53,7 +53,7 @@
         //渲染数据表格
         tableIns=table.render({
             elem: '#userTable'   //渲染的目标对象
-            ,url:'../caotake/selhuan' //数据接口
+            ,url:'../cao/selhuan' //数据接口
             ,title: '患者数据表'//数据导出来的标题
             ,height:'full-200'
             ,cellMinWidth:200 //设置列的最小默认宽度
@@ -61,15 +61,15 @@
             ,limits: [5, 10, 15]
             ,limit: 5//默认采用3
             ,cols: [[   //列表数据
-                {field:'reportId', title:'单据号',align:'center',width:"6%"}
-                ,{field:'reportName', title:'姓名',align:'center',width:"8%"}
+                {field:'reportid', title:'单据号',align:'center',width:"6%"}
+                ,{field:'reportname', title:'姓名',align:'center',width:"8%"}
                 ,{field:'phone', title:'电话',align:'center',width:"9%"}
                 ,{field:'carid', title:'身份证号',align:'center',width:"9%"}
                 ,{field:'sex', title:'性别',align:'center',width:"8%"}
                 ,{field:'age', title:'年龄',align:'center',width:"5%"}
-                ,{field:'department', title:'科室',align:'center',width:"8%"}
+                ,{field:'depName', title:'科室',align:'center',width:"8%"}
                 ,{field:'doctorName', title:'医生',align:'center',width:"8%"}
-                ,{field:'type', title:'挂号类别',align:'center',width:"8%"}
+                ,{field:'typeName', title:'挂号类别',align:'center',width:"8%"}
                 ,{field:'zhuan', title:'病况',align:'center',width:"8%"}
                 ,{field:'time', title:'挂号时间',align:'center',width:"8%"}
                 ,{field:'price', title:'挂号费',align:'center',width:"6%"}
@@ -80,7 +80,7 @@
         $("#doSearch").click(function(){
             var params=$("#searchFrm").serialize();
             tableIns.reload({
-                url:"../caotake/selhuan?"+params
+                url:"../cao/selhuan?"+params
             })
         });
         var url;
@@ -95,7 +95,7 @@
             });
             hua=table.render({
                 elem: '#hu'   //渲染的目标对象
-                ,url:'../caocc/selall?perid='+data.reportId //数据接口
+                ,url:'../cao/selall?perid='+data.reportid //数据接口
                 ,title: '患者信息'
                 ,cellMinWidth:200 //设置列的最小默认宽度
                 ,page: 1  //是否启用分页, limits: [10, 20, 30]
@@ -123,7 +123,7 @@
                 ]]
             })
             //查询该用户总费用
-            $.post("../caotake/zong",{"reid":data.reportId},function(obj){
+            $.post("../cao/zong",{"reid":data.reportid},function(obj){
                 $("#zong").text(obj)
             })
         }

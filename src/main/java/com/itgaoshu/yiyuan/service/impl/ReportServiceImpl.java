@@ -73,12 +73,17 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public int delre(int id) {
-        return reportMapper.deleteByPrimaryKey(id);
+        return reportMapper.delre(id);
     }
 
     @Override
-    public List<Cashier> selcha(Integer perid) {
-        return reportMapper.selcha(perid);
+    public Integer zhuanyuan(Integer id, String zhuan) {
+        return reportMapper.zhuanyuan(id,zhuan);
+    }
+
+    @Override
+    public List<Cashier> selall(Integer perid) {
+        return reportMapper.selall(perid);
     }
 
     @Override
@@ -151,4 +156,62 @@ public class ReportServiceImpl implements ReportService {
         return reportMapper.selshoux(perid);
     }
 
+    @Override
+    public Integer shoufei(Integer perid) {
+        return reportMapper.shoufei(perid);
+    }
+
+    @Override
+    public List<Cashier> selcha(Integer perid) {
+        return reportMapper.selcha(perid);
+    }
+
+    @Override
+    public Integer addbingc(Integer reid, String bing, Integer cashier) {
+        return reportMapper.addbingc(reid, bing, cashier);
+    }
+
+    @Override
+    public List<Cashier> selpepi(Integer perid) {
+        return reportMapper.selpepi(perid);
+    }
+
+    @Override
+    public Integer seljiao(Integer reid) {
+        Integer res = reportMapper.seljiao(reid);
+        if(res==null)
+            res = 0;
+        return res;
+    }
+
+    @Override
+    public Integer selwei(Integer reid) {
+        Integer res = reportMapper.selwei(reid);
+        if(res == null)
+            res = 0;
+        return  res;
+    }
+
+    @Override
+    public Double selch(Integer reportId) {
+        return reportMapper.selch(reportId);
+    }
+
+    @Override
+    public Integer shoufeic(Integer reid, Double price) {
+        //根据挂号id缴纳药品费用，并且缴纳挂号费用，并且修改病人状态report.state=2表示该病人看诊结束
+        reportMapper.shoufeic(reid,price);
+        return reportMapper.updState2(reid);
+    }
+
+    @Override
+    public List<Report> selhuan(String name) {
+        return reportMapper.selhuan(name);
+    }
+
+    @Override
+    public Double zong(Integer reid) {
+        //转住院
+        return reportMapper.zong(reid);
+    }
 }

@@ -94,10 +94,10 @@ public class ReportController {
         }
     }
     //(!!!!!!!!!未实现)删除前查询处方总价
-    @RequestMapping("/selch")
+    /*@RequestMapping("/selch")
     public int selch(int reportId){
         return 0;
-    }
+    }*/
     //删除挂号
     @RequestMapping("/delre")
     @ResponseBody
@@ -108,6 +108,13 @@ public class ReportController {
         }else{
             return "删除失败，请稍后重新尝试";
         }
+    }
+    //转住院
+    @RequestMapping("/zhuanyuan")
+    @ResponseBody
+    public Integer zhuanyuan(Integer id,String zhuan){
+        Integer res = reportService.zhuanyuan(id,zhuan);
+        return res;
     }
 
     //======================================处方划价=========================================
@@ -139,9 +146,9 @@ public class ReportController {
     //查询被选中病人的处方
     @RequestMapping("/selall")
     @ResponseBody
-    public Object selcha(Integer perid,Integer page,Integer limit){
+    public Object selall(Integer perid,Integer page,Integer limit){
         PageHelper.startPage(page,limit);
-        List<Cashier> cashiers = reportService.selcha(perid);
+        List<Cashier> cashiers = reportService.selall(perid);
         PageInfo pageInfo = new PageInfo(cashiers);
         Map<String, Object> tableData = new HashMap<String, Object>();
         //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
@@ -271,7 +278,7 @@ public class ReportController {
             return "删除失败，请稍后重新尝试";
         }
     }
-    //=========================================项目缴费=====================================
+    //=========================================项目缴费(项目划价后进行缴费)=====================================
     //左侧菜单栏点击项目缴费跳转页面
     @RequestMapping("/xiangpay")
     public String xiangpay(){
@@ -300,5 +307,131 @@ public class ReportController {
     public Double selshoux(Integer perid){
         Double sum = reportService.selshoux(perid);
         return sum;
+    }
+    //根据挂号id缴费
+    @RequestMapping("/shoufei")
+    @ResponseBody
+    public int shoufei(Integer perid){
+        int res = reportService.shoufei(perid);
+        return res;
+    }
+    //=========================================项目检查(项目缴费后才能检查)=====================================
+    //左侧菜单栏点击项目检查跳转页面
+    @RequestMapping("/seljian")
+    public String seljian(){
+        return "cao/jiancha";
+    }
+    //根据挂号id查询当前病人需要检查的项目(ostate=1)
+    @RequestMapping("/selcha")
+    @ResponseBody
+    public Object selcha(Integer perid,Integer limit,Integer page){
+        PageHelper.startPage(page,limit);
+        List<Cashier> list = reportService.selcha(perid);
+        PageInfo pageInfo = new PageInfo(list);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        return tableData;
+    }
+    //病人做完要检查的项目后添加检查到的病因
+    @RequestMapping("/addbingc")
+    @ResponseBody
+    public Integer addbingc(Integer reid,String bing,Integer cashier){
+        Integer res = reportService.addbingc(reid,bing,cashier);
+        return  res;
+    }
+
+    //=========================================药品缴费(项目都已缴费且都已检查完后才可缴纳药品费;药品缴费后到药房取(门诊)药)=====================================
+    //左侧菜单栏点击药品缴费跳转页面
+    @RequestMapping("/out")
+    public String out(){
+        return "cao/Ctoll";
+    }
+    //根据挂号id查询当前病人处方中的所有药品信息
+    @RequestMapping("/selpepi")
+    @ResponseBody
+    public Object selpepi(Integer perid,Integer limit,Integer page){
+        PageHelper.startPage(page,limit);
+        List<Cashier> list = reportService.selpepi(perid);
+        PageInfo pageInfo = new PageInfo(list);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        return tableData;
+    }
+    //根据挂号id查询是否有未缴费的项目
+    @RequestMapping("/seljiao")
+    @ResponseBody
+    public Integer seljiao(Integer reid){
+        Integer res = reportService.seljiao(reid);
+        return  res;
+    }
+    //根据挂号id查询已缴费但未检查的项目
+    @RequestMapping("/selwei")
+    @ResponseBody
+    public Integer selwei(Integer reid){
+        Integer res = reportService.selwei(reid);
+       if(res==0){
+           //不存在未检查的项目，可以进行缴费
+           return 1;
+       }else {
+           return 0;
+       }
+    }
+    //根据挂号id查询处方中药品总价
+    @RequestMapping("/selch")
+    @ResponseBody
+    public Double selch(Integer reportId){
+        Double res = reportService.selch(reportId);
+        return res;
+    }
+    //根据挂号id缴纳药品费用，并且缴纳挂号费用，并且修改病人状态report.state=2表示该病人看诊结束
+    @RequestMapping("/shoufeic")
+    @ResponseBody
+    public Integer shoufeic(Integer reportId,Double price){
+        Integer res = reportService.shoufeic(reportId,price);
+        return  res;
+    }
+
+    //=========================================门诊患者库(病人就诊结束(直到完成取药)后自动加入门诊患者库)=====================================
+    //左侧菜单栏点击门诊患者库跳转页面
+    @RequestMapping("/haun")
+    public  String haun(){
+        return "cao/chuanzhe";
+    }
+    //查询所有门诊患者
+    @RequestMapping("/selhuan")
+    @ResponseBody
+    public Object selhuan(String name,Integer page,Integer limit){
+        PageHelper.startPage(page,limit);
+        if(name==null) name="";
+        List<Report> list = reportService.selhuan(name);
+        PageInfo pageInfo = new PageInfo(list);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        return tableData;
+    }
+    //根据挂号id查询病人就诊的所有费用
+    @RequestMapping("/zong")
+    @ResponseBody
+    public Double zong(Integer reid){
+        Double res = reportService.zong(reid);
+        return res;
     }
 }
