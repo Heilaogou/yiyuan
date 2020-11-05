@@ -21,6 +21,7 @@
     <result column="department" property="department"/>
     <result column="reporttype" property="reporttype"/>
     <result column="time" property="time" jdbcType="DATE"/>
+    <result column="zhuan" property="zhuan"/>
     <association property="doc" javaType="doctor">
       <id column="doctor" property="doctorid"/>
       <result column="doname" property="doctorname"/>
@@ -34,14 +35,24 @@
       <result column="rtype" property="type"/>
     </association>
   </resultMap>
-  <select id="selAll" resultMap="aMap">
+  <select id="selAll" resultMap="aMap" parameterType="string">
     select r.*,dep.department dname,doc.doctorname doname,reg.type rtype
     from report r,doctor doc,departments dep,registeredtype reg
     where r.department = dep.departmentId
       and r.doctor = doc.doctorId
       and r.reportType = reg.registeredId
-      and r.reportName like '%${name}%'
+      and r.reportName like '%${name}%' and r.state=1
   </select>
+  <!--使用$时要么用value要么写@Param注解的value值-->
+  <select id="selhuan" resultMap="aMap" parameterType="string">
+    select r.*,dep.department dname,doc.doctorname doname,reg.type rtype
+    from report r,doctor doc,departments dep,registeredtype reg
+    where r.department = dep.departmentId
+      and r.doctor = doc.doctorId
+      and r.reportType = reg.registeredId
+      and r.reportName like '%${value}%' and r.state=3
+  </select>
+
   <resultMap id="dMap" type="pharmacy">
     <id column="pahrmacyid" property="pharmacyid"/>
     <result column="pharmacyname" property="pharmacyname"/>
