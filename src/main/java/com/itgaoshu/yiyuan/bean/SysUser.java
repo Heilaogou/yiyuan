@@ -1,5 +1,5 @@
 package com.itgaoshu.yiyuan.bean;
-
+//用户表(管理员)
 public class SysUser {
     private Integer userid;
 
@@ -119,5 +119,23 @@ public class SysUser {
 
     public void setSalt(String salt) {
         this.salt = salt == null ? null : salt.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "userid=" + userid +
+                ", loginname='" + loginname + '\'' +
+                ", identity='" + identity + '\'' +
+                ", realname='" + realname + '\'' +
+                ", sex=" + sex +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", position='" + position + '\'' +
+                ", type=" + type +
+                ", available=" + available +
+                ", salt='" + salt + '\'' +
+                '}';
     }
 }

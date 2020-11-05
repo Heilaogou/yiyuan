@@ -5,13 +5,19 @@ import com.github.pagehelper.PageInfo;
 import com.itgaoshu.yiyuan.bean.DataGridView;
 import com.itgaoshu.yiyuan.bean.SysUser;
 import com.itgaoshu.yiyuan.config.UserCredentialsMatcher;
+import com.itgaoshu.yiyuan.service.SysMenuService;
 import com.itgaoshu.yiyuan.service.SysUserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +27,8 @@ import java.util.Map;
 public class SysUserController {
     @Autowired
     private SysUserService sus;
+    @Autowired
+    private SysMenuService sms;
     //查询全部用户  模糊查询
     @RequestMapping("selectAllUser")
     @ResponseBody
@@ -116,5 +124,45 @@ public class SysUserController {
         }else{
             return "分配失败";
         }
+    }
+    //修改用户2(个人资料)
+    @RequestMapping("updateSysUserIs")
+    @ResponseBody
+    public String updateSysUserIs(SysUser sysUser){
+        System.out.println(sysUser);
+        sysUser.setType(2);
+        sysUser.setAvailable(1);
+        int i=sus.updateSysUserIs(sysUser);
+
+        return "更新成功";
+
+    }
+    //修改用户密码(个人资料)
+    @RequestMapping("updateSysUserIsPwd")
+    @ResponseBody
+    public String updateSysUserIsPwd(SysUser sysUser,String loginname,String pwd,String pwd1){
+        //第一步：建立subject
+        Subject subject = SecurityUtils.getSubject();
+        //第二步：封装token  凭证
+        UsernamePasswordToken token = new UsernamePasswordToken(loginname, pwd);
+        try {
+            //只要能通过认证就能通过了
+            subject.login(token);
+            //加盐
+            String salt = UserCredentialsMatcher.generateSalt(6);
+            //MD5加密迭代两次
+            sysUser.setPwd(UserCredentialsMatcher.encryptPassword("md5", pwd1, salt, 2));
+            sysUser.setSalt(salt);
+            sus.updateSysUserIsPwd(sysUser);
+            return "1";//修改成功
+        } catch (IncorrectCredentialsException e) {
+            return "0";//密码错误
+        }
+    }
+    //退出，重新登陆
+    @RequestMapping("tuichu")
+    public String tuichu(HttpSession session){
+        session.removeAttribute("user");
+        return "view/login";
     }
 }

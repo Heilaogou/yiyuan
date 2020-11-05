@@ -4,12 +4,11 @@ import com.itgaoshu.yiyuan.bean.DataGridView;
 import com.itgaoshu.yiyuan.bean.SysRole;
 import com.itgaoshu.yiyuan.bean.SysRoleUserKey;
 import com.itgaoshu.yiyuan.bean.SysUser;
-import com.itgaoshu.yiyuan.mapper.SysUserMapper;
-import com.itgaoshu.yiyuan.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import com.itgaoshu.yiyuan.service.SysUserService;
+import com.itgaoshu.yiyuan.mapper.SysUserMapper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -87,5 +86,22 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public int deleteByUid(Integer uid) {
         return sum.deleteByUid(uid);
+    }
+    //查询登陆者信息
+    @Override
+    public List<SysUser> selectLogin(SysUser sysUser) {
+        return sum.selectLogin(sysUser);
+    }
+    //修改用户2(个人资料)
+    @Override
+    public int updateSysUserIs(SysUser sysUser) {
+        int i=sum.updateSysUserIs(sysUser);
+        System.out.println(i);
+        return i;
+    }
+    //修改用户密码(个人资料)
+    @Override
+    public int updateSysUserIsPwd(SysUser sysUser) {
+        return sum.updateSysUserIsPwd(sysUser);
     }
 }
