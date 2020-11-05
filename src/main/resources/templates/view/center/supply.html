@@ -17,7 +17,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">供货单位:</label>
             <div class="layui-input-inline">
-                <input type="text" name="supplierName"  autocomplete="off" class="layui-input" >
+                <input type="text" name="suppliername"  autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-inline">
@@ -36,8 +36,8 @@
             <div class="layui-inline">
                 <label class="layui-form-label">供货单位:</label>
                 <div class="layui-input-inline">
-                    <input type="hidden" name="supplierId">
-                    <input type="text" name="supplierName" lay-verify="required"   placeholder="请输入供货单位" autocomplete="off"
+                    <input type="hidden" name="supplierid">
+                    <input type="text" name="suppliername" lay-verify="required"   placeholder="请输入供货单位" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -88,8 +88,8 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'supplierId', title:'ID',align:'center',width:'30%'}
-                ,{field:'supplierName', title:'供货单位',align:'center',width:"40%"}
+                {field:'supplierid', title:'ID',align:'center',width:'30%'}
+                ,{field:'suppliername', title:'供货单位',align:'center',width:"40%"}
                 ,{fixed: 'right', title:'操作', toolbar: '#upplier',align:'center',width:'30%'}
             ]]
         })
@@ -114,9 +114,9 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.supplierName+'】这个供货单位吗', function(index){
+                layer.confirm('真的删除【'+data.suppliername+'】这个供货单位吗', function(index){
                     //向服务端发送删除指令
-                    $.post("upplier/deleteUpplier",{supplierId:data.supplierId},function(res){
+                    $.post("upplier/deleteUpplier",{supplierid:data.supplierid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns.reload();
