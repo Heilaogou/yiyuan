@@ -11,6 +11,16 @@ public class Pay {
 
     private Date paydate;
 
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public Integer getPayid() {
         return payid;
     }
