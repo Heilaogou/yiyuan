@@ -6,6 +6,12 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 public interface ReportMapper {
+    //查询所有挂号类型
+    @Select("select * from registeredtype")
+    List<Registeredtype> selreg();
+    //查询所有科室
+    @Select("select * from departments")
+    List<Departments> selDep();
     //根据挂号类型和科室查询所有当天值班的医生
     /*@Select("select *\n" +
             "from doctor d,\n" +
@@ -152,7 +158,7 @@ public interface ReportMapper {
     Double selch(Integer reportId);
     //根据挂号id缴纳药品费用
     @Update("update cashier set mstate=1 where reportid=#{id} and state=0 and mstate=0")
-    Integer shoufeic(@Param("id") Integer reid,@Param("price")Double price);
+    Integer shoufeic(@Param("id") Integer reid);
     //缴纳完药品费用后更改挂号状态为2，表示此病人看诊结束
     @Update("update report set state=2 where reportid=#{reid}")
     Integer updState2(Integer reid);

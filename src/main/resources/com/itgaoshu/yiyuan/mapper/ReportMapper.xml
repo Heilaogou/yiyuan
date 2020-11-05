@@ -20,6 +20,7 @@
     <result column="doctor" property="doctor"/>
     <result column="department" property="department"/>
     <result column="reporttype" property="reporttype"/>
+    <!--通过jdbcType将java.sql.date转为java.util.date-->
     <result column="time" property="time" jdbcType="DATE"/>
     <result column="zhuan" property="zhuan"/>
     <association property="doc" javaType="doctor">
