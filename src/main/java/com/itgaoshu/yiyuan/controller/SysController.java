@@ -174,6 +174,7 @@ public class SysController {
     }
     /*
      * 跳转加载reportManage.html
+     * 门诊月度统计
      * */
     @RequestMapping("toReportFinance")
     public String toReportFinance() {
@@ -182,6 +183,7 @@ public class SysController {
 
     /*
      * 跳转加载zhuYuanManage.html
+     * 住院月度统计
      * */
     @RequestMapping("toZhuYaunManage")
     public String toZhuYaunManage() {
