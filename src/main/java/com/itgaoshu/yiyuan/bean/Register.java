@@ -67,6 +67,16 @@ public class Register {
 
     private Date zhuan;
 
+    private Integer reportid;
+
+    public Integer getReportid() {
+        return reportid;
+    }
+
+    public void setReportid(Integer reportid) {
+        this.reportid = reportid;
+    }
+
     public String getUsername() {
         return username;
     }

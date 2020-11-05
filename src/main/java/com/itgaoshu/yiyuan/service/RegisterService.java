@@ -1,9 +1,6 @@
 package com.itgaoshu.yiyuan.service;
 
-import com.itgaoshu.yiyuan.bean.Bed;
-import com.itgaoshu.yiyuan.bean.Departments;
-import com.itgaoshu.yiyuan.bean.Doctor;
-import com.itgaoshu.yiyuan.bean.Register;
+import com.itgaoshu.yiyuan.bean.*;
 
 import java.util.List;
 import java.util.Map;
@@ -21,6 +18,16 @@ public interface RegisterService {
     public int addRegister(Register register);
 
     public int updBed(Register register);
+
+    List<Moneytype> selDis();
+
+    List<Register> selDoor();
+
+    int updZ(Register register);
+
+    int updKe(Register register);
+
+    int updBstate(Register register);
 
 
 

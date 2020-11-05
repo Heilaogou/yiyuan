@@ -2,10 +2,7 @@ package com.itgaoshu.yiyuan.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.itgaoshu.yiyuan.bean.Bed;
-import com.itgaoshu.yiyuan.bean.Departments;
-import com.itgaoshu.yiyuan.bean.Doctor;
-import com.itgaoshu.yiyuan.bean.Register;
+import com.itgaoshu.yiyuan.bean.*;
 import com.itgaoshu.yiyuan.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -103,10 +100,9 @@ public class RegisterController {
         List<Map<String,Object>> selreg1 = registerService.selectAllRegister(register1);
         if(selreg1.size()==0){
             //如果是门诊转过来的用户删除门诊患者信息
-            /*register1.setIdcard(register.);
-            if(selreg.()!=0){
-                ladminService.updZ(register);
-            }*/
+            if(register.getReportid()!=0){
+                registerService.updZ(register);
+            }
             //获取管理人员姓名
             String yonghu = (String)request.getSession().getAttribute("yonghu");
             register.setOperator(yonghu);
@@ -125,6 +121,49 @@ public class RegisterController {
             }
         }else{
             return "该患者已存在，请不要重复添加！";
+        }
+    }
+
+    //查询折扣
+    @RequestMapping("/selDis")
+    @ResponseBody
+    public Object selDis(){
+        List<Moneytype> moneytypes = registerService.selDis();
+        return moneytypes;
+    }
+
+    //查询门诊过来的患者
+    @RequestMapping("/selDoor")
+    @ResponseBody
+    public Object selDoor(Integer page, Integer limit){
+        PageHelper.startPage(page, limit);
+        List<Register> selDoor=registerService.selDoor();
+        PageInfo pageInfo = new PageInfo(selDoor);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        return tableData;
+    }
+
+    //转科室
+    @RequestMapping("/updKe")
+    @ResponseBody
+    public Object updKe(Register register){
+        //把用户要住的床改成已住
+        registerService.updBed(register);
+        //把用户的曾经床位改成空床
+        registerService.updBstate(register);
+        //把用户的信息进行更改
+        int i = registerService.updKe(register);
+        if(i==1){
+            return "变更成功";
+        }else{
+            return "变更失败";
         }
     }
 

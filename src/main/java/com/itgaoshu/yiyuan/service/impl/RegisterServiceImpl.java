@@ -1,9 +1,6 @@
 package com.itgaoshu.yiyuan.service.impl;
 
-import com.itgaoshu.yiyuan.bean.Bed;
-import com.itgaoshu.yiyuan.bean.Departments;
-import com.itgaoshu.yiyuan.bean.Doctor;
-import com.itgaoshu.yiyuan.bean.Register;
+import com.itgaoshu.yiyuan.bean.*;
 import com.itgaoshu.yiyuan.mapper.RegisterMapper;
 import com.itgaoshu.yiyuan.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +44,31 @@ public class RegisterServiceImpl  implements RegisterService {
     //修改床位
     @Override
     public int updBed(Register register) {
-        return 0;
+        return registerMapper.updBed(register);
+    }
+
+    @Override
+    public List<Moneytype> selDis() {
+        return registerMapper.selDis();
+    }
+
+    @Override
+    public List<Register> selDoor() {
+        return registerMapper.selDoor();
+    }
+
+    @Override
+    public int updZ(Register register) {
+        return registerMapper.updZ(register);
+    }
+
+    @Override
+    public int updKe(Register register) {
+        return registerMapper.updKe(register);
+    }
+
+
+    public int updBstate(Register register) {
+        return registerMapper.updBstate(register);
     }
 }

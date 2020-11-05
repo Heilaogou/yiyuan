@@ -59,7 +59,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">科室:</label>
                 <div class="layui-input-inline">
-                    <select name="departmentId" id="departmentId" lay-verify="required" lay-filter="department">
+                    <select name="departmentid" id="departmentId" lay-verify="required" lay-filter="department">
                         <option value=""></option>
                     </select>
                 </div>
@@ -76,7 +76,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">医生:</label>
                 <div class="layui-input-inline">
-                    <select name="doctorid" id="doctorid" lay-verify="required" lay-filter="doctor">
+                    <select name="doctor" id="doctorid" lay-verify="required" lay-filter="doctor">
                         <option value=""></option>
                     </select>
                 </div>
@@ -92,7 +92,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">床位:</label>
             <div class="layui-input-inline">
-                <select name="bedid" id="bedid" lay-verify="required" lay-filter="bedNum">
+                <select name="bednum" id="bedid" lay-verify="required" lay-filter="bedNum">
                     <option value=""></option>
                 </select>
             </div>
@@ -162,7 +162,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">科室:</label>
                 <div class="layui-input-inline">
-                    <select name="departmentId" id="departmentId1" lay-verify="required" lay-filter="department">
+                    <select name="departmentid" id="departmentId1" lay-verify="required" lay-filter="department">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -321,7 +321,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#departmentId').append(new Option(item.department, item.departmentId));// 下拉菜单里添加元素
+                    $('#departmentId').append(new Option(item.department, item.departmentid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -349,7 +349,7 @@
                     dataType: 'json',
                     type: 'post',
                     data:{
-                        departmentId:data.value
+                        departmentid:data.value
                     },
                     success: function (data) {
                         $.each(data, function (index, item) {
@@ -365,7 +365,7 @@
                     dataType: 'json',
                     type: 'post',
                     data:{
-                        departmentId:data.value
+                        departmentid:data.value
                     },
                     success: function (data) {
                         $.each(data, function (index, item) {
@@ -465,7 +465,7 @@
                             type: 'post',
                             success: function (data) {
                                 $.each(data, function (index, item) {
-                                    $('#departmentId1').append(new Option(item.department, item.departmentId));// 下拉菜单里添加元素
+                                    $('#departmentId1').append(new Option(item.department, item.departmentid));// 下拉菜单里添加元素
                                 });
                                 layui.form.render("select");//重新渲染 固定写法
                             }

@@ -474,12 +474,43 @@
         select * from bed where state=#{state} and departmentId=#{departmentid}
   </select>
 
+  <!--修改床位-->
+  <update id="updBed" parameterType="Register">
+        update bed set state=1 where bedid=#{bednum}
+  </update>
+
   <!--添加患者-->
   <insert id="addRegister" parameterType="Register">
         insert into register(userName,age,sex,department,doctor,diagnose,address,Phone,Idcard,registerDate,bedNum,Operator,money,state,discount)
-        values(#{userName},#{age},#{sex},#{departmentId},#{doctorId},#{diagnose},#{address},#{phone},#{idcard},NOW(),#{bedId},#{operator},#{money},0,#{discount})
+        values(#{username},#{age},#{sex},#{departmentid},#{doctor},#{diagnose},#{address},#{phone},#{idcard},NOW(),#{bednum},#{operator},#{money},0,#{discount})
   </insert>
-  
+
+  <!--查询门诊患者-->
+  <select id="selDoor" resultType="Register">
+        select reportid,reportName userName,sex,age,phone,carid idcard,zhuan diagnose from report where state=4
+  </select>
+
+  <!--把用户的曾经床位改成空床-->
+  <update id="updBstate" parameterType="Register">
+        update bed set state=0 where bedid=(select bedNum from register where registerid=#{registerid})
+  </update>
+
+  <!--逻辑删除转院人员-->
+  <update id="updZ" parameterType="Register">
+        UPDATE report SET state =5 WHERE reportid=#{reportid}
+    </update>
+  <!--转科室-->
+  <update id="updKe" parameterType="Register">
+        update register set price=(select (1-(cast(replace(b.discount,'%','') as decimal(18,2))/100))*a.price*(TO_DAYS(NOW())-TO_DAYS(ifnull(b.zhuan,b.registerDate)))+IFNULL(b.price,0) price
+        from (select price from bed where bedid=(select bedNum from register where registerid=#{registerid}))a,(select * from register where registerid=#{registerid}) b),
+        zhuan=NOW(),department=#{departmentid},doctor=#{doctor},bedNum=#{bednum}
+        where registerid=#{registerid}
+  </update>
+
+  <!--查询折扣-->
+  <select id="selDis" resultType="Moneytype">
+        select * from moneytype
+  </select>
 
   
   
