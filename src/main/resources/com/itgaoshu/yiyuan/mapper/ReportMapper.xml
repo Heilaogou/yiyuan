@@ -77,6 +77,7 @@
     <result column="validdate" property="validdate" jdbcType="DATE"/>
     <result column="drugstorenum" property="drugstorenum"/>
     <result column="skullbatch" property="skullbatch"/>
+    <result column="unitname" property="unitname"/>
     <association property="u" javaType="unit">
       <id column="unit" property="unitid"/>
       <result column="unitname" property="unitname"/>
