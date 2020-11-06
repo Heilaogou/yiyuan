@@ -18,8 +18,6 @@ import java.util.Map;
 public class ProjecttypeController {
     @Autowired
     private ProjecttypeService projecttypeService;
-<<<<<<< Updated upstream
-=======
     //查询项目大类
     @RequestMapping("findAllProjecttype")
     @ResponseBody
@@ -291,5 +289,4 @@ public class ProjecttypeController {
         List<Unit> unitList=projecttypeService.findAllUnit1();
         return unitList;
     }
->>>>>>> Stashed changes
 }
