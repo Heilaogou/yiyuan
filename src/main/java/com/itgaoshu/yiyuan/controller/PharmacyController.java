@@ -2,6 +2,7 @@ package com.itgaoshu.yiyuan.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.itgaoshu.yiyuan.bean.Huishou;
 import com.itgaoshu.yiyuan.bean.Pharmacy;
 import com.itgaoshu.yiyuan.bean.Report;
 import com.itgaoshu.yiyuan.service.PharmacyService;
@@ -59,9 +60,9 @@ public class PharmacyController {
     //查询所有药品
     @RequestMapping("/selectpharmacy")
     @ResponseBody
-    public Object selectpharmacy(Integer page,Integer limit){
+    public Object selectpharmacy(@RequestParam(required=true,defaultValue="")String pharmacyName,Integer page,Integer limit){
         PageHelper.startPage(page,limit);
-        List<Pharmacy> list = pharmacyService.selectpharmacy();
+        List<Pharmacy> list = pharmacyService.selectpharmacy(pharmacyName);
         PageInfo pageInfo = new PageInfo(list);
         Map<String, Object> tableData = new HashMap<String, Object>();
         //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
@@ -72,5 +73,20 @@ public class PharmacyController {
         //将分页后的数据返回（每页要显示的数据）
         tableData.put("data", pageInfo.getList());
         return tableData;
+    }
+    //报缺药品
+    @RequestMapping("/addbaoque")
+    @ResponseBody
+    //baoqueNum表示报缺数量即药房需要的数量
+    public Integer addbaoque(Integer baoqueNum,String baoqueName){
+        Integer res = pharmacyService.addbaoque(baoqueNum,baoqueName);
+        return  res;
+    }
+    //药品回收
+    @RequestMapping("/delpharymary")
+    @ResponseBody
+    public Integer delpharymary(Integer pharmacyid, Huishou huishou){
+        Integer res = pharmacyService.delpharymary(pharmacyid,huishou);
+        return res;
     }
 }

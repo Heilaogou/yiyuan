@@ -1,6 +1,7 @@
 package com.itgaoshu.yiyuan.service.impl;
 
 import com.itgaoshu.yiyuan.bean.Cashier;
+import com.itgaoshu.yiyuan.bean.Huishou;
 import com.itgaoshu.yiyuan.bean.Pharmacy;
 import com.itgaoshu.yiyuan.bean.Report;
 import com.itgaoshu.yiyuan.mapper.PharmacyMapper;
@@ -42,7 +43,18 @@ public class PharmacyServiceImpl implements PharmacyService {
     }
 
     @Override
-    public List<Pharmacy> selectpharmacy() {
-        return pharmacyMapper.selectpharmacy();
+    public List<Pharmacy> selectpharmacy(String pharmacyName) {
+        return pharmacyMapper.selectpharmacy(pharmacyName);
+    }
+
+    @Override
+    public Integer addbaoque(Integer baoqueNum, String baoqueName) {
+        return  pharmacyMapper.addbaoque(baoqueNum,baoqueName);
+    }
+
+    @Override
+    public Integer delpharymary(Integer pharmacyid, Huishou huishou) {
+        pharmacyMapper.delpharymary(pharmacyid);
+        return pharmacyMapper.addHuishou(huishou);
     }
 }

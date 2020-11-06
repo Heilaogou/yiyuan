@@ -40,12 +40,13 @@
     <id column="" property=""></id>
     <result column="" property=""></result>
   </resultMap>-->
-  <select id="selectpharmacy" resultType="pharmacy">
+  <select id="selectpharmacy" resultType="pharmacy" parameterType="string">
     select * from pharmacy p,unit u,area a,type t,skull s
     where p.skullid = s.skullid
     and p.area = a.areaid
     and p.type = t.typeid
     and p.unit = u.unitid
+    and p.pharmacyname like '%${value}%'
 
   </select>
 

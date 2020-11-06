@@ -1,5 +1,6 @@
 package com.itgaoshu.yiyuan.service;
 
+import com.itgaoshu.yiyuan.bean.Huishou;
 import com.itgaoshu.yiyuan.bean.Pharmacy;
 import com.itgaoshu.yiyuan.bean.Report;
 
@@ -11,5 +12,9 @@ public interface PharmacyService {
     //出库病人处方上的所有药品
     Integer chuku(Integer reportId);
     //查询所有药品
-    List<Pharmacy> selectpharmacy();
+    List<Pharmacy> selectpharmacy(String pharmacyName);
+    //报缺药品
+    Integer addbaoque(Integer baoqueNum,String baoqueName);
+    //药品回收
+    Integer delpharymary(Integer pharmacyid, Huishou huishou);
 }

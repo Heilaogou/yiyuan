@@ -1,8 +1,11 @@
 package com.itgaoshu.yiyuan.mapper;
 
+import com.itgaoshu.yiyuan.bean.Huishou;
 import com.itgaoshu.yiyuan.bean.Pharmacy;
 import com.itgaoshu.yiyuan.bean.PharmacyExample;
 import com.itgaoshu.yiyuan.bean.Report;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 
@@ -18,7 +21,16 @@ public interface PharmacyMapper {
     @Update("update report set state=3 where reportid=#{reportId}")
     Integer updReport(Integer reportId);
     //查询所有药品
-    List<Pharmacy> selectpharmacy();
+    List<Pharmacy> selectpharmacy(String pharmacyName);
+    //报缺药品
+    @Insert("insert into baoque(baoquename,baoquenum) values(#{name},#{num})")
+    Integer addbaoque(@Param("num") Integer baoqueNum,@Param("name") String baoqueName);
+    //药品回收并根据药房id删除药品
+    @Delete("delete from pharmacy where pharmacyid=#{pharmacyid}")
+    Integer delpharymary(Integer pharmacyid);
+    @Insert("insert into huishou(huishouname,huishounumber,huishoupihao,jbr,beizhu)" +
+            "values(#{huishouname},#{huishounumber},#{huishoupihao},#{jbr},#{beizhu})")
+    Integer addHuishou(Huishou huishou);
 
 
 

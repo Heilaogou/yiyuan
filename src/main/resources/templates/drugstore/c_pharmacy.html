@@ -80,7 +80,7 @@
         $("#doSearch").click(function () {
             var params = $("#searchFrm").serialize();
             tableIns.reload({
-                url: "../pharmacy/selectpharmacy?" + params
+                url: "../zmm/selectpharmacy?" + params
             })
         });
         //监听行报缺工具事件
@@ -88,19 +88,19 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if (layEvent === 'edit') {
-                layer.confirm('确定报缺【' + data.pharmacyName + '】吗', function (index) {
+                layer.confirm('确定报缺【' + data.pharmacyname + '】吗', function (index) {
                     layer.prompt({
                         title: '请输入数量',
                         formType: 0, //输入框类型，支持0（文本）默认1（密码）2（多行文本）
                         value: '', //初始时的值，默认空字符
                         maxlength: 140, //可输入文本的最大长度，默认500
                     }, function (value, index, elem) {
-                        $.post("../pharmacy/addbaoque", {
-                            baoqueName: data.pharmacyName,
+                        $.post("../zmm/addbaoque", {
+                            baoqueName: data.pharmacyname,
                             baoqueNum: value
                         }, function (res) {
                             if (res == 1) {
-                              layer.msg("已成功报缺" + data.pharmacyName + "数量为" + value);
+                              layer.msg("已成功报缺" + data.pharmacyname + "数量为" + value);
                                 setTimeout(function () {
                                     tableIns.reload();
                                     location.reload();
@@ -116,7 +116,7 @@
 
             else if (layEvent === 'del') {
                 var jbr= $("#jingbanren").val();
-                layer.confirm('确定回收【' + data.pharmacyName + '】吗', function (index) {
+                layer.confirm('确定回收【' + data.pharmacyname + '】吗', function (index) {
                     layer.prompt({
                         formType: 2, //输入框类型，支持0（文本）默认1（密码）2（多行文本）
                         value: '', //初始时的值，默认空字符
@@ -124,9 +124,9 @@
                         area: ['300px', '150px']
                     }, function (value, index, elem) {
                         /!*   huishouname,huishounumber,huishoupihao,jbr,beizhu*!/
-                        $.post("../pharmacy/delpharymary", {
-                            pharmacyId:data.pharmacyId,
-                            huishouname:data.pharmacyName,
+                        $.post("../zmm/delpharymary", {
+                            pharmacyid:data.pharmacyid,
+                            huishouname:data.pharmacyname,
                             huishounumber:data.drugstorenum,
                             huishoupihao:data.skullbatch,
                             jbr:jbr,
