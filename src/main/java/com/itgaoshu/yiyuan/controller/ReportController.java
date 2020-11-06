@@ -32,9 +32,11 @@ public class ReportController {
     //cc:1-查询所有，2-当天挂号,3-预约挂号
     @RequestMapping("/index")
     public String index(@RequestParam(required=true,defaultValue="")String params,
-                        @RequestParam(required=true,defaultValue="1")Integer cc, Model model, HttpServletRequest req){
+                        Integer cc, Model model, HttpServletRequest req){
         if(params==null)
             params="";
+        if(cc==null)
+            cc = 1;
         List<Report> report = reportService.selAll(params,cc);
         model.addAttribute("report",report);
         HttpSession session = req.getSession();
