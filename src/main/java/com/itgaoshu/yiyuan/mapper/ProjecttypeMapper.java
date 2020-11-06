@@ -7,13 +7,17 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ProjecttypeMapper {
+    //新增项目大类
+    int addProjecttype(Projecttype projecttype);
+    int countp(Projecttype projecttype);
+    //查询项目大类
+    List<Projecttype> findAllProjecttype(Projecttype projecttype);
+
     int countByExample(ProjecttypeExample example);
 
     int deleteByExample(ProjecttypeExample example);
 
     int deleteByPrimaryKey(Integer projectid);
-
-    int insert(Projecttype record);
 
     int insertSelective(Projecttype record);
 
