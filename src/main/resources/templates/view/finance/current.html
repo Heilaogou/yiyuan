@@ -64,11 +64,11 @@
             if(year===""){
                 year=new Date().getFullYear();
             }
-            $.post("finance/currentFinance",{current:year},function(data){
-                var total=0;
-                $.each(data, function (index, item) {
+            $.post("finance/selectReportDay",{current:year},function(data){
+                var total=data;
+                /*$.each(data, function (index, item) {
                     total+=Number(item.value);
-                });
+                });*/
                 $("#current").val(total);
 
 

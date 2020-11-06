@@ -53,7 +53,7 @@
             if(year===""){
                 year=new Date().getFullYear();
             }
-            $.post("finance/zhuYuanYearFinance",{year:year},function(data){
+            $.post("finance/selectRegisterMonths",{year:year},function(data){
                 var dom = document.getElementById("container");
                 var myChart = echarts.init(dom);
                 var app = {};

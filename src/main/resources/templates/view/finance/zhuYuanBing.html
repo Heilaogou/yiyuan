@@ -9,7 +9,7 @@
 <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/jquery-3.1.1.min.js}"></script>
 <script type="text/javascript">
-    $.get("finance/zhuYuanYearBingFinance",function(data){
+    $.get("finance/selectRegisterYears",function(data){
    var dom = document.getElementById("container");
    var myChart = echarts.init(dom);
    var app = {};

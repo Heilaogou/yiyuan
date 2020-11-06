@@ -89,7 +89,7 @@
         //渲染数据表格
         tableIns=table.render({
             elem: '#doctorDuibi'   //渲染的目标对象
-            ,url:'finance/doctorDuibi' //数据接口
+            ,url:'finance/selectReportDoctor' //数据接口
             ,title: '用户数据表'//数据导出来的标题
             ,height:'full-230'
             ,page: 1  //是否启用分页, limits: [10, 20, 30]
@@ -105,7 +105,7 @@
         $("#doSearch").click(function(){
             var params=$("#searchFrm").serialize();
             tableIns.reload({
-                url:"finance/doctorDuibi?"+params
+                url:"finance/selectReportDoctor?"+params
             })
         });
 
@@ -124,7 +124,7 @@
         //渲染数据表格
         tableIns1=table.render({
             elem: '#zDoctorDuibi'   //渲染的目标对象
-            ,url:'finance/zDoctorDuibi' //数据接口
+            ,url:'finance/selectRegisterDoctor' //数据接口
             ,title: '用户数据表'//数据导出来的标题
             ,height:'full-230'
             ,page: 1  //是否启用分页, limits: [10, 20, 30]
@@ -140,7 +140,7 @@
         $("#doSearch1").click(function(){
             var params=$("#searchFrm1").serialize();
             tableIns1.reload({
-                url:"finance/zDoctorDuibi?"+params
+                url:"finance/selectRegisterDoctor?"+params
             })
         });
 

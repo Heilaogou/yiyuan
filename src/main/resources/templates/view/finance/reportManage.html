@@ -56,7 +56,7 @@
             if(year===""){
                 year=new Date().getFullYear();
             }
-            $.post("finance/reportYearFinance",{year:year},function(data){
+            $.post("finance/selectReportInMonths",{year:year},function(data){
 
                    //alert(data);
 

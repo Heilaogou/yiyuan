@@ -191,6 +191,7 @@ public class SysController {
     }
     /*
      * 跳转加载zhuYuanManage.html
+     * 门诊年度统计
      * */
     @RequestMapping("toBingYear")
     public String toBingYear() {

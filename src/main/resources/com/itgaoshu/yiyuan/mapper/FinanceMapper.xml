@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itgaoshu.yiyuan.mapper.FinanceMapper" >
+  <select id="selectReportInMonths" parameterType="String" resultType="java.lang.Double">
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'01') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'02') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'03') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'04') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'05') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'06') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'07') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'08') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'09') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'10') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'11') AND c.reportId=r.reportId AND r.state=3
+    union all
+    SELECT SUM(repicetotal) FROM cashier c,report r  WHERE DATE_FORMAT(ctime,"%Y%m")=CONCAT(#{year},'12') AND c.reportId=r.reportId AND r.state=3
+</select>
+<select id="selectRegisterMonths" parameterType="String" resultType="java.lang.Double">
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'01') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'02') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'03') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'04') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'05') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'06') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'07') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'08') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'09') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'10') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'11') AND state=1
+  union all
+  SELECT SUM(price) FROM register WHERE DATE_FORMAT(endDate,"%Y%m")=CONCAT(#{year},'12') AND state=1
+</select>
+  <select id="selectReportDoctor" resultType="DoctorDuibi">
+    SELECT COUNT(DISTINCT(c.reportId)) num,SUM(repicetotal) total,d.doctorName FROM cashier c,report r,doctor d WHERE c.reportId=r.reportId AND r.doctor=d.doctorid AND r.state=3
+     <if test="doctorName!=null and doctorName!=''">
+       and d.doctorName like concat('%',#{doctorName},'%')
+     </if>
+     GROUP BY r.doctor
+  </select>
+  <select id="selectRegisterDoctor" resultType="DoctorDuibi">
+    SELECT COUNT(*) num,SUM(price) total,d.doctorName FROM register r,doctor d WHERE r.doctor=d.doctorId AND r.state=1
+    <if test="doctorName!=null and doctorName!=''">
+      and d.doctorName like concat('%',#{doctorName},'%')
+    </if>
+     GROUP BY r.doctor
+  </select>
+</mapper>
