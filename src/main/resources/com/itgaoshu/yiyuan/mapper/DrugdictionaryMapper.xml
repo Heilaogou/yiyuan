@@ -225,4 +225,61 @@
       typeId = #{typeid,jdbcType=INTEGER}
     where drugId = #{drugid,jdbcType=INTEGER}
   </update>
+
+
+  <!-- 自添  -->
+  <!--查询药品-->
+  <select id="selDrug" parameterType="Pharmacy" resultType="Pharmacy">
+    select p.pharmacyId pharmacyid,p.pharmacyName pharmacyname,p.drugstoreId drugstoreid,p.skullId skullid,p.warehouseId warehouseid,p.unit,p.sellingPrice sellingprice,
+    p.area area,p.type type,p.produceDate producedate,p.validDate validdate,p.drugstorenum,p.skullbatch,u.unitName unitname,a.areaName areaname,t.typeName typename
+    from pharmacy p,unit u,area a,type t
+    <where>
+      p.unit=u.unitId and p.area=a.areaId and p.type=t.typeId
+      <if test="pharmacyname!=null and pharmacyname!=''">
+        and p.pharmacyName like concat('%',concat(#{pharmacyname},'%'))
+      </if>
+      <if test="pharmacyid!='' and pharmacyid!=null">
+        and p.pharmacyId=#{pharmacyid}
+      </if>
+    </where>
+  </select>
+  <!--查询患者药品-->
+  <select id="selDrugs" parameterType="Lrecord" resultType="Lrecord">
+        select hospitalpriceid,registerId registerid,durgname,durgnum,repiceprice,repicetotal,htime,state
+        from hospitalprice where state=#{state} and registerId=#{registerid} order by htime desc
+    </select>
+  <!--开药-->
+  <insert id="addDrug" parameterType="Lrecord">
+        insert into hospitalprice(registerid,durgname,durgnum,repiceprice,repicetotal,htime,state)
+         values(#{registerid},#{durgname},#{durgnum},#{repiceprice},#{repicetotal},NOW(),#{state});
+    </insert>
+  <!--添加已有药品-->
+  <update id="updDrug" parameterType="Lrecord">
+        update hospitalprice set durgnum=durgnum+#{durgnum},repicetotal=durgnum*repiceprice,htime=NOW() where registerId=#{registerid} and state=#{state} and durgname=#{durgname}
+    </update>
+  <!--删除患者药品-->
+  <delete id="delDrug" parameterType="Lrecord">
+        delete from hospitalprice where hospitalpriceid=#{hospitalpriceid}
+    </delete>
+  <!--移除药品-->
+  <update id="updDrugs" parameterType="Lrecord">
+        update pharmacy set drugstorenum=drugstorenum+#{durgnum} where pharmacyName=#{durgname};
+    </update>
+  <!--添加药品-->
+  <update id="updNum" parameterType="Lrecord">
+        update pharmacy set drugstorenum=drugstorenum-#{durgnum} where pharmacyName=#{durgname};
+    </update>
+  <!--修改药品的状态-->
+  <update id="upd" parameterType="Lrecord">
+        update hospitalprice set state=2,htime=NOW() where state=0 and registerId=#{registerid}
+    </update>
+
+
+
+
+
+
+
+
+
 </mapper>

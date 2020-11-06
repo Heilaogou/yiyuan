@@ -16,15 +16,49 @@ public class Pharmacy {
     private Integer unit;
 
     private Unit u;
-    public String getUnitname(){
-        return u.getUnitname();
+    private String unitname;
+
+    public String getUnitname() {
+        return unitname;
+    }
+
+    public void setUnitname(String unitname) {
+        this.unitname = unitname;
+    }
+
+    public Unit getU() {
+        return u;
+    }
+
+    public void setU(Unit u) {
+        this.u = u;
     }
 
     private Double sellingprice;
 
     private Integer area;
 
+    private String areaname;
+
+    public String getAreaname() {
+        return areaname;
+    }
+
+    public void setAreaname(String areaname) {
+        this.areaname = areaname;
+    }
+
     private Integer type;
+
+    private String typename;
+
+    public String getTypename() {
+        return typename;
+    }
+
+    public void setTypename(String typename) {
+        this.typename = typename;
+    }
 
     private Date producedate;
 
