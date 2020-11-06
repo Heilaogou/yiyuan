@@ -8,9 +8,13 @@ import com.itgaoshu.yiyuan.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,11 +31,14 @@ public class ReportController {
     //查询挂号信息
     //cc:1-查询所有，2-当天挂号,3-预约挂号
     @RequestMapping("/index")
-    public String index(String params, Integer cc, Model model){
+    public String index(@RequestParam(required=true,defaultValue="")String params,
+                        @RequestParam(required=true,defaultValue="1")Integer cc, Model model, HttpServletRequest req){
         if(params==null)
             params="";
         List<Report> report = reportService.selAll(params,cc);
         model.addAttribute("report",report);
+        HttpSession session = req.getSession();
+        session.setAttribute("ban",cc);
         return "cao/report";
     }
 

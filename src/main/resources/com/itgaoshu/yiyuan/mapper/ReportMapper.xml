@@ -42,13 +42,16 @@
       <result column="rtype" property="type"/>
     </association>
   </resultMap>
-  <select id="selAll" resultMap="aMap" parameterType="string">
-    select r.*,dep.department dname,doc.doctorname doname,reg.type rtype
-    from report r,doctor doc,departments dep,registeredtype reg
-    where r.department = dep.departmentId
+  <select id="selAll" resultMap="aMap">
+      select r.*,dep.department dname,doc.doctorname doname,reg.type rtype
+      from report r,doctor doc,departments dep,registeredtype reg
+      where r.department = dep.departmentId
       and r.doctor = doc.doctorId
       and r.reportType = reg.registeredId
       and r.reportName like '%${name}%' and r.state=1
+    <if test="cc==2">
+      and DATE_FORMAT(r.time,'%Y-%m-%d')=DATE_FORMAT(NOW(),'%Y-%m-%d')
+    </if>
   </select>
   <!--使用$时要么用value要么写@Param注解的value值-->
   <select id="selhuan" resultMap="aMap" parameterType="string">

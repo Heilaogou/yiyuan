@@ -277,7 +277,7 @@
                                 if(reid==''){
                                     layer.msg("请选择患者后在收费");
                                 }else{
-                                    $.post("../caoout/selch",{reportId:reid},function(res){
+                                    $.post("../cao/selch",{reportId:reid},function(res){
                                         if(res==0){
                                             layer.msg("请添加药品或者收费项目");
                                         }else{

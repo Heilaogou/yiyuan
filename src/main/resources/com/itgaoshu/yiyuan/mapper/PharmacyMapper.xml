@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itgaoshu.yiyuan.mapper.PharmacyMapper" >
+  <resultMap id="aMap" type="report">
+  <id column="reportId" property="reportid"/>
+  <result column="reportName" property="reportname"/>
+  <result column="sex" property="sex"/>
+  <result column="age" property="age"/>
+  <result column="phone" property="phone"/>
+  <result column="carid" property="carid"/>
+  <result column="price" property="price"/>
+  <result column="doctor" property="doctor"/>
+  <result column="department" property="department"/>
+  <result column="reporttype" property="reporttype"/>
+    <result column="time" property="time"/>
+    <result column="zhuan" property="zhuan"/>
+    <association property="doc" javaType="doctor">
+      <id column="doctor" property="doctorid"/>
+      <result column="doname" property="doctorname"/>
+    </association>
+    <association property="departments" javaType="departments">
+      <id column="department" property="departmentid"/>
+      <result column="dname" property="department"/>
+    </association>
+    <association property="registeredtype" javaType="registeredtype">
+      <id column="reporttype" property="registeredid"/>
+      <result column="rtype" property="type"/>
+    </association>
+  </resultMap>
+  <select id="tselpreson" resultMap="aMap">
+    select r.*,dep.department dname,doc.doctorname doname,reg.type rtype
+    from report r,doctor doc,departments dep,registeredtype reg
+    where r.department = dep.departmentId
+    and r.doctor = doc.doctorId
+    and r.reportType = reg.registeredId
+    and r.state=2
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Pharmacy" >
     <id column="pharmacyId" property="pharmacyid" jdbcType="INTEGER" />
     <result column="pharmacyName" property="pharmacyname" jdbcType="VARCHAR" />

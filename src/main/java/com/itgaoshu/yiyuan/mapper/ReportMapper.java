@@ -49,7 +49,7 @@ public interface ReportMapper {
 
     //查询所有挂号
     //@Select("select * from report where reportName like '%${name}%'")
-    List<Report> selAll(@Param("name") String name,Integer cc);
+    List<Report> selAll(@Param("name") String name,@Param("cc") Integer cc);
 
     //添加挂号
     @Insert("INSERT INTO report (reportname,sex,age,department,doctor,reporttype,price,time,users,state,phone,carid)\n" +
