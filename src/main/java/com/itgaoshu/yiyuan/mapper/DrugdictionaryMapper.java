@@ -10,6 +10,12 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 @Mapper
 public interface DrugdictionaryMapper {
+    //直接查询药品字典
+    List<Drugdictionary> findAllSdrugdictionary(Drugdictionary drugdictionary);
+    //在药品字典里面新增药品
+    int addSdrugdictionary(Drugdictionary drugdictionary);
+    int count(Drugdictionary drugdictionary);
+
     int countByExample(DrugdictionaryExample example);
 
     int deleteByExample(DrugdictionaryExample example);

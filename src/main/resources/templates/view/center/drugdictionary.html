@@ -17,7 +17,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">药品名:</label>
             <div class="layui-input-inline">
-                <input type="text" name="drugName"  autocomplete="off" class="layui-input" >
+                <input type="text" name="drugname"  autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-inline">
@@ -36,8 +36,8 @@
             <div class="layui-inline">
                 <label class="layui-form-label">药品名:</label>
                 <div class="layui-input-inline">
-                    <input type="hidden" name="drugId">
-                    <input type="text" name="drugName" lay-verify="required"  placeholder="请输入药品" autocomplete="off"
+                    <input type="hidden" name="drugid">
+                    <input type="text" name="drugname" lay-verify="required"  placeholder="请输入药品" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -56,7 +56,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">价格:</label>
                 <div class="layui-input-inline">
-                    <input type="number" name="sellingPrice" lay-verify="required"   placeholder="请输入价格" autocomplete="off"
+                    <input type="number" name="sellingprice" lay-verify="required"   placeholder="请输入价格" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -125,12 +125,12 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'drugId', title:'ID',align:'center',width:'10%'}
-                ,{field:'drugName', title:'药品',align:'center',width:"20%"}
-                ,{field:'unitName', title:'单位',align:'center',width:"10%"}
-                ,{field:'sellingPrice', title:'价格',align:'center',width:"10%"}
-                ,{field:'areaName', title:'生产地址',align:'center',width:"20%"}
-                ,{field:'typeName', title:'类型',align:'center',width:"15%"}
+                {field:'drugid', title:'ID',align:'center',width:'10%'}
+                ,{field:'drugname', title:'药品',align:'center',width:"20%"}
+                ,{field:'unitname', title:'单位',align:'center',width:"10%"}
+                ,{field:'sellingprice', title:'价格',align:'center',width:"10%"}
+                ,{field:'areaname', title:'生产地址',align:'center',width:"20%"}
+                ,{field:'typename', title:'类型',align:'center',width:"15%"}
                 ,{fixed: 'right', title:'操作', toolbar: '#drugdictionary',align:'center',width:'15%'}
             ]]
         })
@@ -155,9 +155,9 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.drugName+'】这个药品吗', function(index){
+                layer.confirm('真的删除【'+data.drugname+'】这个药品吗', function(index){
                     //向服务端发送删除指令
-                    $.post("drugdictionary/deleteSdrugdictionary",{drugId:data.drugId},function(res){
+                    $.post("drugdictionary/deleteSdrugdictionary",{drugid:data.drugid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns.reload();
@@ -216,7 +216,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#areaId').append(new Option(item.areaName, item.areaId));// 下拉菜单里添加元素
+                    $('#areaId').append(new Option(item.areaname, item.areaId));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -227,7 +227,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#unitId').append(new Option(item.unitName, item.unitId));// 下拉菜单里添加元素
+                    $('#unitId').append(new Option(item.unitname, item.unitId));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -238,7 +238,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#typeId').append(new Option(item.typeName, item.typeId));// 下拉菜单里添加元素
+                    $('#typeId').append(new Option(item.typename, item.typeId));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
