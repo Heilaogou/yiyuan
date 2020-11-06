@@ -39,12 +39,12 @@ public interface ReportMapper {
     @Select("select price from registeredtype where registeredId=#{registerId}")
     double seltymo(int registerId);
 
-    //查重手机号
-    @Select("select * from report where phone=#{phone}")
+    //查重正在就诊的手机号
+    @Select("select * from report where phone=#{phone} and state=1")
     List<Report> selByPhone(String phone);
 
-    //查重身份证号
-    @Select("select * from report where carid=#{carid}")
+    //查重正在就诊的身份证号
+    @Select("select * from report where carid=#{carid} and state=1")
     List<Report> selByCar(String carid);
 
     //查询所有挂号
@@ -163,6 +163,9 @@ public interface ReportMapper {
     //根据挂号id查询处方中药品总价
     @Select("select sum(repicetotal) from cashier where reportid=#{reportId} and state=0 and mstate=0")
     Double selch(Integer reportId);
+    //处方中没有要缴费的药品时直接结束门诊
+    @Update("update report set state=3 where reportid=#{reportId}")
+    Integer end(Integer reportId);
     //根据挂号id缴纳药品费用
     @Update("update cashier set mstate=1 where reportid=#{id} and state=0 and mstate=0")
     Integer shoufeic(@Param("id") Integer reid);
