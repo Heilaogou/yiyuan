@@ -50,4 +50,9 @@ public class PharmacyController {
         Integer res = pharmacyService.chuku(reportId);
         return res;
     }
+    //=====================药房详情==============
+    @RequestMapping("/pharymacyhtml")
+    public String turn(){
+        return "drugstore/c_pharmacy";
+    }
 }

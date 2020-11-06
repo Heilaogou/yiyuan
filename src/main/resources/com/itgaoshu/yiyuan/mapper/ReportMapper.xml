@@ -60,7 +60,7 @@
     where r.department = dep.departmentId
       and r.doctor = doc.doctorId
       and r.reportType = reg.registeredId
-      and r.reportName like '%${value}%' and r.state=3
+      and r.reportName like '%${value}%' and (r.state=3 or r.state=5)
   </select>
 
   <resultMap id="dMap" type="pharmacy">

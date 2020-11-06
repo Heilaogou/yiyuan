@@ -428,7 +428,7 @@ public class ReportController {
     //查询所有门诊患者
     @RequestMapping("/selhuan")
     @ResponseBody
-    public Object selhuan(String name,Integer page,Integer limit){
+    public Object selhuan(@RequestParam(required = true,defaultValue = "")String name,Integer page,Integer limit){
         PageHelper.startPage(page,limit);
         if(name==null) name="";
         List<Report> list = reportService.selhuan(name);
