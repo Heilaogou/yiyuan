@@ -76,18 +76,18 @@
         <div class="layui-tab-content" style="height: 100px;">
             <div class="layui-tab-item layui-show">
                 <ul id="ul">
-                    <li>姓名：<span id="userName1"></span></li>
+                    <li>姓名：<span id="username1"></span></li>
                     <li>科室：<span id="department1"></span></li>
                     <li>性别：<span id="sex1"></span></li>
-                    <li>医生：<span id="doctorName1"></span></li>
+                    <li>医生：<span id="doctorname1"></span></li>
                     <li>年龄：<span id="age1"></span>岁</li>
-                    <li>床位：<span id="bedName1"></span></li>
+                    <li>床位：<span id="bedname1"></span></li>
                     <li>电话：<span id="phone1"></span></li>
                     <li>入住：<span id="day1"></span>天</li>
                     <li>地址：<span id="address1"></span></li>
-                    <li>入住时间：<span id="registerDate1"></span></li>
+                    <li>入住时间：<span id="registerdate1"></span></li>
                     <li>身份证号：<span id="idcard1"></span></li>
-                    <li>出院时间：<span id="endDate1"></span></li>
+                    <li>出院时间：<span id="enddate1"></span></li>
                     <li>初步诊断：<span id="diagnose1"></span></li>
                     <li>总费用：<span id="price1"></span>元</li>
                     <li>折扣：<span id="discount1"></span></li>
@@ -106,7 +106,7 @@
     <table>
         <tr>
             <td class="dataFrm_td">姓名：</td>
-            <td><input type="text" id="ceshi" class="dataFrm_input" name="userName" readonly></td>
+            <td><input type="text" id="ceshi" class="dataFrm_input" name="username" readonly></td>
             <td class="dataFrm_td">科室：</td>
             <td><input type="text" class="dataFrm_input" name="department" readonly></td>
             <td class="dataFrm_td">金额：</td>
@@ -116,7 +116,7 @@
             <td class="dataFrm_td">性别：</td>
             <td><input type="text" class="dataFrm_input" name="sex" readonly></td>
             <td class="dataFrm_td">医生：</td>
-            <td><input type="text" class="dataFrm_input" name="doctorName" readonly></td>
+            <td><input type="text" class="dataFrm_input" name="doctorname" readonly></td>
             <td class="dataFrm_td">已用：</td>
             <td><input type="text" class="dataFrm_input" id="yong" name="price" readonly></td>
         </tr>
@@ -124,7 +124,7 @@
             <td class="dataFrm_td">年龄：</td>
             <td><input type="text" class="dataFrm_input" name="age" readonly></td>
             <td class="dataFrm_td">床位：</td>
-            <td><input type="text" class="dataFrm_input" name="bedName" readonly></td>
+            <td><input type="text" class="dataFrm_input" name="bedname" readonly></td>
             <td class="dataFrm_td">余款：</td>
             <td><input type="text" class="dataFrm_input" id="yu" name="prices" readonly></td>
         </tr>
@@ -158,15 +158,15 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'userName', title:'姓名',align:'center',width:"7%"}
+                {field:'username', title:'姓名',align:'center',width:"7%"}
                 ,{field:'sex', title:'性别',align:'center',width:"6%",sort: true}
                 ,{field:'age', title:'年龄',align:'center',width:"6%",sort: true}
                 ,{field:'idcard', title:'身份证号',align:'center',width:"13%"}
                 ,{field:'department', title:'科室',align:'center',width:"7%"}
-                ,{field:'doctorName', title:'医生',align:'center',width:"7%"}
-                ,{field:'bedName', title:'床位',align:'center',width:"7%"}
-                ,{field:'registerDate', title:'入院日期',align:'center',width:"11%",sort: true}
-                ,{field:'endDate', title:'出院日期',align:'center',width:"11%",sort: true}
+                ,{field:'doctorname', title:'医生',align:'center',width:"7%"}
+                ,{field:'bedname', title:'床位',align:'center',width:"7%"}
+                ,{field:'registerdate', title:'入院日期',align:'center',width:"11%",sort: true}
+                ,{field:'enddate', title:'出院日期',align:'center',width:"11%",sort: true}
                 ,{field:'money', title:'预交款',align:'center',width:"7%"}
                 ,{field:'price', title:'已用',align:'center',width:"6%"}
                 ,{field:'prices', title:'退款',align:'center',width:"6%",templet: function (d) {

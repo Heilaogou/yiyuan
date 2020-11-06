@@ -63,11 +63,31 @@ public class Register {
 
     private Double price;
 
+    private Double prices;
+
+    public Double getPrices() {
+        return prices;
+    }
+
+    public void setPrices(Double prices) {
+        this.prices = prices;
+    }
+
     private String discount;
 
     private Date zhuan;
 
     private Integer reportid;
+
+    private Integer day;
+
+    public Integer getDay() {
+        return day;
+    }
+
+    public void setDay(Integer day) {
+        this.day = day;
+    }
 
     public Integer getReportid() {
         return reportid;
