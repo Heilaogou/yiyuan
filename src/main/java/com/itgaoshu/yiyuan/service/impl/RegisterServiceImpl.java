@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
 @Service
 @Transactional
 public class RegisterServiceImpl  implements RegisterService {
-    @Autowired
+    @Resource
     private RegisterMapper registerMapper;
     //查询患者信息
     @Override
