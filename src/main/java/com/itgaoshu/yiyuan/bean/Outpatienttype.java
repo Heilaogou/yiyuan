@@ -2,20 +2,12 @@ package com.itgaoshu.yiyuan.bean;
 
 public class Outpatienttype {
     private Integer outpatientid;
-
     private String projectname;
-
+    private String pprojectname;
     private Integer unit;
-
     private String unitname;
-    public String getUnitname(){
-        return unitname;
-    }
-
     private Integer bigprojectid;
-
     private Double price;
-
     private Integer ostate;
 
     public Integer getOutpatientid() {
@@ -33,7 +25,13 @@ public class Outpatienttype {
     public void setProjectname(String projectname) {
         this.projectname = projectname == null ? null : projectname.trim();
     }
+    public String getPprojectname() {
+        return pprojectname;
+    }
 
+    public void setPprojectname(String pprojectname) {
+        this.pprojectname = pprojectname;
+    }
     public Integer getUnit() {
         return unit;
     }
@@ -64,5 +62,11 @@ public class Outpatienttype {
 
     public void setOstate(Integer ostate) {
         this.ostate = ostate;
+    }
+    public String getUnitname(){
+        return unitname;
+    }
+    public void setUnitname(String unitname) {
+        this.unitname = unitname;
     }
 }

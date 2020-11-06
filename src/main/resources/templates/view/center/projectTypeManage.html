@@ -23,21 +23,21 @@
                 <legend>查询条件</legend>
             </fieldset>
             <blockquote class="layui-elem-quote">
-            <form class="layui-form" method="post" id="searchFrm54321">
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">类别:</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="projectName"  autocomplete="off" class="layui-input" >
+                <form class="layui-form" method="post" id="searchFrm54321">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">类别:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="projectname"  autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch54321">查询</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch54321">查询</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                </form>
             </blockquote>
             <!--搜索结束-->
             <!-- 数据表格开始 -->
@@ -55,8 +55,8 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">类别:</label>
                             <div class="layui-input-inline">
-                                <input type="hidden" name="projectId">
-                                <input type="text" name="projectName" lay-verify="required"   placeholder="请输入类别" autocomplete="off"
+                                <input type="hidden" name="projectid">
+                                <input type="text" name="projectname" lay-verify="required"   placeholder="请输入类别" autocomplete="off"
                                        class="layui-input">
                             </div>
                         </div>
@@ -81,21 +81,21 @@
                 <legend>查询条件</legend>
             </fieldset>
             <blockquote class="layui-elem-quote">
-            <form class="layui-form" method="post" id="searchFrm54">
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">收费项:</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="projectName"  autocomplete="off" class="layui-input" >
+                <form class="layui-form" method="post" id="searchFrm54">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">收费项:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="projectname"  autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch54">查询</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch54">查询</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                </form>
             </blockquote>
             <!--搜索结束-->
             <!-- 添加和修改的弹出层开始 -->
@@ -105,13 +105,13 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">收费项:</label>
                             <div class="layui-input-inline">
-                                <input type="hidden" name="outpatientId">
-                                <input type="text" name="projectName" lay-verify="required"   placeholder="请输收费项" autocomplete="off"
+                                <input type="hidden" name="outpatientid">
+                                <input type="text" name="projectname" lay-verify="required"   placeholder="请输收费项" autocomplete="off"
                                        class="layui-input">
                             </div>
                         </div>
                     </div>
-                     <div class="layui-form-item">
+                    <div class="layui-form-item">
 
                         <div class="layui-inline">
                             <label class="layui-form-label">价格:</label>
@@ -120,23 +120,23 @@
                                        class="layui-input">
                             </div>
                         </div>
-                     </div>
+                    </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">项目大类:</label>
                             <div class="layui-input-inline">
-                                <select name="projectId" id="Projecttype1" lay-verify="required" lay-filter="xmFilter">
+                                <select name="bigprojectid" id="Projecttype1" lay-verify="required" lay-filter="xmFilter">
                                     <option value=""></option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="layui-form-item">
-                       <div class="layui-inline">
+                        <div class="layui-inline">
                             <label class="layui-form-label">单位:</label>
                             <div class="layui-input-inline">
-                                <select name="unitId" id="unit" lay-verify="required" lay-filter="xmFilter">
-                                   <option value=""></option>
+                                <select name="unit" id="unit" lay-verify="required" lay-filter="xmFilter">
+                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
@@ -149,12 +149,12 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                    <div class="layui-form-item" style="text-align: center;">
-                        <div class="layui-input-block" style=" margin-left:0px">
-                            <button type="button" class="layui-btn layui-btn-normal layui-btn-sm layui-icon layui-icon-release"  lay-filter="doSubmit54" lay-submit="">提交</button>
-                            <button type="reset" class="layui-btn layui-btn-warm layui-btn-sm layui-icon layui-icon-refresh" >重置</button>
+                        <div class="layui-form-item" style="text-align: center;">
+                            <div class="layui-input-block" style=" margin-left:0px">
+                                <button type="button" class="layui-btn layui-btn-normal layui-btn-sm layui-icon layui-icon-release"  lay-filter="doSubmit54" lay-submit="">提交</button>
+                                <button type="reset" class="layui-btn layui-btn-warm layui-btn-sm layui-icon layui-icon-refresh" >重置</button>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </form>
 
@@ -182,21 +182,21 @@
                 <legend>查询条件</legend>
             </fieldset>
             <blockquote class="layui-elem-quote">
-            <form class="layui-form" method="post" id="searchFrm5">
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">收费项目:</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="projectName"  autocomplete="off" class="layui-input" >
+                <form class="layui-form" method="post" id="searchFrm5">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">收费项目:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="projectname"  autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch5">查询</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch5">查询</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                </form>
             </blockquote>
             <!--搜索结束-->
             <!-- 添加和修改的弹出层开始 -->
@@ -206,8 +206,8 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">收费项:</label>
                             <div class="layui-input-inline">
-                                <input type="hidden" name="inoutpatientId">
-                                <input type="text" name="projectName" lay-verify="required"   placeholder="请输入收费项" autocomplete="off"
+                                <input type="hidden" name="inoutpatientid">
+                                <input type="text" name="projectname" lay-verify="required"   placeholder="请输入收费项" autocomplete="off"
                                        class="layui-input">
                             </div>
                         </div>
@@ -226,7 +226,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">项目大类:</label>
                             <div class="layui-input-inline">
-                                <select name="projectId" id="Projecttype2" lay-verify="required" lay-filter="xmFilter">
+                                <select name="bigprojectid" id="Projecttype2" lay-verify="required" lay-filter="xmFilter">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -236,7 +236,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">单位:</label>
                             <div class="layui-input-inline">
-                                <select name="unitId" id="unit1" lay-verify="required" lay-filter="xmFilter">
+                                <select name="unit" id="unit1" lay-verify="required" lay-filter="xmFilter">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -275,21 +275,21 @@
             </fieldset>
 
             <blockquote class="layui-elem-quote">
-            <form class="layui-form" method="post" id="searchFrm5432">
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">床位:</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="bedname"  autocomplete="off" class="layui-input" >
+                <form class="layui-form" method="post" id="searchFrm5432">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">床位:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="bedname"  autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch5432">查询</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch5432">查询</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                </form>
             </blockquote>
             <!--搜索结束-->
             <!-- 添加和修改的弹出层开始 -->
@@ -297,9 +297,9 @@
                 <form class="layui-form"  lay-filter="dataFrm5432" id="dataFrm5432" style="margin-top: 20px">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">类型:</label>
+                            <label class="layui-form-label">床位:</label>
                             <div class="layui-input-inline">
-                                <input type="hidden" name="bedId">
+                                <input type="hidden" name="bedid">
                                 <input type="text" name="bedname" lay-verify="required"   placeholder="请输入床位" autocomplete="off"
                                        class="layui-input">
                             </div>
@@ -318,7 +318,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">科室:</label>
                             <div class="layui-input-inline">
-                                <select name="departmentId" id="departmentId" lay-verify="required" lay-filter="xmFilter">
+                                <select name="departmentid" id="departmentid" lay-verify="required" lay-filter="xmFilter">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -358,21 +358,21 @@
                 <legend>查询条件</legend>
             </fieldset>
             <blockquote class="layui-elem-quote">
-            <form class="layui-form" method="post" id="searchFrm543">
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">类型:</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="moneytype"  autocomplete="off" class="layui-input" >
+                <form class="layui-form" method="post" id="searchFrm543">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">类型:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="moneytype"  autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch543">查询</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch543">查询</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                </form>
             </blockquote>
             <!--搜索结束-->
             <!-- 添加和修改的弹出层开始 -->
@@ -382,7 +382,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">类型:</label>
                             <div class="layui-input-inline">
-                                <input type="hidden" name="moneyId">
+                                <input type="hidden" name="moneyid">
                                 <input type="text" name="moneytype" lay-verify="required"   placeholder="请输入报销类型" autocomplete="off"
                                        class="layui-input">
                             </div>
@@ -447,8 +447,8 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'projectId', title:'ID',align:'center',width:'30%'}
-                ,{field:'projectName', title:'项目大类',align:'center',width:"70%"}
+                {field:'projectid', title:'ID',align:'center',width:'30%'}
+                ,{field:'projectname', title:'项目大类',align:'center',width:"70%"}
             ]]
         })
         //模糊查询
@@ -472,9 +472,9 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.projectName+'】这个类别吗', function(index){
+                layer.confirm('真的删除【'+data.projectname+'】这个类别吗', function(index){
                     //向服务端发送删除指令
-                    $.post("prjectType/deleteProjecttype",{projectId:data.projectId},function(res){
+                    $.post("prjectType/deleteProjecttype",{projectid:data.projectid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns.reload();
@@ -535,7 +535,7 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                 {field:'bedId', title:'ID',align:'center',width:'10%'}
+                {field:'bedid', title:'ID',align:'center',width:'10%'}
                 ,{field:'bedname', title:'床位',align:'center',width:"25%"}
                 ,{field:'price', title:'价格',align:'center',width:"20%"}
                 ,{field:'department', title:'科室',align:'center',width:"25%"}
@@ -565,7 +565,7 @@
             if(layEvent === 'del'){ //删除
                 layer.confirm('真的删除【'+data.bedname+'】这个床位吗', function(index){
                     //向服务端发送删除指令
-                    $.post("prjectType/deleteBed",{bedId:data.bedId},function(res){
+                    $.post("prjectType/deleteBed",{bedid:data.bedid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns2.reload();
@@ -624,7 +624,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#departmentId').append(new Option(item.department, item.departmentId));// 下拉菜单里添加元素
+                    $('#departmentid').append(new Option(item.department, item.departmentid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -653,7 +653,7 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'moneyId', title:'ID',align:'center',width:'20%'}
+                {field:'moneyid', title:'ID',align:'center',width:'20%'}
                 ,{field:'moneytype', title:'类型',align:'center',width:"30%"}
                 ,{field:'percent', title:'报销百分比',align:'center',width:"30%"}
                 ,{fixed: 'right', title:'操作', toolbar: '#moneytype',align:'center',width:'20%'}
@@ -682,7 +682,7 @@
             if(layEvent === 'del'){ //删除
                 layer.confirm('真的删除【'+data.moneytype+'】这个类型吗', function(index){
                     //向服务端发送删除指令
-                    $.post("prjectType/deleteMoneytype",{moneyId:data.moneyId},function(res){
+                    $.post("prjectType/deleteMoneytype",{moneyid:data.moneyid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns3.reload();
@@ -760,11 +760,11 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'outpatientId', title:'ID',align:'center',width:'10%'}
-                ,{field:'projectName', title:'收费项',align:'center',width:"20%"}
-                ,{field:'pprojectName', title:'项目大类',align:'center',width:"20%"}
+                {field:'outpatientid', title:'ID',align:'center',width:'10%'}
+                ,{field:'projectname', title:'收费项',align:'center',width:"20%"}
+                ,{field:'pprojectname', title:'项目大类',align:'center',width:"20%"}
                 ,{field:'price', title:'价格',align:'center',width:"10%"}
-                ,{field:'unitName', title:'单位',align:'center',width:"10%"}
+                ,{field:'unitname', title:'单位',align:'center',width:"10%"}
                 ,{field:'ostate', title:'是否检查',align:'center',width:"10%",templet:function(d){
                         return d.ostate=='1'?'<font color=blue>检查项</font>':'<font color=red>无</font>';
                     }}
@@ -792,9 +792,9 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.projectName+'】这个收费项吗', function(index){
+                layer.confirm('真的删除【'+data.projectname+'】这个收费项吗', function(index){
                     //向服务端发送删除指令
-                    $.post("prjectType/deleteOutpatienttype",{outpatientId:data.outpatientId},function(res){
+                    $.post("prjectType/deleteOutpatienttype",{outpatientid:data.outpatientid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns4.reload();
@@ -829,7 +829,7 @@
                 content:$("#saveOrUpdateDiv54"),
                 area:['500px','500px'],
                 success:function(index){
-                form.val("dataFrm54",data);
+                    form.val("dataFrm54",data);
                     url="prjectType/editOutpatienttype";
                 }
             });
@@ -854,7 +854,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#Projecttype1').append(new Option(item.projectName, item.projectId));// 下拉菜单里添加元素
+                    $('#Projecttype1').append(new Option(item.projectname, item.projectid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -865,7 +865,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#unit').append(new Option(item.unitName, item.unitId));// 下拉菜单里添加元素
+                    $('#unit').append(new Option(item.unitname, item.unitid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -892,11 +892,11 @@
             ,limits: [7, 20, 30]
             ,limit: 7//默认采用3
             ,cols: [[   //列表数据
-                {field:'inoutpatientId', title:'ID',align:'center',width:'10%'}
-                ,{field:'projectName', title:'收费项',align:'center',width:"20%"}
-                ,{field:'pprojectName', title:'项目大类',align:'center',width:"20%"}
+                {field:'inoutpatientid', title:'ID',align:'center',width:'10%'}
+                ,{field:'projectname', title:'收费项',align:'center',width:"20%"}
+                ,{field:'pprojectname', title:'项目大类',align:'center',width:"20%"}
                 ,{field:'price', title:'价格',align:'center',width:"10%"}
-                ,{field:'unitName', title:'单位',align:'center',width:"19%"}
+                ,{field:'unitname', title:'单位',align:'center',width:"19%"}
                 ,{fixed: 'right', title:'操作', toolbar: '#inoutpatienttype',align:'center',width:'20%'}
             ]]
         })
@@ -921,9 +921,9 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除【'+data.projectName+'】这个收费项吗', function(index){
+                layer.confirm('真的删除【'+data.projectname+'】这个收费项吗', function(index){
                     //向服务端发送删除指令
-                    $.post("prjectType/deleteInoutpatienttype",{inoutpatientId:data.inoutpatientId},function(res){
+                    $.post("prjectType/deleteInoutpatienttype",{inoutpatientid:data.inoutpatientid},function(res){
                         layer.msg(res);
                         //刷新数据 表格
                         tableIns5.reload();
@@ -986,7 +986,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#Projecttype2').append(new Option(item.projectName, item.projectId));// 下拉菜单里添加元素
+                    $('#Projecttype2').append(new Option(item.projectname, item.projectid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -997,7 +997,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#unit1').append(new Option(item.unitName, item.unitId));// 下拉菜单里添加元素
+                    $('#unit1').append(new Option(item.unitname, item.unitid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }

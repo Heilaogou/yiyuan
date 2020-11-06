@@ -2,11 +2,10 @@ package com.itgaoshu.yiyuan.bean;
 
 public class Inoutpatienttype {
     private Integer inoutpatientid;
-
     private String projectname;
-
+    private String pprojectname;
+    private String unitname;
     private Integer unit;
-
     private Integer bigprojectid;
 
     private Double price;
@@ -50,4 +49,20 @@ public class Inoutpatienttype {
     public void setPrice(Double price) {
         this.price = price;
     }
+    public String getPprojectname() {
+        return pprojectname;
+    }
+
+    public void setPprojectname(String pprojectname) {
+        this.pprojectname = pprojectname;
+    }
+
+    public String getUnitname() {
+        return unitname;
+    }
+
+    public void setUnitname(String unitname) {
+        this.unitname = unitname;
+    }
+
 }

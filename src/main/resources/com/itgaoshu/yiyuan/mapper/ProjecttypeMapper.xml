@@ -4,91 +4,103 @@
   <select id="findAllProjecttype" resultType="projecttype">
     select *from projecttype
     <where>
-      <if test="projectName!=null and projectName!=''">
-        projectName like concat('%',concat(#{projectName},'%'))
+      <if test="projectname!=null and projectname!=''">
+        projectname like concat('%',concat(#{projectname},'%'))
       </if>
-    </where> order by projectId desc
+    </where> order by projectid desc
   </select>
   <insert id="addProjecttype" parameterType="projecttype">
-        insert into projecttype(projectName)values(#{projectName})
+        insert into projecttype(projectname)values(#{projectname})
     </insert>
   <delete id="deleteProjecttype" parameterType="Integer">
-        delete from projecttype where projectId=#{projectId}
+        delete from projecttype where projectid=#{projectid}
     </delete>
   <select id="countp" resultType="int">
-        select count(*) from projecttype where projectName=#{projectName}
+        select count(*) from projecttype where projectname=#{projectname}
     </select>
   <select id="findAllMoneytype" resultType="Moneytype">
-    select *from Moneytype
+    select * from Moneytype
     <where>
       <if test="moneytype!=null and moneytype!=''">
         moneytype like concat('%',concat(#{moneytype},'%'))
       </if>
-    </where> order by moneyId desc
+    </where> order by moneyid desc
   </select>
   <insert id="addMoneytype" parameterType="Moneytype">
         insert into Moneytype(moneytype,percent)values(#{moneytype},#{percent})
     </insert>
   <update id="editMoneytype" parameterType="Moneytype">
-        update Moneytype set percent=#{percent} where moneyId=#{moneyId}
+        update Moneytype set Moneytype=#{moneytype},percent=#{percent} where moneyid=#{moneyid}
     </update>
   <delete id="deleteMoneytype" parameterType="Integer">
-        delete from Moneytype where moneyId=#{moneyId}
+        delete from Moneytype where moneyid=#{moneyid}
     </delete>
   <select id="countm" resultType="int">
         select  count(*) from Moneytype where moneytype=#{moneytype}
     </select>
   <select id="findAllOutpatienttype" resultType="Outpatienttype">
-    SELECT o.ostate, o.outpatientId,p.projectName pprojectName,o.projectName projectName,p.projectId projectId,u.unitName,u.unitId unitId ,o.price from outpatienttype o,unit u, projecttype p where o.unit=u.unitId and p.projectId=o.bigprojectId
+    SELECT o.ostate, o.outpatientid,p.projectname pprojectname,o.projectname projectname,p.projectid projectid,u.unitName,u.unitId unitId ,o.price from outpatienttype o,unit u, projecttype p where o.unit=u.unitId and p.projectid=o.bigprojectid
 
-    <if test="projectName!=null and projectName!=''">
-      and  o.projectName like concat('%',concat(#{projectName},'%'))
-    </if> order by o.outpatientId desc
+    <if test="projectname!=null and projectname!=''">
+      and  o.projectname like concat('%',concat(#{projectname},'%'))
+    </if> order by o.outpatientid desc
   </select>
   <insert id="addOutpatienttype" parameterType="Outpatienttype">
-       insert into Outpatienttype(projectName, unit, bigprojectId, price,ostate) values (#{projectName}, #{unit}, #{bigprojectId}, #{price},#{ostate})
+       insert into Outpatienttype(projectname, unit, bigprojectid, price,ostate) values (#{projectname}, #{unit}, #{bigprojectid}, #{price},#{ostate})
    </insert>
   <update id="editOutpatienttype" parameterType="Outpatienttype">
-        update Outpatienttype set price=#{price},unit=#{unit},bigprojectId=#{bigprojectId},ostate=#{ostate} where outpatientId=#{outpatientId}
+        update Outpatienttype set price=#{price},unit=#{unit},bigprojectid=#{bigprojectid},ostate=#{ostate} where outpatientid=#{outpatientid}
     </update>
   <delete id="deleteOutpatienttype" parameterType="Integer">
-        delete from Outpatienttype where outpatientId=#{outpatientId}
+        delete from Outpatienttype where outpatientid=#{outpatientid}
     </delete>
   <select id="counto" resultType="int">
-        select  count(*) from Outpatienttype where projectName=#{projectName}
+        select  count(*) from Outpatienttype where projectname=#{projectname}
     </select>
+  <select id="findAllProjecttype1" resultType="Projecttype">
+        select * from Projecttype
+  </select>
+  <select id="findAllUnit" resultType="Unit">
+        select * from Unit
+  </select>
   <select id="findAllInoutpatienttype" resultType="Inoutpatienttype">
-    SELECT i.inoutpatientId,p.projectName pprojectName,i.projectName projectName,p.projectId projectId,u.unitName,u.unitId unitId ,i.price from inoutpatienttype i,unit u, projecttype p where i.unit=u.unitId and p.projectId=i.bigprojectId
-    <if test="projectName!=null and projectName!=''">
-      and  i.projectName like concat('%',concat(#{projectName},'%'))
-    </if> order by i.inoutpatientId desc
+    SELECT i.inoutpatientid,p.projectname pprojectname,i.projectname projectname,p.projectid projectid,u.unitName,u.unitId unitId ,i.price from inoutpatienttype i,unit u, projecttype p where i.unit=u.unitId and p.projectid=i.bigprojectid
+    <if test="projectname!=null and projectname!=''">
+      and  i.projectname like concat('%',concat(#{projectname},'%'))
+    </if> order by i.inoutpatientid desc
   </select>
   <insert id="addInoutpatienttype" parameterType="Inoutpatienttype">
-        insert into Inoutpatienttype(projectName,price,unit,bigprojectId)values(#{projectName},#{price},#{unit},#{bigprojectId})
+        insert into Inoutpatienttype(projectname,price,unit,bigprojectid)values(#{projectname},#{price},#{unit},#{bigprojectid})
     </insert>
   <update id="editInoutpatienttype" parameterType="Inoutpatienttype">
-        update Inoutpatienttype set price=#{price},unit=#{unit},bigprojectId=#{bigprojectId} where inoutpatientId=#{inoutpatientId}
+        update Inoutpatienttype set price=#{price},unit=#{unit},bigprojectid=#{bigprojectid} where inoutpatientid=#{inoutpatientid}
     </update>
   <delete id="deleteInoutpatienttype" parameterType="Integer">
-        delete from Inoutpatienttype where inoutpatientId=#{inoutpatientId}
+        delete from Inoutpatienttype where inoutpatientid=#{inoutpatientid}
     </delete>
   <select id="counti" resultType="int">
-        select  count(*) from Inoutpatienttype where projectName=#{projectName}
+        select  count(*) from Inoutpatienttype where projectname=#{projectname}
     </select>
+  <select id="findAllProjecttype2" resultType="Projecttype">
+        select * from Projecttype
+  </select>
+  <select id="findAllUnit1" resultType="Unit">
+        select * from Unit
+  </select>
   <select id="findAllBed" resultType="Bed">
-    select*from bed b,departments d where b.departmentId=d.departmentId
+    select*from bed b,departments d where b.departmentid=d.departmentid
     <if test="bedname!=null and bedname!=''">
       and bedname like concat('%',concat(#{bedname},'%'))
-    </if> order by b.bedId desc
+    </if> order by b.bedid desc
   </select>
   <insert id="addBed" parameterType="Bed">
-        insert into Bed(bedname,price,state,departmentId)values(#{bedname},#{price},0,#{departmentId})
+        insert into Bed(bedname,price,state,departmentid)values(#{bedname},#{price},0,#{departmentid})
     </insert>
   <update id="editBed" parameterType="Bed">
-        update Bed set price=#{price},departmentId=#{departmentId} where bedId=#{bedId}
+       UPDATE Bed SET bedname=#{bedname},Price=#{price},departmentid=#{departmentid} where bedid=8
     </update>
   <delete id="deleteBed" parameterType="Integer">
-        delete from Bed where bedId=#{bedId}
+        delete from Bed where bedid=#{bedid}
     </delete>
   <select id="countb" resultType="int">
         select  count(*) from Bed where bedname=#{bedname}
@@ -96,9 +108,12 @@
   <select id="checkCount" resultType="int">
         select count(*) from bed b,register r where r.bednum=b.bedid and b.bedid=#{bedid}
     </select>
+  <select id="departmentList" resultType="Departments">
+        select * from Departments
+  </select>
   <!--<resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Projecttype" >
-    <id column="projectId" property="projectid" jdbcType="INTEGER" />
-    <result column="projectName" property="projectname" jdbcType="VARCHAR" />
+    <id column="projectid" property="projectid" jdbcType="INTEGER" />
+    <result column="projectname" property="projectname" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -159,7 +174,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    projectId, projectName
+    projectid, projectname
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.ProjecttypeExample" >
     select
@@ -176,14 +191,14 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from projecttype
-    where projectId = #{projectid,jdbcType=INTEGER}
+    where projectid = #{projectid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from projecttype
-    where projectId = #{projectid,jdbcType=INTEGER}
+    where projectid = #{projectid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.ProjecttypeExample" >
     delete from projecttype
@@ -192,17 +207,17 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Projecttype" >
-    insert into projecttype (projectId, projectName)
+    insert into projecttype (projectid, projectname)
     values (#{projectid,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Projecttype" >
     insert into projecttype
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="projectid != null" >
-        projectId,
+        projectid,
       </if>
       <if test="projectname != null" >
-        projectName,
+        projectname,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -224,10 +239,10 @@
     update projecttype
     <set >
       <if test="record.projectid != null" >
-        projectId = #{record.projectid,jdbcType=INTEGER},
+        projectid = #{record.projectid,jdbcType=INTEGER},
       </if>
       <if test="record.projectname != null" >
-        projectName = #{record.projectname,jdbcType=VARCHAR},
+        projectname = #{record.projectname,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -236,8 +251,8 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update projecttype
-    set projectId = #{record.projectid,jdbcType=INTEGER},
-      projectName = #{record.projectname,jdbcType=VARCHAR}
+    set projectid = #{record.projectid,jdbcType=INTEGER},
+      projectname = #{record.projectname,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -246,14 +261,14 @@
     update projecttype
     <set >
       <if test="projectname != null" >
-        projectName = #{projectname,jdbcType=VARCHAR},
+        projectname = #{projectname,jdbcType=VARCHAR},
       </if>
     </set>
-    where projectId = #{projectid,jdbcType=INTEGER}
+    where projectid = #{projectid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Projecttype" >
     update projecttype
-    set projectName = #{projectname,jdbcType=VARCHAR}
-    where projectId = #{projectid,jdbcType=INTEGER}
+    set projectname = #{projectname,jdbcType=VARCHAR}
+    where projectid = #{projectid,jdbcType=INTEGER}
   </update>-->
 </mapper>

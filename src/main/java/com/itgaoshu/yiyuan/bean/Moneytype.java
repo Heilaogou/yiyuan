@@ -5,6 +5,15 @@ public class Moneytype {
 
     private String moneytype;
 
+    @Override
+    public String toString() {
+        return "Moneytype{" +
+                "moneyid=" + moneyid +
+                ", moneytype='" + moneytype + '\'' +
+                ", percent='" + percent + '\'' +
+                '}';
+    }
+
     private String percent;
 
     public Integer getMoneyid() {

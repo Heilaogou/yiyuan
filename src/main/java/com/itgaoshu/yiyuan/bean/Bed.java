@@ -14,6 +14,15 @@ public class Bed {
     private String bedname;
 
     private Integer departmentid;
+    private String department;
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
     private Integer state;
 
