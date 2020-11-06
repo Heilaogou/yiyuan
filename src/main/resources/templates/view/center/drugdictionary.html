@@ -46,7 +46,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">单位:</label>
             <div class="layui-input-inline">
-                <select name="unitId" id="unitId" lay-verify="required" lay-filter="xmFilter">
+                <select name="unitid" id="unitid" lay-verify="required" lay-filter="xmFilter">
                 <option value=""></option>
                 </select>
             </div>
@@ -65,7 +65,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">产地:</label>
                 <div class="layui-input-inline">
-                    <select name="areaId" id="areaId" lay-verify="required" lay-filter="xmFilter">
+                    <select name="areaid" id="areaid" lay-verify="required" lay-filter="xmFilter">
                         <option value=""></option>
                     </select>
                 </div>
@@ -75,7 +75,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">类型:</label>
                 <div class="layui-input-inline">
-                    <select name="typeId" id="typeId" lay-verify="required" lay-filter="xmFilter">
+                    <select name="typeid" id="typeid" lay-verify="required" lay-filter="xmFilter">
                         <option value=""></option>
                     </select>
 
@@ -216,7 +216,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#areaId').append(new Option(item.areaname, item.areaId));// 下拉菜单里添加元素
+                    $('#areaid').append(new Option(item.areaname, item.areaid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -227,7 +227,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#unitId').append(new Option(item.unitname, item.unitId));// 下拉菜单里添加元素
+                    $('#unitid').append(new Option(item.unitname, item.unitid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
@@ -238,7 +238,7 @@
             type: 'post',
             success: function (data) {
                 $.each(data, function (index, item) {
-                    $('#typeId').append(new Option(item.typename, item.typeId));// 下拉菜单里添加元素
+                    $('#typeid').append(new Option(item.typename, item.typeid));// 下拉菜单里添加元素
                 });
                 layui.form.render("select");//重新渲染 固定写法
             }
