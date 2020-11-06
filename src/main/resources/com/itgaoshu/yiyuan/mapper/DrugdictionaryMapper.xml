@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itgaoshu.yiyuan.mapper.DrugdictionaryMapper" >
   <select id="findAllSdrugdictionary" resultType="Drugdictionary">
-    select d.drugId, d.drugName,d.typeId,d.unitId,d.areaId, u.unitName,d.sellingPrice,a.areaName,t.typeName from drugdictionary d,unit u,area a,type t where d.areaid=a.areaid and d.typeid=t.typeid and u.unitid=d.unitid
+    select d.drugid, d.drugname,d.typeid,d.unitid,d.areaid, u.unitname,d.sellingprice,a.areaname,t.typename from drugdictionary d,unit u,area a,type t where d.areaid=a.areaid and d.typeid=t.typeid and u.unitid=d.unitid
     <if test="drugname!=null and drugname!=''">
       and drugname like concat('%',concat(#{drugname},'%'))
     </if> order by d.drugid asc
@@ -11,10 +11,10 @@
         insert into drugdictionary(drugname,unitid,sellingprice,areaid,typeid)values(#{drugname},#{unitid},#{sellingprice},#{areaid},#{typeid})
     </insert>
   <update id="editSdrugdictionary" parameterType="Drugdictionary">
-        update drugdictionary set drugname=#{drugname},unitid=#{unitid},sellingPrice=#{sellingprice},areaId=#{areaid},typeId=#{typeid} where drugId=#{drugid}
+        update drugdictionary set drugname=#{drugname},unitid=#{unitid},sellingprice=#{sellingprice},areaid=#{areaid},typeId=#{typeid} where drugid=#{drugid}
     </update>
   <delete id="deleteSdrugdictionary" parameterType="Integer">
-        delete from drugdictionary where drugId=#{drugid}
+        delete from drugdictionary where drugid=#{drugid}
     </delete>
   <select id="findAllArea" resultType="Area">
         select * from area
@@ -26,7 +26,7 @@
         select * from unit
     </select>
   <select id="count" resultType="int">
-        select count(*) from drugdictionary where drugName=#{drugame}
+        select count(*) from drugdictionary where drugname=#{drugname}
     </select>
 <!--  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
 <!--    <id column="drugId" property="drugid" jdbcType="INTEGER" />-->

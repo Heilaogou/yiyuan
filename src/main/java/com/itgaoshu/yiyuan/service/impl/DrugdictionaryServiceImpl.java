@@ -1,8 +1,6 @@
 package com.itgaoshu.yiyuan.service.impl;
 
-import com.itgaoshu.yiyuan.bean.Drugdictionary;
-import com.itgaoshu.yiyuan.bean.Lrecord;
-import com.itgaoshu.yiyuan.bean.Pharmacy;
+import com.itgaoshu.yiyuan.bean.*;
 import com.itgaoshu.yiyuan.mapper.DrugdictionaryMapper;
 import com.itgaoshu.yiyuan.service.DrugdictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +30,31 @@ public class DrugdictionaryServiceImpl implements DrugdictionaryService {
     @Override
     public int count(Drugdictionary drugdictionary) {
         return drugMapper.count(drugdictionary);
+    }
+
+    @Override
+    public List<Area> findAllArea() {
+        return drugMapper.findAllArea();
+    }
+
+    @Override
+    public List<Unit> findAllUnit() {
+        return drugMapper.findAllUnit();
+    }
+
+    @Override
+    public List<Type> findAllType() {
+        return drugMapper.findAllType();
+    }
+
+    @Override
+    public int editSdrugdictionary(Drugdictionary drugdictionary) {
+        return drugMapper.editSdrugdictionary(drugdictionary);
+    }
+
+    @Override
+    public int deleteSdrugdictionary(Drugdictionary drugdictionary) {
+        return drugMapper.deleteSdrugdictionary(drugdictionary);
     }
 
     @Override

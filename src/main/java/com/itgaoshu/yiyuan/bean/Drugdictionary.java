@@ -16,6 +16,33 @@ public class Drugdictionary {
     private String drugname;
 
     private Integer unitid;
+    private String unitname;
+    private String areaname;
+    private String typename;
+
+    public String getUnitname() {
+        return unitname;
+    }
+
+    public void setUnitname(String unitname) {
+        this.unitname = unitname;
+    }
+
+    public String getAreaname() {
+        return areaname;
+    }
+
+    public void setAreaname(String areaname) {
+        this.areaname = areaname;
+    }
+
+    public String getTypename() {
+        return typename;
+    }
+
+    public void setTypename(String typename) {
+        this.typename = typename;
+    }
 
     private Double sellingprice;
 
