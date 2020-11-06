@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("prjectType")
 public class ProjecttypeController {
     @Autowired
-    private ProjecttypeService projecttypeService
+    private ProjecttypeService projecttypeService;
 }

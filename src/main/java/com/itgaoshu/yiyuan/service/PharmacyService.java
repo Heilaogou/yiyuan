@@ -1,5 +1,6 @@
 package com.itgaoshu.yiyuan.service;
 
+import com.itgaoshu.yiyuan.bean.Pharmacy;
 import com.itgaoshu.yiyuan.bean.Report;
 
 import java.util.List;
@@ -9,4 +10,6 @@ public interface PharmacyService {
     List<Report> tselpreson();
     //出库病人处方上的所有药品
     Integer chuku(Integer reportId);
+    //查询所有药品
+    List<Pharmacy> selectpharmacy();
 }

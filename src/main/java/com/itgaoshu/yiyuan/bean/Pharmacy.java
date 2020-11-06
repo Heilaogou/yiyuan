@@ -9,53 +9,54 @@ public class Pharmacy {
 
     private Integer drugstoreid;
 
+    //经办人
     private Integer skullid;
+    private String skullname;
+    public String getSkullname() {
+        return skullname;
+    }
+    public void setSkullname(String skullname) {
+        this.skullname = skullname;
+    }
 
     private Integer warehouseid;
 
     private Integer unit;
 
+    //单位
     private Unit u;
     private String unitname;
-
     public String getUnitname() {
         return unitname;
     }
-
     public void setUnitname(String unitname) {
         this.unitname = unitname;
     }
-
     public Unit getU() {
         return u;
     }
-
     public void setU(Unit u) {
         this.u = u;
     }
 
     private Double sellingprice;
 
+    //产地
     private Integer area;
-
     private String areaname;
-
     public String getAreaname() {
         return areaname;
     }
-
     public void setAreaname(String areaname) {
         this.areaname = areaname;
     }
 
+    //类型
     private Integer type;
-
     private String typename;
-
     public String getTypename() {
         return typename;
     }
-
     public void setTypename(String typename) {
         this.typename = typename;
     }

@@ -2,6 +2,7 @@ package com.itgaoshu.yiyuan.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.itgaoshu.yiyuan.bean.Pharmacy;
 import com.itgaoshu.yiyuan.bean.Report;
 import com.itgaoshu.yiyuan.service.PharmacyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,22 @@ public class PharmacyController {
     @RequestMapping("/pharymacyhtml")
     public String turn(){
         return "drugstore/c_pharmacy";
+    }
+    //查询所有药品
+    @RequestMapping("/selectpharmacy")
+    @ResponseBody
+    public Object selectpharmacy(Integer page,Integer limit){
+        PageHelper.startPage(page,limit);
+        List<Pharmacy> list = pharmacyService.selectpharmacy();
+        PageInfo pageInfo = new PageInfo(list);
+        Map<String, Object> tableData = new HashMap<String, Object>();
+        //这是layui要求返回的json数据格式，如果后台没有加上这句话的话需要在前台页面手动设置
+        tableData.put("code", 0);
+        tableData.put("msg", "");
+        //将全部数据的条数作为count传给前台（一共多少条）
+        tableData.put("count", pageInfo.getTotal());
+        //将分页后的数据返回（每页要显示的数据）
+        tableData.put("data", pageInfo.getList());
+        return tableData;
     }
 }

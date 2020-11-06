@@ -36,6 +36,19 @@
     and r.state=2
   </select>
 
+  <!--<resultMap id="pMap" type="pharmacy">
+    <id column="" property=""></id>
+    <result column="" property=""></result>
+  </resultMap>-->
+  <select id="selectpharmacy" resultType="pharmacy">
+    select * from pharmacy p,unit u,area a,type t,skull s
+    where p.skullid = s.skullid
+    and p.area = a.areaid
+    and p.type = t.typeid
+    and p.unit = u.unitid
+
+  </select>
+
 
 
 

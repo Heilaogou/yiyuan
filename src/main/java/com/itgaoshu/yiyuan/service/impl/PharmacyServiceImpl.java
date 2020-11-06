@@ -1,6 +1,7 @@
 package com.itgaoshu.yiyuan.service.impl;
 
 import com.itgaoshu.yiyuan.bean.Cashier;
+import com.itgaoshu.yiyuan.bean.Pharmacy;
 import com.itgaoshu.yiyuan.bean.Report;
 import com.itgaoshu.yiyuan.mapper.PharmacyMapper;
 import com.itgaoshu.yiyuan.mapper.ReportMapper;
@@ -26,7 +27,8 @@ public class PharmacyServiceImpl implements PharmacyService {
 
     @Override
     public Integer chuku(Integer reportId) {
-        //先到处方表中根据挂号id查询药品名称、数量
+        //处方划价时就更新了药房，直接出库即可
+        /*//先到处方表中根据挂号id查询药品名称、数量
         List<Cashier> list = reportMapper.selpepi(reportId);
         Integer res = 0;
         for (Cashier c:list) {
@@ -34,8 +36,13 @@ public class PharmacyServiceImpl implements PharmacyService {
             Integer num = c.getDurgnum();
             String name = c.getDurgname();
             res+=pharmacyMapper.chuku(num,name);
-        }
+        }*/
         //出库成功后更改挂号状态为3
         return pharmacyMapper.updReport(reportId);
+    }
+
+    @Override
+    public List<Pharmacy> selectpharmacy() {
+        return pharmacyMapper.selectpharmacy();
     }
 }

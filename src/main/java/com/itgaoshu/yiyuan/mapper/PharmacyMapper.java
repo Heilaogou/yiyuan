@@ -17,6 +17,8 @@ public interface PharmacyMapper {
     //取药结束更改挂号状态
     @Update("update report set state=3 where reportid=#{reportId}")
     Integer updReport(Integer reportId);
+    //查询所有药品
+    List<Pharmacy> selectpharmacy();
 
 
 
