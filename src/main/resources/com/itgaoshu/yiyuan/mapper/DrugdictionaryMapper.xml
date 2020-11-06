@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itgaoshu.yiyuan.mapper.DrugdictionaryMapper" >
-  <select id="findAllSdrugdictionary" resultType="Sdrugdictionary">
+  <select id="findAllSdrugdictionary" resultType="Drugdictionary">
     select d.drugId, d.drugName,d.typeId,d.unitId,d.areaId, u.unitName,d.sellingPrice,a.areaName,t.typeName from drugdictionary d,unit u,area a,type t where d.areaid=a.areaid and d.typeid=t.typeid and u.unitid=d.unitid
     <if test="drugname!=null and drugname!=''">
       and drugname like concat('%',concat(#{drugname},'%'))
     </if> order by d.drugid asc
   </select>
-  <insert id="addSdrugdictionary" parameterType="Sdrugdictionary">
+  <insert id="addSdrugdictionary" parameterType="Drugdictionary">
         insert into drugdictionary(drugname,unitid,sellingprice,areaid,typeid)values(#{drugname},#{unitid},#{sellingprice},#{areaid},#{typeid})
     </insert>
-  <update id="editSdrugdictionary" parameterType="Sdrugdictionary">
+  <update id="editSdrugdictionary" parameterType="Drugdictionary">
         update drugdictionary set drugname=#{drugname},unitid=#{unitid},sellingPrice=#{sellingprice},areaId=#{areaid},typeId=#{typeid} where drugId=#{drugid}
     </update>
   <delete id="deleteSdrugdictionary" parameterType="Integer">
         delete from drugdictionary where drugId=#{drugid}
     </delete>
   <select id="findAllArea" resultType="Area">
-        select*from area
+        select * from area
     </select>
   <select id="findAllType" resultType="Type">
-        select*from type
+        select * from type
    </select>
   <select id="findAllUnit" resultType="Unit">
-        select*from unit
+        select * from unit
     </select>
   <select id="count" resultType="int">
-        select count(*) from drugdictionary where drugName=#{drugname}
+        select count(*) from drugdictionary where drugName=#{drugame}
     </select>
   <!--<resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
     <!--<id column="drugId" property="drugid" jdbcType="INTEGER" />-->
@@ -254,50 +254,50 @@
   <!--</update>-->
 
 
-  <!--&lt;!&ndash; 自添  &ndash;&gt;-->
-  <!--&lt;!&ndash;查询药品&ndash;&gt;-->
-  <!--<select id="selDrug" parameterType="Pharmacy" resultType="Pharmacy">-->
-    <!--select p.pharmacyId pharmacyid,p.pharmacyName pharmacyname,p.drugstoreId drugstoreid,p.skullId skullid,p.warehouseId warehouseid,p.unit,p.sellingPrice sellingprice,-->
-    <!--p.area area,p.type type,p.produceDate producedate,p.validDate validdate,p.drugstorenum,p.skullbatch,u.unitName unitname,a.areaName areaname,t.typeName typename-->
-    <!--from pharmacy p,unit u,area a,type t-->
-    <!--<where>-->
-      <!--p.unit=u.unitId and p.area=a.areaId and p.type=t.typeId-->
-      <!--<if test="pharmacyname!=null and pharmacyname!=''">-->
-        <!--and p.pharmacyName like concat('%',concat(#{pharmacyname},'%'))-->
-      <!--</if>-->
-      <!--<if test="pharmacyid!='' and pharmacyid!=null">-->
-        <!--and p.pharmacyId=#{pharmacyid}-->
-      <!--</if>-->
-    <!--</where>-->
-  <!--</select>-->
-  <!--&lt;!&ndash;查询患者药品&ndash;&gt;-->
-  <!--<select id="selDrugs" parameterType="Lrecord" resultType="Lrecord">-->
-        <!--select hospitalpriceid,registerId registerid,durgname,durgnum,repiceprice,repicetotal,htime,state-->
-        <!--from hospitalprice where state=#{state} and registerId=#{registerid} order by htime desc-->
-    <!--</select>-->
-  <!--&lt;!&ndash;开药&ndash;&gt;-->
-  <!--<insert id="addDrug" parameterType="Lrecord">-->
-        <!--insert into hospitalprice(registerid,durgname,durgnum,repiceprice,repicetotal,htime,state)-->
-         <!--values(#{registerid},#{durgname},#{durgnum},#{repiceprice},#{repicetotal},NOW(),#{state});-->
-    <!--</insert>-->
-  <!--&lt;!&ndash;添加已有药品&ndash;&gt;-->
-  <!--<update id="updDrug" parameterType="Lrecord">-->
-        <!--update hospitalprice set durgnum=durgnum+#{durgnum},repicetotal=durgnum*repiceprice,htime=NOW() where registerId=#{registerid} and state=#{state} and durgname=#{durgname}-->
-    <!--</update>-->
-  <!--&lt;!&ndash;删除患者药品&ndash;&gt;-->
-  <!--<delete id="delDrug" parameterType="Lrecord">-->
-        <!--delete from hospitalprice where hospitalpriceid=#{hospitalpriceid}-->
-    <!--</delete>-->
-  <!--&lt;!&ndash;移除药品&ndash;&gt;-->
-  <!--<update id="updDrugs" parameterType="Lrecord">-->
-        <!--update pharmacy set drugstorenum=drugstorenum+#{durgnum} where pharmacyName=#{durgname};-->
-    <!--</update>-->
-  <!--&lt;!&ndash;添加药品&ndash;&gt;-->
-  <!--<update id="updNum" parameterType="Lrecord">-->
-        <!--update pharmacy set drugstorenum=drugstorenum-#{durgnum} where pharmacyName=#{durgname};-->
-    <!--</update>-->
-  <!--&lt;!&ndash;修改药品的状态&ndash;&gt;-->
-  <!--<update id="upd" parameterType="Lrecord">-->
-        <!--update hospitalprice set state=2,htime=NOW() where state=0 and registerId=#{registerid}-->
-    <!--</update>-->
+  <!-- 自添  -->
+  <!--查询药品-->
+  <select id="selDrug" parameterType="Pharmacy" resultType="Pharmacy">
+    select p.pharmacyId pharmacyid,p.pharmacyName pharmacyname,p.drugstoreId drugstoreid,p.skullId skullid,p.warehouseId warehouseid,p.unit,p.sellingPrice sellingprice,
+    p.area area,p.type type,p.produceDate producedate,p.validDate validdate,p.drugstorenum,p.skullbatch,u.unitName unitname,a.areaName areaname,t.typeName typename
+    from pharmacy p,unit u,area a,type t
+    <where>
+      p.unit=u.unitId and p.area=a.areaId and p.type=t.typeId
+      <if test="pharmacyname!=null and pharmacyname!=''">
+        and p.pharmacyName like concat('%',concat(#{pharmacyname},'%'))
+      </if>
+      <if test="pharmacyid!='' and pharmacyid!=null">
+        and p.pharmacyId=#{pharmacyid}
+      </if>
+    </where>
+  </select>
+  <!--查询患者药品-->
+  <select id="selDrugs" parameterType="Lrecord" resultType="Lrecord">
+        select hospitalpriceid,registerId registerid,durgname,durgnum,repiceprice,repicetotal,htime,state
+        from hospitalprice where state=#{state} and registerId=#{registerid} order by htime desc
+    </select>
+  <!--开药-->
+  <insert id="addDrug" parameterType="Lrecord">
+        insert into hospitalprice(registerid,durgname,durgnum,repiceprice,repicetotal,htime,state)
+         values(#{registerid},#{durgname},#{durgnum},#{repiceprice},#{repicetotal},NOW(),#{state});
+    </insert>
+  <!--添加已有药品-->
+  <update id="updDrug" parameterType="Lrecord">
+        update hospitalprice set durgnum=durgnum+#{durgnum},repicetotal=durgnum*repiceprice,htime=NOW() where registerId=#{registerid} and state=#{state} and durgname=#{durgname}
+    </update>
+  <!--删除患者药品-->
+  <delete id="delDrug" parameterType="Lrecord">
+        delete from hospitalprice where hospitalpriceid=#{hospitalpriceid}
+    </delete>
+  <!--移除药品-->
+  <update id="updDrugs" parameterType="Lrecord">
+        update pharmacy set drugstorenum=drugstorenum+#{durgnum} where pharmacyName=#{durgname};
+    </update>
+  <!--添加药品-->
+  <update id="updNum" parameterType="Lrecord">
+        update pharmacy set drugstorenum=drugstorenum-#{durgnum} where pharmacyName=#{durgname};
+    </update>
+  <!--修改药品的状态-->
+  <update id="upd" parameterType="Lrecord">
+        update hospitalprice set state=2,htime=NOW() where state=0 and registerId=#{registerid}
+    </update>
 </mapper>

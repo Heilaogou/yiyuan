@@ -1,5 +1,6 @@
 package com.itgaoshu.yiyuan.service.impl;
 
+import com.itgaoshu.yiyuan.bean.Drugdictionary;
 import com.itgaoshu.yiyuan.bean.Lrecord;
 import com.itgaoshu.yiyuan.bean.Pharmacy;
 import com.itgaoshu.yiyuan.mapper.DrugdictionaryMapper;
@@ -17,6 +18,21 @@ public class DrugdictionaryServiceImpl implements DrugdictionaryService {
 
     @Resource
     private DrugdictionaryMapper drugMapper;
+
+    @Override
+    public List<Drugdictionary> findAllSdrugdictionary(Drugdictionary drugdictionary) {
+        return drugMapper.findAllSdrugdictionary(drugdictionary);
+    }
+
+    @Override
+    public int addSdrugdictionary(Drugdictionary drugdictionary) {
+        return drugMapper.addSdrugdictionary(drugdictionary);
+    }
+
+    @Override
+    public int count(Drugdictionary drugdictionary) {
+        return drugMapper.count(drugdictionary);
+    }
 
     @Override
     public List<Pharmacy> selDrug(Pharmacy pharmacy) {
