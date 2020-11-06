@@ -12,9 +12,11 @@ public interface TypeMapper {
     int deleteByExample(TypeExample example);
 
     int deleteByPrimaryKey(Integer typeid);
-
-    int insert(Type record);
-
+    //查询药品类型列表
+    List<Type> findAllType(Type type);
+    //新增药品类型
+    int addType(Type type);
+    int count(Type type);
     int insertSelective(Type record);
 
     List<Type> selectByExample(TypeExample example);

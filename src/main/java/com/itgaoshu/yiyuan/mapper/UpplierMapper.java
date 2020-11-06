@@ -7,6 +7,14 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface UpplierMapper {
+    //查询供货商列表
+    List<Upplier> findAllUpplier(Upplier upplier);
+    //新增供货商
+    int addUpplier(Upplier upplier);
+    int count(Upplier upplier);
+    //删除供货商
+    int deleteUpplier(Integer upplierid);
+
     int countByExample(UpplierExample example);
 
     int deleteByExample(UpplierExample example);

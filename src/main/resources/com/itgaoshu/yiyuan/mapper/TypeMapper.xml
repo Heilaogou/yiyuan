@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itgaoshu.yiyuan.mapper.TypeMapper" >
-  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Type" >
+  <select id="findAllType" resultType="type">
+    select * from type
+    <where>
+      <if test="typename!=null and typename!=''">
+        typename like concat('%',concat(#{typename},'%'))
+      </if>
+    </where>
+  </select>
+  <insert id="addType" parameterType="type">
+        insert into type(typename)values(#{typename})
+    </insert>
+  <delete id="deleteType" parameterType="Integer">
+        delete from type where typeid=#{typeid}
+    </delete>
+  <select id="count" resultType="int">
+        select count(*) from type where typename=#{typename}
+    </select>
+  <!--<resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Type" >
     <id column="typeId" property="typeid" jdbcType="INTEGER" />
     <result column="typeName" property="typename" jdbcType="VARCHAR" />
   </resultMap>
@@ -160,5 +177,5 @@
     update type
     set typeName = #{typename,jdbcType=VARCHAR}
     where typeId = #{typeid,jdbcType=INTEGER}
-  </update>
+  </update>-->
 </mapper>

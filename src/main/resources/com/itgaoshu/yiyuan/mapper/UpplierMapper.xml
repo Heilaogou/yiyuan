@@ -3,19 +3,22 @@
 <mapper namespace="com.itgaoshu.yiyuan.mapper.UpplierMapper" >
   <select id="findAllUpplier" resultType="Upplier">
     select *from Upplier where state=0
-    <if test="supplierName!=null and supplierName!=''">
-      and supplierName like concat('%',concat(#{supplierName},'%'))
+    <if test="suppliername!=null and suppliername!=''">
+      and suppliername like concat('%',concat(#{suppliername},'%'))
     </if>
   </select>
   <insert id="addUpplier" parameterType="Upplier">
-        insert into Upplier(supplierName,state)values(#{supplierName},0)
+        insert into Upplier(suppliername,state)values(#{suppliername},0)
     </insert>
-  <update id="deleteUpplier" parameterType="Integer">
-        update Upplier set  state=1 where supplierId=#{supplierId}
-    </update>
+  <!--<update id="deleteUpplier" parameterType="Integer">
+        update Upplier set  state=1 where supplierId=#{supplierid}
+    </update>-->
   <select id="count" resultType="int">
-        select count(*) from Upplier where supplierName=#{supplierName} and state=0
+        select count(*) from Upplier where suppliername=#{suppliername} and state=0
     </select>
+    <delete id="deleteUpplier" parameterType="Integer">
+        delete from Upplier where supplierId=#{supplierid}
+    </delete>
   <!--<resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Upplier" >
     <id column="supplierId" property="supplierid" jdbcType="INTEGER" />
     <result column="supplierName" property="suppliername" jdbcType="VARCHAR" />
