@@ -28,276 +28,276 @@
   <select id="count" resultType="int">
         select count(*) from drugdictionary where drugName=#{drugname}
     </select>
-  <!--<resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
-    <!--<id column="drugId" property="drugid" jdbcType="INTEGER" />-->
-    <!--<result column="drugName" property="drugname" jdbcType="VARCHAR" />-->
-    <!--<result column="unitId" property="unitid" jdbcType="INTEGER" />-->
-    <!--<result column="sellingPrice" property="sellingprice" jdbcType="DOUBLE" />-->
-    <!--<result column="areaId" property="areaid" jdbcType="INTEGER" />-->
-    <!--<result column="typeId" property="typeid" jdbcType="INTEGER" />-->
-  <!--</resultMap>-->
-  <!--<sql id="Example_Where_Clause" >-->
-    <!--<where >-->
-      <!--<foreach collection="oredCriteria" item="criteria" separator="or" >-->
-        <!--<if test="criteria.valid" >-->
-          <!--<trim prefix="(" suffix=")" prefixOverrides="and" >-->
-            <!--<foreach collection="criteria.criteria" item="criterion" >-->
-              <!--<choose >-->
-                <!--<when test="criterion.noValue" >-->
-                  <!--and ${criterion.condition}-->
-                <!--</when>-->
-                <!--<when test="criterion.singleValue" >-->
-                  <!--and ${criterion.condition} #{criterion.value}-->
-                <!--</when>-->
-                <!--<when test="criterion.betweenValue" >-->
-                  <!--and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
-                <!--</when>-->
-                <!--<when test="criterion.listValue" >-->
-                  <!--and ${criterion.condition}-->
-                  <!--<foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >-->
-                    <!--#{listItem}-->
-                  <!--</foreach>-->
-                <!--</when>-->
-              <!--</choose>-->
-            <!--</foreach>-->
-          <!--</trim>-->
-        <!--</if>-->
-      <!--</foreach>-->
-    <!--</where>-->
-  <!--</sql>-->
-  <!--<sql id="Update_By_Example_Where_Clause" >-->
-    <!--<where >-->
-      <!--<foreach collection="example.oredCriteria" item="criteria" separator="or" >-->
-        <!--<if test="criteria.valid" >-->
-          <!--<trim prefix="(" suffix=")" prefixOverrides="and" >-->
-            <!--<foreach collection="criteria.criteria" item="criterion" >-->
-              <!--<choose >-->
-                <!--<when test="criterion.noValue" >-->
-                  <!--and ${criterion.condition}-->
-                <!--</when>-->
-                <!--<when test="criterion.singleValue" >-->
-                  <!--and ${criterion.condition} #{criterion.value}-->
-                <!--</when>-->
-                <!--<when test="criterion.betweenValue" >-->
-                  <!--and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
-                <!--</when>-->
-                <!--<when test="criterion.listValue" >-->
-                  <!--and ${criterion.condition}-->
-                  <!--<foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >-->
-                    <!--#{listItem}-->
-                  <!--</foreach>-->
-                <!--</when>-->
-              <!--</choose>-->
-            <!--</foreach>-->
-          <!--</trim>-->
-        <!--</if>-->
-      <!--</foreach>-->
-    <!--</where>-->
-  <!--</sql>-->
-  <!--<sql id="Base_Column_List" >-->
-    <!--drugId, drugName, unitId, sellingPrice, areaId, typeId-->
-  <!--</sql>-->
-  <!--<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.DrugdictionaryExample" >-->
-    <!--select-->
-    <!--<if test="distinct" >-->
-      <!--distinct-->
-    <!--</if>-->
-    <!--<include refid="Base_Column_List" />-->
-    <!--from drugdictionary-->
-    <!--<if test="_parameter != null" >-->
-      <!--<include refid="Example_Where_Clause" />-->
-    <!--</if>-->
-    <!--<if test="orderByClause != null" >-->
-      <!--order by ${orderByClause}-->
-    <!--</if>-->
-  <!--</select>-->
-  <!--<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
-    <!--select -->
-    <!--<include refid="Base_Column_List" />-->
-    <!--from drugdictionary-->
-    <!--where drugId = #{drugid,jdbcType=INTEGER}-->
-  <!--</select>-->
-  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >-->
-    <!--delete from drugdictionary-->
-    <!--where drugId = #{drugid,jdbcType=INTEGER}-->
-  <!--</delete>-->
-  <!--<delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.DrugdictionaryExample" >-->
-    <!--delete from drugdictionary-->
-    <!--<if test="_parameter != null" >-->
-      <!--<include refid="Example_Where_Clause" />-->
-    <!--</if>-->
-  <!--</delete>-->
-  <!--<insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
-    <!--insert into drugdictionary (drugId, drugName, unitId, -->
-      <!--sellingPrice, areaId, typeId-->
-      <!--)-->
-    <!--values (#{drugid,jdbcType=INTEGER}, #{drugname,jdbcType=VARCHAR}, #{unitid,jdbcType=INTEGER}, -->
-      <!--#{sellingprice,jdbcType=DOUBLE}, #{areaid,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}-->
-      <!--)-->
-  <!--</insert>-->
-  <!--<insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
-    <!--insert into drugdictionary-->
-    <!--<trim prefix="(" suffix=")" suffixOverrides="," >-->
-      <!--<if test="drugid != null" >-->
-        <!--drugId,-->
-      <!--</if>-->
-      <!--<if test="drugname != null" >-->
-        <!--drugName,-->
-      <!--</if>-->
-      <!--<if test="unitid != null" >-->
-        <!--unitId,-->
-      <!--</if>-->
-      <!--<if test="sellingprice != null" >-->
-        <!--sellingPrice,-->
-      <!--</if>-->
-      <!--<if test="areaid != null" >-->
-        <!--areaId,-->
-      <!--</if>-->
-      <!--<if test="typeid != null" >-->
-        <!--typeId,-->
-      <!--</if>-->
-    <!--</trim>-->
-    <!--<trim prefix="values (" suffix=")" suffixOverrides="," >-->
-      <!--<if test="drugid != null" >-->
-        <!--#{drugid,jdbcType=INTEGER},-->
-      <!--</if>-->
-      <!--<if test="drugname != null" >-->
-        <!--#{drugname,jdbcType=VARCHAR},-->
-      <!--</if>-->
-      <!--<if test="unitid != null" >-->
-        <!--#{unitid,jdbcType=INTEGER},-->
-      <!--</if>-->
-      <!--<if test="sellingprice != null" >-->
-        <!--#{sellingprice,jdbcType=DOUBLE},-->
-      <!--</if>-->
-      <!--<if test="areaid != null" >-->
-        <!--#{areaid,jdbcType=INTEGER},-->
-      <!--</if>-->
-      <!--<if test="typeid != null" >-->
-        <!--#{typeid,jdbcType=INTEGER},-->
-      <!--</if>-->
-    <!--</trim>-->
-  <!--</insert>-->
-  <!--<select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.DrugdictionaryExample" resultType="java.lang.Integer" >-->
-    <!--select count(*) from drugdictionary-->
-    <!--<if test="_parameter != null" >-->
-      <!--<include refid="Example_Where_Clause" />-->
-    <!--</if>-->
-  <!--</select>-->
-  <!--<update id="updateByExampleSelective" parameterType="map" >-->
-    <!--update drugdictionary-->
-    <!--<set >-->
-      <!--<if test="record.drugid != null" >-->
-        <!--drugId = #{record.drugid,jdbcType=INTEGER},-->
-      <!--</if>-->
-      <!--<if test="record.drugname != null" >-->
-        <!--drugName = #{record.drugname,jdbcType=VARCHAR},-->
-      <!--</if>-->
-      <!--<if test="record.unitid != null" >-->
-        <!--unitId = #{record.unitid,jdbcType=INTEGER},-->
-      <!--</if>-->
-      <!--<if test="record.sellingprice != null" >-->
-        <!--sellingPrice = #{record.sellingprice,jdbcType=DOUBLE},-->
-      <!--</if>-->
-      <!--<if test="record.areaid != null" >-->
-        <!--areaId = #{record.areaid,jdbcType=INTEGER},-->
-      <!--</if>-->
-      <!--<if test="record.typeid != null" >-->
-        <!--typeId = #{record.typeid,jdbcType=INTEGER},-->
-      <!--</if>-->
-    <!--</set>-->
-    <!--<if test="_parameter != null" >-->
-      <!--<include refid="Update_By_Example_Where_Clause" />-->
-    <!--</if>-->
-  <!--</update>-->
-  <!--<update id="updateByExample" parameterType="map" >-->
-    <!--update drugdictionary-->
-    <!--set drugId = #{record.drugid,jdbcType=INTEGER},-->
-      <!--drugName = #{record.drugname,jdbcType=VARCHAR},-->
-      <!--unitId = #{record.unitid,jdbcType=INTEGER},-->
-      <!--sellingPrice = #{record.sellingprice,jdbcType=DOUBLE},-->
-      <!--areaId = #{record.areaid,jdbcType=INTEGER},-->
-      <!--typeId = #{record.typeid,jdbcType=INTEGER}-->
-    <!--<if test="_parameter != null" >-->
-      <!--<include refid="Update_By_Example_Where_Clause" />-->
-    <!--</if>-->
-  <!--</update>-->
-  <!--<update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
-    <!--update drugdictionary-->
-    <!--<set >-->
-      <!--<if test="drugname != null" >-->
-        <!--drugName = #{drugname,jdbcType=VARCHAR},-->
-      <!--</if>-->
-      <!--<if test="unitid != null" >-->
-        <!--unitId = #{unitid,jdbcType=INTEGER},-->
-      <!--</if>-->
-      <!--<if test="sellingprice != null" >-->
-        <!--sellingPrice = #{sellingprice,jdbcType=DOUBLE},-->
-      <!--</if>-->
-      <!--<if test="areaid != null" >-->
-        <!--areaId = #{areaid,jdbcType=INTEGER},-->
-      <!--</if>-->
-      <!--<if test="typeid != null" >-->
-        <!--typeId = #{typeid,jdbcType=INTEGER},-->
-      <!--</if>-->
-    <!--</set>-->
-    <!--where drugId = #{drugid,jdbcType=INTEGER}-->
-  <!--</update>-->
-  <!--<update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
-    <!--update drugdictionary-->
-    <!--set drugName = #{drugname,jdbcType=VARCHAR},-->
-      <!--unitId = #{unitid,jdbcType=INTEGER},-->
-      <!--sellingPrice = #{sellingprice,jdbcType=DOUBLE},-->
-      <!--areaId = #{areaid,jdbcType=INTEGER},-->
-      <!--typeId = #{typeid,jdbcType=INTEGER}-->
-    <!--where drugId = #{drugid,jdbcType=INTEGER}-->
-  <!--</update>-->
+<!--  <resultMap id="BaseResultMap" type="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
+<!--    <id column="drugId" property="drugid" jdbcType="INTEGER" />-->
+<!--    <result column="drugName" property="drugname" jdbcType="VARCHAR" />-->
+<!--    <result column="unitId" property="unitid" jdbcType="INTEGER" />-->
+<!--    <result column="sellingPrice" property="sellingprice" jdbcType="DOUBLE" />-->
+<!--    <result column="areaId" property="areaid" jdbcType="INTEGER" />-->
+<!--    <result column="typeId" property="typeid" jdbcType="INTEGER" />-->
+<!--  </resultMap>-->
+<!--  <sql id="Example_Where_Clause" >-->
+<!--    <where >-->
+<!--      <foreach collection="oredCriteria" item="criteria" separator="or" >-->
+<!--        <if test="criteria.valid" >-->
+<!--          <trim prefix="(" suffix=")" prefixOverrides="and" >-->
+<!--            <foreach collection="criteria.criteria" item="criterion" >-->
+<!--              <choose >-->
+<!--                <when test="criterion.noValue" >-->
+<!--                  and ${criterion.condition}-->
+<!--                </when>-->
+<!--                <when test="criterion.singleValue" >-->
+<!--                  and ${criterion.condition} #{criterion.value}-->
+<!--                </when>-->
+<!--                <when test="criterion.betweenValue" >-->
+<!--                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
+<!--                </when>-->
+<!--                <when test="criterion.listValue" >-->
+<!--                  and ${criterion.condition}-->
+<!--                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >-->
+<!--                    #{listItem}-->
+<!--                  </foreach>-->
+<!--                </when>-->
+<!--              </choose>-->
+<!--            </foreach>-->
+<!--          </trim>-->
+<!--        </if>-->
+<!--      </foreach>-->
+<!--    </where>-->
+<!--  </sql>-->
+<!--  <sql id="Update_By_Example_Where_Clause" >-->
+<!--    <where >-->
+<!--      <foreach collection="example.oredCriteria" item="criteria" separator="or" >-->
+<!--        <if test="criteria.valid" >-->
+<!--          <trim prefix="(" suffix=")" prefixOverrides="and" >-->
+<!--            <foreach collection="criteria.criteria" item="criterion" >-->
+<!--              <choose >-->
+<!--                <when test="criterion.noValue" >-->
+<!--                  and ${criterion.condition}-->
+<!--                </when>-->
+<!--                <when test="criterion.singleValue" >-->
+<!--                  and ${criterion.condition} #{criterion.value}-->
+<!--                </when>-->
+<!--                <when test="criterion.betweenValue" >-->
+<!--                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
+<!--                </when>-->
+<!--                <when test="criterion.listValue" >-->
+<!--                  and ${criterion.condition}-->
+<!--                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >-->
+<!--                    #{listItem}-->
+<!--                  </foreach>-->
+<!--                </when>-->
+<!--              </choose>-->
+<!--            </foreach>-->
+<!--          </trim>-->
+<!--        </if>-->
+<!--      </foreach>-->
+<!--    </where>-->
+<!--  </sql>-->
+<!--  <sql id="Base_Column_List" >-->
+<!--    drugId, drugName, unitId, sellingPrice, areaId, typeId-->
+<!--  </sql>-->
+<!--  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itgaoshu.yiyuan.bean.DrugdictionaryExample" >-->
+<!--    select-->
+<!--    <if test="distinct" >-->
+<!--      distinct-->
+<!--    </if>-->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from drugdictionary-->
+<!--    <if test="_parameter != null" >-->
+<!--      <include refid="Example_Where_Clause" />-->
+<!--    </if>-->
+<!--    <if test="orderByClause != null" >-->
+<!--      order by ${orderByClause}-->
+<!--    </if>-->
+<!--  </select>-->
+<!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
+<!--    select-->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from drugdictionary-->
+<!--    where drugId = #{drugid,jdbcType=INTEGER}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >-->
+<!--    delete from drugdictionary-->
+<!--    where drugId = #{drugid,jdbcType=INTEGER}-->
+<!--  </delete>-->
+<!--  <delete id="deleteByExample" parameterType="com.itgaoshu.yiyuan.bean.DrugdictionaryExample" >-->
+<!--    delete from drugdictionary-->
+<!--    <if test="_parameter != null" >-->
+<!--      <include refid="Example_Where_Clause" />-->
+<!--    </if>-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
+<!--    insert into drugdictionary (drugId, drugName, unitId,-->
+<!--      sellingPrice, areaId, typeId-->
+<!--      )-->
+<!--    values (#{drugid,jdbcType=INTEGER}, #{drugname,jdbcType=VARCHAR}, #{unitid,jdbcType=INTEGER},-->
+<!--      #{sellingprice,jdbcType=DOUBLE}, #{areaid,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}-->
+<!--      )-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
+<!--    insert into drugdictionary-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides="," >-->
+<!--      <if test="drugid != null" >-->
+<!--        drugId,-->
+<!--      </if>-->
+<!--      <if test="drugname != null" >-->
+<!--        drugName,-->
+<!--      </if>-->
+<!--      <if test="unitid != null" >-->
+<!--        unitId,-->
+<!--      </if>-->
+<!--      <if test="sellingprice != null" >-->
+<!--        sellingPrice,-->
+<!--      </if>-->
+<!--      <if test="areaid != null" >-->
+<!--        areaId,-->
+<!--      </if>-->
+<!--      <if test="typeid != null" >-->
+<!--        typeId,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides="," >-->
+<!--      <if test="drugid != null" >-->
+<!--        #{drugid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="drugname != null" >-->
+<!--        #{drugname,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="unitid != null" >-->
+<!--        #{unitid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="sellingprice != null" >-->
+<!--        #{sellingprice,jdbcType=DOUBLE},-->
+<!--      </if>-->
+<!--      <if test="areaid != null" >-->
+<!--        #{areaid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="typeid != null" >-->
+<!--        #{typeid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <select id="countByExample" parameterType="com.itgaoshu.yiyuan.bean.DrugdictionaryExample" resultType="java.lang.Integer" >-->
+<!--    select count(*) from drugdictionary-->
+<!--    <if test="_parameter != null" >-->
+<!--      <include refid="Example_Where_Clause" />-->
+<!--    </if>-->
+<!--  </select>-->
+<!--  <update id="updateByExampleSelective" parameterType="map" >-->
+<!--    update drugdictionary-->
+<!--    <set >-->
+<!--      <if test="record.drugid != null" >-->
+<!--        drugId = #{record.drugid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="record.drugname != null" >-->
+<!--        drugName = #{record.drugname,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.unitid != null" >-->
+<!--        unitId = #{record.unitid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="record.sellingprice != null" >-->
+<!--        sellingPrice = #{record.sellingprice,jdbcType=DOUBLE},-->
+<!--      </if>-->
+<!--      <if test="record.areaid != null" >-->
+<!--        areaId = #{record.areaid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="record.typeid != null" >-->
+<!--        typeId = #{record.typeid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    <if test="_parameter != null" >-->
+<!--      <include refid="Update_By_Example_Where_Clause" />-->
+<!--    </if>-->
+<!--  </update>-->
+<!--  <update id="updateByExample" parameterType="map" >-->
+<!--    update drugdictionary-->
+<!--    set drugId = #{record.drugid,jdbcType=INTEGER},-->
+<!--      drugName = #{record.drugname,jdbcType=VARCHAR},-->
+<!--      unitId = #{record.unitid,jdbcType=INTEGER},-->
+<!--      sellingPrice = #{record.sellingprice,jdbcType=DOUBLE},-->
+<!--      areaId = #{record.areaid,jdbcType=INTEGER},-->
+<!--      typeId = #{record.typeid,jdbcType=INTEGER}-->
+<!--    <if test="_parameter != null" >-->
+<!--      <include refid="Update_By_Example_Where_Clause" />-->
+<!--    </if>-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
+<!--    update drugdictionary-->
+<!--    <set >-->
+<!--      <if test="drugname != null" >-->
+<!--        drugName = #{drugname,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="unitid != null" >-->
+<!--        unitId = #{unitid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="sellingprice != null" >-->
+<!--        sellingPrice = #{sellingprice,jdbcType=DOUBLE},-->
+<!--      </if>-->
+<!--      <if test="areaid != null" >-->
+<!--        areaId = #{areaid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="typeid != null" >-->
+<!--        typeId = #{typeid,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where drugId = #{drugid,jdbcType=INTEGER}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.itgaoshu.yiyuan.bean.Drugdictionary" >-->
+<!--    update drugdictionary-->
+<!--    set drugName = #{drugname,jdbcType=VARCHAR},-->
+<!--      unitId = #{unitid,jdbcType=INTEGER},-->
+<!--      sellingPrice = #{sellingprice,jdbcType=DOUBLE},-->
+<!--      areaId = #{areaid,jdbcType=INTEGER},-->
+<!--      typeId = #{typeid,jdbcType=INTEGER}-->
+<!--    where drugId = #{drugid,jdbcType=INTEGER}-->
+<!--  </update>-->
 
 
-  <!--&lt;!&ndash; 自添  &ndash;&gt;-->
-  <!--&lt;!&ndash;查询药品&ndash;&gt;-->
-  <!--<select id="selDrug" parameterType="Pharmacy" resultType="Pharmacy">-->
-    <!--select p.pharmacyId pharmacyid,p.pharmacyName pharmacyname,p.drugstoreId drugstoreid,p.skullId skullid,p.warehouseId warehouseid,p.unit,p.sellingPrice sellingprice,-->
-    <!--p.area area,p.type type,p.produceDate producedate,p.validDate validdate,p.drugstorenum,p.skullbatch,u.unitName unitname,a.areaName areaname,t.typeName typename-->
-    <!--from pharmacy p,unit u,area a,type t-->
-    <!--<where>-->
-      <!--p.unit=u.unitId and p.area=a.areaId and p.type=t.typeId-->
-      <!--<if test="pharmacyname!=null and pharmacyname!=''">-->
-        <!--and p.pharmacyName like concat('%',concat(#{pharmacyname},'%'))-->
-      <!--</if>-->
-      <!--<if test="pharmacyid!='' and pharmacyid!=null">-->
-        <!--and p.pharmacyId=#{pharmacyid}-->
-      <!--</if>-->
-    <!--</where>-->
-  <!--</select>-->
-  <!--&lt;!&ndash;查询患者药品&ndash;&gt;-->
-  <!--<select id="selDrugs" parameterType="Lrecord" resultType="Lrecord">-->
-        <!--select hospitalpriceid,registerId registerid,durgname,durgnum,repiceprice,repicetotal,htime,state-->
-        <!--from hospitalprice where state=#{state} and registerId=#{registerid} order by htime desc-->
-    <!--</select>-->
-  <!--&lt;!&ndash;开药&ndash;&gt;-->
-  <!--<insert id="addDrug" parameterType="Lrecord">-->
-        <!--insert into hospitalprice(registerid,durgname,durgnum,repiceprice,repicetotal,htime,state)-->
-         <!--values(#{registerid},#{durgname},#{durgnum},#{repiceprice},#{repicetotal},NOW(),#{state});-->
-    <!--</insert>-->
-  <!--&lt;!&ndash;添加已有药品&ndash;&gt;-->
-  <!--<update id="updDrug" parameterType="Lrecord">-->
-        <!--update hospitalprice set durgnum=durgnum+#{durgnum},repicetotal=durgnum*repiceprice,htime=NOW() where registerId=#{registerid} and state=#{state} and durgname=#{durgname}-->
-    <!--</update>-->
-  <!--&lt;!&ndash;删除患者药品&ndash;&gt;-->
-  <!--<delete id="delDrug" parameterType="Lrecord">-->
-        <!--delete from hospitalprice where hospitalpriceid=#{hospitalpriceid}-->
-    <!--</delete>-->
-  <!--&lt;!&ndash;移除药品&ndash;&gt;-->
-  <!--<update id="updDrugs" parameterType="Lrecord">-->
-        <!--update pharmacy set drugstorenum=drugstorenum+#{durgnum} where pharmacyName=#{durgname};-->
-    <!--</update>-->
-  <!--&lt;!&ndash;添加药品&ndash;&gt;-->
-  <!--<update id="updNum" parameterType="Lrecord">-->
-        <!--update pharmacy set drugstorenum=drugstorenum-#{durgnum} where pharmacyName=#{durgname};-->
-    <!--</update>-->
-  <!--&lt;!&ndash;修改药品的状态&ndash;&gt;-->
-  <!--<update id="upd" parameterType="Lrecord">-->
-        <!--update hospitalprice set state=2,htime=NOW() where state=0 and registerId=#{registerid}-->
-    <!--</update>-->
+  <!-- 自添  -->
+  <!--查询药品-->
+  <select id="selDrug" parameterType="Pharmacy" resultType="Pharmacy">
+    select p.pharmacyId pharmacyid,p.pharmacyName pharmacyname,p.drugstoreId drugstoreid,p.skullId skullid,p.warehouseId warehouseid,p.unit,p.sellingPrice sellingprice,
+    p.area area,p.type type,p.produceDate producedate,p.validDate validdate,p.drugstorenum,p.skullbatch,u.unitName unitname,a.areaName areaname,t.typeName typename
+    from pharmacy p,unit u,area a,type t
+    <where>
+      p.unit=u.unitId and p.area=a.areaId and p.type=t.typeId
+      <if test="pharmacyname!=null and pharmacyname!=''">
+        and p.pharmacyName like concat('%',concat(#{pharmacyname},'%'))
+      </if>
+      <if test="pharmacyid!='' and pharmacyid!=null">
+        and p.pharmacyId=#{pharmacyid}
+      </if>
+    </where>
+  </select>
+  <!--查询患者药品-->
+  <select id="selDrugs" parameterType="Lrecord" resultType="Lrecord">
+        select hospitalpriceid,registerId registerid,durgname,durgnum,repiceprice,repicetotal,htime,state
+        from hospitalprice where state=#{state} and registerId=#{registerid} order by htime desc
+    </select>
+  <!--开药-->
+  <insert id="addDrug" parameterType="Lrecord">
+        insert into hospitalprice(registerid,durgname,durgnum,repiceprice,repicetotal,htime,state)
+         values(#{registerid},#{durgname},#{durgnum},#{repiceprice},#{repicetotal},NOW(),#{state});
+    </insert>
+  <!--添加已有药品-->
+  <update id="updDrug" parameterType="Lrecord">
+        update hospitalprice set durgnum=durgnum+#{durgnum},repicetotal=durgnum*repiceprice,htime=NOW() where registerId=#{registerid} and state=#{state} and durgname=#{durgname}
+    </update>
+  <!--删除患者药品-->
+  <delete id="delDrug" parameterType="Lrecord">
+        delete from hospitalprice where hospitalpriceid=#{hospitalpriceid}
+    </delete>
+  <!--移除药品-->
+  <update id="updDrugs" parameterType="Lrecord">
+        update pharmacy set drugstorenum=drugstorenum+#{durgnum} where pharmacyName=#{durgname};
+    </update>
+  <!--添加药品-->
+  <update id="updNum" parameterType="Lrecord">
+        update pharmacy set drugstorenum=drugstorenum-#{durgnum} where pharmacyName=#{durgname};
+    </update>
+  <!--修改药品的状态-->
+  <update id="upd" parameterType="Lrecord">
+        update hospitalprice set state=2,htime=NOW() where state=0 and registerId=#{registerid}
+    </update>
 </mapper>
