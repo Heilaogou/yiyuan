@@ -202,11 +202,12 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public Double selch(Integer reportId) {
         Double res = reportMapper.selch(reportId);
-        if(res==0){
+        /*if(res==null || res==0){
             //表示处方中没有需要缴费的药品
             //考虑直接将挂号状态改为3以结束门诊
             reportMapper.end(reportId);
-        }
+        }*/
+        if(res==null) res = 0.0;
         return res;
     }
 

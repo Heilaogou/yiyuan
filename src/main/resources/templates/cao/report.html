@@ -259,14 +259,14 @@
                 $.post("../cao/selch",{reportId:ids},function(res) {
                     if (res == 0) {
                         //判断该用户是否有缴费未做的项目
-                        $.post("../caocc/seljiao",{"reid":ids},function(res) {
+                        $.post("../cao/seljiao",{"reid":ids},function(res) {
                             if (res > 0) {
                                 layer.msg("你还有未缴费的项目请缴费后在进行该操作")
                             } else {
-                                $.post("../caocc/selwei", {"reid": ids}, function (res) {
+                                $.post("../cao/selwei", {"reid": ids}, function (res) {
                                     if (res == 1) {
                                         layer.confirm('你确定要【' + params + '】转入住院部吗', function (index) {
-                                            $.post("../caocc/selbing", {"reid": ids}, function (obj) {
+                                            $.post("../cao/selbing", {"reid": ids}, function (obj) {
                                                 $("#bingying").val(obj);
                                             });
                                             mainIndex = layer.open({
