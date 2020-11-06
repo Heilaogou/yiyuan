@@ -403,6 +403,8 @@ public class ReportController {
        }
     }
     //根据挂号id查询处方中药品总价
+    //！！！！！！！！！！！如果当前病人处方中没有药品(selch=0)则无需进行药品缴费
+    //考虑当selch=0时直接将挂号状态置为3(没有药且项目都已检查完则直接结束门诊)
     @RequestMapping("/selch")
     @ResponseBody
     public Double selch(Integer reportId){
